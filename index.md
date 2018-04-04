@@ -5,13 +5,13 @@ layout: default
 # Documentação
 
 - **Requisitos**
-  - [Funcionais](another-page)
-  - [Não-Funcionais](another-page)
+  - [Funcionais](./pages/mer)
+  - [Não-Funcionais](./pages/another-page)
 - **UML**
-  - [Casos de Uso](another-page)
-  - [Classes](another-page)
-  - [Atividade](another-page)
-  - [Sequência](another-page)
-  - [Estado](another-page)
+  - [Casos de Uso](./pages/another-page)
+  - [Classes](./pages/another-page)
+  - [Atividade](./pages/another-page)
+  - [Sequência](./pages/another-page)
+  - [Estado](./pages/another-page)
 - **Banco de Dados**
-  - [Modelo de Entidade e Relacionamento](another-page)
+  - [Modelo de Entidade e Relacionamento](./pages/another-page)
