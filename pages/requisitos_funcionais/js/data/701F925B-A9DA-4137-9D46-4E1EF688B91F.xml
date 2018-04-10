@@ -1,0 +1,7 @@
+tocTab[tocTab.length] = new Array("0.2:1", "", "«Functional» Turmas", "EARoot/EA2/EA41.html", "19.png", "E195", "0", "", "Requirement0","{08C579E7-414E-4b79-8129-7F4848BC18A9}");
+tocTab[tocTab.length] = new Array("0.2:2", "", "«Functional» Plano de Ensino", "EARoot/EA2/EA42.html", "19.png", "E189", "0", "", "Requirement0","{7B69384E-7024-4dd1-BB6C-382672D69CCD}");
+tocTab[tocTab.length] = new Array("0.2:3", "", "«Functional» Dashboard do Professor", "EARoot/EA2/EA43.html", "19.png", "E197", "0", "", "Requirement0","{1CA2FCC1-0E0B-4f0d-87CF-C7B92571B778}");
+tocTab[tocTab.length] = new Array("0.2:4", "", "«Functional» Impressão do Plano de Ensino", "EARoot/EA2/EA44.html", "19.png", "E192", "E189", "", "Requirement0","{75C19505-D0B8-4207-A1C6-C39D440058D4}");
+tocTab[tocTab.length] = new Array("0.2:5", "", "«Functional» Preenchimento do Plano de Ensino", "EARoot/EA2/EA45.html", "19.png", "E191", "E189", "", "Requirement0","{62F43EED-01BF-4ba5-91AE-04624BBCF19B}");
+tocTab[tocTab.length] = new Array("0.2:6", "", "«Functional» Validação de Planos de Ensino", "EARoot/EA2/EA46.html", "19.png", "E193", "E189", "", "Requirement0","{B8CF6C64-ECA0-4b44-95E8-8CB79F527354}");
+tocTab[tocTab.length] = new Array("0.2:7", "", "«Feature» Cadastro de Turmas", "EARoot/EA2/EA47.html", "190.png", "E283", "E195", "", "Feature0","{1C2F17BF-8F46-4626-A4BA-82C80E213AE2}");

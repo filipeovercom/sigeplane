@@ -5,8 +5,8 @@ layout: default
 # Documentação
 
 - **Requisitos**
-  - [Funcionais](./pages/mer)
-  - [Não-Funcionais](./pages/another-page)
+  - [Funcionais](./pages/requisitos_funcionais/index.html)
+  - [Não-Funcionais](./pages/requisitos_funcionais/index.html)
 - **UML**
   - [Casos de Uso](./pages/another-page)
   - [Classes](./pages/another-page)
@@ -14,4 +14,4 @@ layout: default
   - [Sequência](./pages/another-page)
   - [Estado](./pages/another-page)
 - **Banco de Dados**
-  - [Modelo de Entidade e Relacionamento](./pages/another-page)
+  - [Dicionário de Dados](./pages/mer/index.html)
