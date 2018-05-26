@@ -14,4 +14,5 @@ layout: default
   - [Sequência](./pages/work-in-progress)
   - [Estado](./pages/work-in-progress)
 - **Banco de Dados**
-  - [Dicionário de Dados](./pages/mer/index.html)
+  - [Dicionário de Dados](./pages/mer/index.html)  
+- **[Protótipo de Alta Fidelidade](./pages/prototipo/index.html)**
