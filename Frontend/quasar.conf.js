@@ -19,7 +19,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
-      publicPath: '/',
+      publicPath: 'sigeplane/pages/prototipo',
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
