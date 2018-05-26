@@ -15,7 +15,7 @@ const Router = new VueRouter({
    * to something other than an empty string.
    * Example: '/' instead of ''
    */
-  
+
   // Leave as is and change from quasar.conf.js instead!
   mode: process.env.VUE_ROUTER_MODE,
   base: process.env.VUE_ROUTER_BASE,

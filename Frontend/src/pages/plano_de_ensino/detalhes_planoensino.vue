@@ -1,92 +1,111 @@
 <template>
-  <q-page padding>
-    <q-card style="margin-top: 45px">
-      <q-card-title>
-        1. Ementa
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="q-body text-justify">
-        Elementos de matemática: trigonometria no triângulo, conjuntos numéricos, equações, inequações, funções,
-        gráficos, limites, matrizes, sistemas lineares.
-      </q-card-main>
-    </q-card>
-    <br>
-    <q-card>
-      <q-card-title>
-        2. Contribuição Para a Formação do Perfil do Egresso
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="q-body text-justify">
-        <p>
-          O PROFISSIONAL DE SISTEMAS DE INFORMAÇÃO é capacitado para transitar em todas as áreas da computação, indo
-          desde a criação de sistemas e games até a manutenção de banco de dados, considerando durante toda a graduação
-          elementos como redes de computadores, desenvolvimento de software, segurança de computadores, gestão de
-          projetos de TI, inteligência artificial e muitas outras atividades ligadas a computação.
-        </p>
-        <p>
-          Logo, são profissionais dinâmicos, inovadores, críticos e disponíveis para a aprendizagem contínua e
-          multidisciplinar, capazes de agirem consonância com os processos de transformação pelos quais passam as
-          empresas modernas e a sociedade atual.
-        </p>
-      </q-card-main>
-    </q-card>
-    <br>
-    <q-card>
-      <q-card-title>
-        3. Conteúdo
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="q-body text-justify">
-        <p>
-          Funções (1º grau, 2º grau, exponencial e logarítmica): Definições, raízes, gráficos e situações problemas.
-          Matrizes e Determinantes: Definição, tipos de matrizes, operações com matrizes e matriz inversa. Determinante
-          de uma matriz. Sistemas Lineares: Resolução de sistemas lineares por da substituição, escalonamento e por
-          determinantes. Limites e funções contínuas: limites Laterais e limites infinitos. Derivação: taxa de
-          derivação, regras de derivação. Aplicação da derivada: funções crescentes e decrescentes, concavidade de
-          gráficos de funções, problemas de máximos e mínimos. Integração: integral indefinida: primitivação por
-          substituição, regras de integrações, Integral definida, propriedades e aplicações ao cálculo de áreas, teorema
-          Fundamental do Cálculo.
-        </p>
-      </q-card-main>
-    </q-card>
-    <br>
-    <q-card>
-      <q-card-title>
-        3. Conteúdo
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="q-body text-justify">
-        <p>
-          Funções (1º grau, 2º grau, exponencial e logarítmica): Definições, raízes, gráficos e situações problemas.
-          Matrizes e Determinantes: Definição, tipos de matrizes, operações com matrizes e matriz inversa. Determinante
-          de uma matriz. Sistemas Lineares: Resolução de sistemas lineares por da substituição, escalonamento e por
-          determinantes. Limites e funções contínuas: limites Laterais e limites infinitos. Derivação: taxa de
-          derivação, regras de derivação. Aplicação da derivada: funções crescentes e decrescentes, concavidade de
-          gráficos de funções, problemas de máximos e mínimos. Integração: integral indefinida: primitivação por
-          substituição, regras de integrações, Integral definida, propriedades e aplicações ao cálculo de áreas, teorema
-          Fundamental do Cálculo.
-        </p>
-      </q-card-main>
-    </q-card>
-    <br>
-    <q-card>
-      <q-card-title>
-        3. Conteúdo
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="q-body text-justify">
-        <p>
-          Funções (1º grau, 2º grau, exponencial e logarítmica): Definições, raízes, gráficos e situações problemas.
-          Matrizes e Determinantes: Definição, tipos de matrizes, operações com matrizes e matriz inversa. Determinante
-          de uma matriz. Sistemas Lineares: Resolução de sistemas lineares por da substituição, escalonamento e por
-          determinantes. Limites e funções contínuas: limites Laterais e limites infinitos. Derivação: taxa de
-          derivação, regras de derivação. Aplicação da derivada: funções crescentes e decrescentes, concavidade de
-          gráficos de funções, problemas de máximos e mínimos. Integração: integral indefinida: primitivação por
-          substituição, regras de integrações, Integral definida, propriedades e aplicações ao cálculo de áreas, teorema
-          Fundamental do Cálculo.
-        </p>
-      </q-card-main>
-    </q-card>
+  <q-page >
+    <q-toolbar color="secundary">
+      <q-toolbar-title>
+        <q-chip square icon="beenhere" color="primary">2018/2</q-chip>
+        <q-chip square icon="school" color="primary">302N4A</q-chip>
+        <q-chip square icon="book" color="primary">Fundamentos de Matemática</q-chip>
+        <q-chip square icon="dashboard" color="primary">Sistemas de Informação</q-chip>
+        <q-chip square icon="person" color="primary">Me. Thiago Ruiz Garcia</q-chip>
+      </q-toolbar-title>
+      <q-btn icon="settings" label="Opções" color="tertiary"/>
+    </q-toolbar>
+    <q-page padding>
+      <q-card style="margin-top: 45px">
+        <q-card-title>
+          1. Ementa
+        </q-card-title>
+        <q-card-separator/>
+        <q-card-main class="q-body text-justify">
+          Elementos de matemática: trigonometria no triângulo, conjuntos numéricos, equações, inequações, funções,
+          gráficos, limites, matrizes, sistemas lineares.
+        </q-card-main>
+      </q-card>
+      <br>
+      <q-card>
+        <q-card-title>
+          2. Contribuição Para a Formação do Perfil do Egresso
+        </q-card-title>
+        <q-card-separator/>
+        <q-card-main class="q-body text-justify">
+          <p>
+            O PROFISSIONAL DE SISTEMAS DE INFORMAÇÃO é capacitado para transitar em todas as áreas da computação, indo
+            desde a criação de sistemas e games até a manutenção de banco de dados, considerando durante toda a
+            graduação
+            elementos como redes de computadores, desenvolvimento de software, segurança de computadores, gestão de
+            projetos de TI, inteligência artificial e muitas outras atividades ligadas a computação.
+          </p>
+          <p>
+            Logo, são profissionais dinâmicos, inovadores, críticos e disponíveis para a aprendizagem contínua e
+            multidisciplinar, capazes de agirem consonância com os processos de transformação pelos quais passam as
+            empresas modernas e a sociedade atual.
+          </p>
+        </q-card-main>
+      </q-card>
+      <br>
+      <q-card>
+        <q-card-title>
+          3. Conteúdo
+        </q-card-title>
+        <q-card-separator/>
+        <q-card-main class="q-body text-justify">
+          <p>
+            Funções (1º grau, 2º grau, exponencial e logarítmica): Definições, raízes, gráficos e situações problemas.
+            Matrizes e Determinantes: Definição, tipos de matrizes, operações com matrizes e matriz inversa.
+            Determinante
+            de uma matriz. Sistemas Lineares: Resolução de sistemas lineares por da substituição, escalonamento e por
+            determinantes. Limites e funções contínuas: limites Laterais e limites infinitos. Derivação: taxa de
+            derivação, regras de derivação. Aplicação da derivada: funções crescentes e decrescentes, concavidade de
+            gráficos de funções, problemas de máximos e mínimos. Integração: integral indefinida: primitivação por
+            substituição, regras de integrações, Integral definida, propriedades e aplicações ao cálculo de áreas,
+            teorema
+            Fundamental do Cálculo.
+          </p>
+        </q-card-main>
+      </q-card>
+      <br>
+      <q-card>
+        <q-card-title>
+          3. Conteúdo
+        </q-card-title>
+        <q-card-separator/>
+        <q-card-main class="q-body text-justify">
+          <p>
+            Funções (1º grau, 2º grau, exponencial e logarítmica): Definições, raízes, gráficos e situações problemas.
+            Matrizes e Determinantes: Definição, tipos de matrizes, operações com matrizes e matriz inversa.
+            Determinante
+            de uma matriz. Sistemas Lineares: Resolução de sistemas lineares por da substituição, escalonamento e por
+            determinantes. Limites e funções contínuas: limites Laterais e limites infinitos. Derivação: taxa de
+            derivação, regras de derivação. Aplicação da derivada: funções crescentes e decrescentes, concavidade de
+            gráficos de funções, problemas de máximos e mínimos. Integração: integral indefinida: primitivação por
+            substituição, regras de integrações, Integral definida, propriedades e aplicações ao cálculo de áreas,
+            teorema
+            Fundamental do Cálculo.
+          </p>
+        </q-card-main>
+      </q-card>
+      <br>
+      <q-card>
+        <q-card-title>
+          3. Conteúdo
+        </q-card-title>
+        <q-card-separator/>
+        <q-card-main class="q-body text-justify">
+          <p>
+            Funções (1º grau, 2º grau, exponencial e logarítmica): Definições, raízes, gráficos e situações problemas.
+            Matrizes e Determinantes: Definição, tipos de matrizes, operações com matrizes e matriz inversa.
+            Determinante
+            de uma matriz. Sistemas Lineares: Resolução de sistemas lineares por da substituição, escalonamento e por
+            determinantes. Limites e funções contínuas: limites Laterais e limites infinitos. Derivação: taxa de
+            derivação, regras de derivação. Aplicação da derivada: funções crescentes e decrescentes, concavidade de
+            gráficos de funções, problemas de máximos e mínimos. Integração: integral indefinida: primitivação por
+            substituição, regras de integrações, Integral definida, propriedades e aplicações ao cálculo de áreas,
+            teorema
+            Fundamental do Cálculo.
+          </p>
+        </q-card-main>
+      </q-card>
+    </q-page>
     <q-modal v-model="modalCopiar" :content-css="{minWidth: '600px', minHeight: '250px'}">
       <q-modal-layout>
         <q-toolbar slot="header">
@@ -115,18 +134,6 @@
         </q-toolbar>
       </q-modal-layout>
     </q-modal>
-    <q-page-sticky position="top" :offset="[0, 20]" style="width: 90%;">
-      <q-toolbar>
-        <q-toolbar-title>
-          <q-chip square icon="beenhere" color="primary">2018/2</q-chip>
-          <q-chip square icon="school" color="primary">302N4A</q-chip>
-          <q-chip square icon="book" color="primary">Fundamentos de Matemática</q-chip>
-          <q-chip square icon="dashboard" color="primary">Sistemas de Informação</q-chip>
-          <q-chip square icon="person" color="primary">Me. Thiago Ruiz Garcia</q-chip>
-          <q-btn icon="settings" label="Opções" color="tertiary"/>
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-page-sticky>
   </q-page>
 </template>
 

@@ -5,13 +5,15 @@
         <div class="row justify-center items-center">
           <div class="col-xs-12 text-center">
             <img class="q-mb-xl" src="http://www.catolica-to.edu.br/portal/portal/media/img/logo_catolica_azul.png"
-                 width="350px">
-            <h3 style="color: #5db761" class="q-mb-xs">
-              SGPE
-            </h3>
-            <h6 class="q-mt-xs">Sistema de Gerenciamento de Planos de Ensino</h6>
+                 width="200px">
           </div>
           <q-card class="q-pa-lg col-xs-12 col-md-6">
+            <div class="col-xs-12 text-center">
+              <h3 style="color: #5db761" class="q-ma-xs">
+                SGPE
+              </h3>
+              <h6 class="q-mt-xs">Sistema de Gerenciamento de Planos de Ensino</h6>
+            </div>
             <q-field icon="person" class="col-xs-12">
               <q-input v-model="form.matricula" float-label="Matrícula"
                        required @keyup.enter="submit"/>

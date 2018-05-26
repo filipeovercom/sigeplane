@@ -19,7 +19,7 @@ export default ({app, router, store, Vue}) => {
       }
     }
   });
-  
+
   function checkUserPermissions (routePermissions) {
     if (!routePermissions) return true;
     let userPermissions = getItemFromLocalStorage('usuario')['perfis'];
@@ -27,6 +27,6 @@ export default ({app, router, store, Vue}) => {
       .filter(routePermission => userPermissions.indexOf(routePermission) !== -1);
     return intersectedPermissions.length > 0;
   }
-  
+
   Vue.prototype.$can = checkUserPermissions;
 };
