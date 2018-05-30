@@ -19,7 +19,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
-      publicPath: 'sigeplane/pages/prototipo',
+      publicPath: '/sigeplane/pages/prototipo',
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
@@ -47,6 +47,8 @@ module.exports = function (ctx) {
         'QLayoutDrawer',
         'QLayoutFooter',
         'QPageContainer',
+        'QAjaxBar',
+        'QSpinnerGrid',
         'QPage',
         'QTooltip',
         'QToolbar',
@@ -58,6 +60,9 @@ module.exports = function (ctx) {
         'QIcon',
         'QList',
         'QListHeader',
+        'QTimeline',
+        'QTimelineEntry',
+        'QChatMessage',
         'QChip',
         'QPageSticky',
         'QItem',
@@ -87,7 +92,7 @@ module.exports = function (ctx) {
         'QModalLayout'
       ],
       directives: ['Ripple', 'CloseOverlay'],
-      plugins: ['Notify', 'Dialog']
+      plugins: ['Notify', 'Dialog', 'Loading']
     },
     // animations: 'all' --- includes all animations
     animations: [],
@@ -149,7 +154,7 @@ module.exports = function (ctx) {
         // win32metadata: { ... }
       }
     },
-    
+
     // leave this here for Quasar CLI
     starterKit: '1.0.0-beta.4'
   };

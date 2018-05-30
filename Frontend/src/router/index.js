@@ -1,9 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
-// import _axios from 'axios/index'
-// import {getItemFromLocalStorage} from '../services/core/storageUtils'
-// import resources from '../services/core/resources'
+import {Loading, QSpinnerGrid} from 'quasar';
 
 Vue.use(VueRouter);
 
@@ -21,6 +19,22 @@ const Router = new VueRouter({
   base: process.env.VUE_ROUTER_BASE,
   scrollBehavior: () => ({y: 0}),
   routes
+});
+
+Router.beforeEach((to, from, next) => {
+  Loading.show({
+    spinner: QSpinnerGrid,
+    spinnerSize: 200,
+    spinnerColor: 'light',
+    message: 'Aguarde sua página está sendo carregada!',
+    messageColor: 'light',
+    customClass: 'bg-primary'
+  });
+  next();
+});
+
+Router.afterEach(() => {
+  Loading.hide();
 });
 
 export default Router;
