@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "luxon": "^0.5.3",
-    "npm": "^6.0.1"
+    "npm": "^6.0.1",
+    "vue2-editor": "^2.4.4"
   },
   "devDependencies": {
     "babel-eslint": "8.2.1",

@@ -3,162 +3,197 @@
     <q-card class="text-primary bg-light">
       <q-card-main>
         <div class="row gutter-sm">
-          <div class="col-xs-12 col-md-3 bordered">
+          <div class="col-xs-12 col-md-3">
+            <p class="q-toolbar-title text-positive">
+              <q-icon name="bookmark" size="35px"/>
+              Em Produção
+            </p>
+          </div>
+          <div class="col-xs-12 col-md-3">
             <p class="q-toolbar-title">
               <q-icon name="beenhere" size="35px"/>
               Semestre 2018/2
             </p>
           </div>
-          <div class="col-xs-12 col-md-3 bordered">
+          <div class="col-xs-12 col-md-2">
             <p class="q-toolbar-title">
               <q-icon name="school" size="35px"/>
               302N4A
             </p>
           </div>
-          <div class="col-xs-12 col-md-6 bordered">
+          <div class="col-xs-12 col-md-4">
             <p class="q-toolbar-title">
               <q-icon name="book" size="35px"/>
               Fundamentos de Matemática
             </p>
           </div>
-          <div class="col-xs-12 col-md-3 bordered">
+        </div>
+        <div class="row gutter-sm">
+          <div class="col-xs-12 col-md-3">
             <p class="q-toolbar-title">
               <q-icon name="dashboard" size="35px"/>
               Sistemas de Informação
             </p>
           </div>
-          <div class="col-xs-12 col-md-3 bordered">
+          <div class="col-xs-12 col-md-3">
             <p class="q-toolbar-title">
               <q-icon name="person" size="35px"/>
               Me. Thiago Ruiz Garcia
             </p>
           </div>
+          <div class="col-xs-12 col-lg-6">
+            <q-btn push label="Copiar Plano" icon="fa-copy" color="primary"
+                   @click="modalCopiar = !modalCopiar"/>
+            <q-btn push label="Enviar P/ Análise" icon="send" color="info"/>
+            <q-btn push label="Aprovar" icon="check" color="positive"/>
+            <q-btn push label="Reprovar" icon="close" color="negative"/>
+          </div>
         </div>
       </q-card-main>
     </q-card>
     <br>
-    <q-card class="text-primary bg-light">
-      <q-card-title>
-        <span class="q-title">1. Ementa</span>
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="text-justify">
+    <q-collapsible opened class="q-pa-sm bg-light">
+      <template slot="header">
+        <q-item-main class="q-title">
+          1. Ementa
+        </q-item-main>
+      </template>
+      <p>
         Elementos de matemática: trigonometria no triângulo, conjuntos numéricos, equações, inequações, funções,
         gráficos, limites, matrizes, sistemas lineares.
-      </q-card-main>
-    </q-card>
+      </p>
+    </q-collapsible>
     <br>
-    <q-card class="text-primary bg-light">
-      <q-card-title>
-        <span class="q-title">2. Contribuição Para a Formação do Perfil do Egresso</span>
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="text-justify">
-        <p>
-          O PROFISSIONAL DE SISTEMAS DE INFORMAÇÃO é capacitado para transitar em todas as áreas da computação, indo
-          desde a criação de sistemas e games até a manutenção de banco de dados, considerando durante toda a graduação
-          elementos como redes de computadores, desenvolvimento de software, segurança de computadores, gestão de
-          projetos de TI, inteligência artificial e muitas outras atividades ligadas a computação.
-        </p>
-        <p>
-          Logo, são profissionais dinâmicos, inovadores, críticos e disponíveis para a aprendizagem contínua e
-          multidisciplinar, capazes de agirem consonância com os processos de transformação pelos quais passam as
-          empresas modernas e a sociedade atual.
-        </p>
-      </q-card-main>
-    </q-card>
+    <q-collapsible opened class="q-pa-sm bg-light">
+      <template slot="header">
+        <q-item-main class="q-title">
+          2. Contribuição Para a Formação do Perfil do Egresso
+        </q-item-main>
+      </template>
+      <p>
+        O PROFISSIONAL DE SISTEMAS DE INFORMAÇÃO é capacitado para transitar em todas as áreas da computação, indo
+        desde a criação de sistemas e games até a manutenção de banco de dados, considerando durante toda a
+        graduação
+        elementos como redes de computadores, desenvolvimento de software, segurança de computadores, gestão de
+        projetos de TI, inteligência artificial e muitas outras atividades ligadas a computação.
+      </p>
+      <p>
+        Logo, são profissionais dinâmicos, inovadores, críticos e disponíveis para a aprendizagem contínua e
+        multidisciplinar, capazes de agirem consonância com os processos de transformação pelos quais passam as
+        empresas modernas e a sociedade atual.
+      </p>
+    </q-collapsible>
     <br>
-    <q-card class="text-primary bg-light">
-      <q-card-title>
-        <span class="q-title">3. Conteúdo</span>
-        <q-btn slot="right" push icon="chat" color="primary" @click="modalComentarios = !modalComentarios">
-          <q-chip floating color="red">2</q-chip>
-          <q-tooltip :offset="[10, 10]">
-            Ver e Responder Comentários
-          </q-tooltip>
-        </q-btn>
-        <q-btn slot="right" push :icon="!editaConteudo ? 'edit' : 'save'" color="primary"
-               class="q-ml-sm"
-               @click="editaConteudo = !editaConteudo">
-          <q-tooltip :offset="[10, 10]">
-            {{ editaConteudo ? 'Salvar Conteúdo' : 'Editar Conteúdo' }}
-          </q-tooltip>
-        </q-btn>
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="text-justify">
-        <div v-if="!editaConteudo" @dblclick="editaConteudo = !editaConteudo">
-          <p v-html="conteudo"/>
+    <q-collapsible opened class="bg-light q-pa-sm">
+      <template slot="header">
+        <q-item-main class="q-title">
+          3. Conteúdo
+        </q-item-main>
+        <q-item-side slot="right">
+          <q-btn push icon="chat" color="primary" @click.stop="modalComentarios = !modalComentarios">
+            <q-chip floating color="red">2</q-chip>
+            <q-tooltip :offset="[10, 10]">
+              Ver e Responder Comentários
+            </q-tooltip>
+          </q-btn>
+          <q-btn push :icon="!editaConteudo ? 'edit' : 'save'" color="primary"
+                 class="q-ml-sm"
+                 @click.stop="editaConteudo = !editaConteudo">
+            <q-tooltip :offset="[10, 10]">
+              {{ editaConteudo ? 'Salvar Conteúdo' : 'Editar Conteúdo' }}
+            </q-tooltip>
+          </q-btn>
+        </q-item-side>
+      </template>
+      <div v-if="!editaConteudo" @dblclick="editaConteudo = !editaConteudo">
+        <p v-html="conteudo"/>
+      </div>
+      <vue-editor v-model="conteudo" v-if="editaConteudo"/>
+    </q-collapsible>
+    <br>
+    <q-collapsible opened class="bg-light q-pa-sm">
+      <template slot="header">
+        <q-item-main class="q-title">
+          4. Padrões e Critérios do Sistema de Avaliação
+        </q-item-main>
+      </template>
+      <p>
+        Na Faculdade Católica do Tocantins o Sistema de Avaliação da Aprendizagem está a serviço de um processo,
+        que
+        também visa ao melhoramento da ação educativa. Tal processo deve ser contínuo e abrangente, priorizando a
+        utilização de instrumentos diversificados como: testes, trabalhos individuais e em grupos, projetos,
+        seminários, debates, provas entre outros meios. <br>
+        A metodologia para avaliação será explicitada no item 6- CRONOGRAMA DE ATIVIDADES/PLANO DE TRABALHO.
+        O docente é responsável pela forma de mensuração dos resultados finais para obtenção nas notas da primeira
+        avaliação bimestral (A1), até dia 05 de abril e a segunda avaliação bimestral (A2), até dia 06 de junho.
+        A nota da Avaliação Semestral será resultante da média aritmética da primeira avaliação com a segunda
+        avaliação. Sendo que as notas atribuídas a cada avaliação do desempenho do acadêmico variam de 0,0 (zero)
+        a
+        10,0 (dez inteiros). Concluindo o semestre, considera-se aprovado por média, em cada disciplina, o
+        acadêmico
+        que tiver frequência igual ou superior a 75% (setenta e cinco por cento) e média aritmética semestral (MS)
+        igual ou superior a 7,0 (sete inteiros).
+        Ao acadêmico que não obtiver média semestral igual ou superior a 7,0 (sete inteiros) e possuir frequência
+        igual ou superior a 75% na disciplina, é garantido o direito de realizar Exame Final. E caso o acadêmico
+        falte a uma das avaliações (A1 ou A2) poderá se valer da Avaliação Substitutiva, o que independe de razões
+        e
+        comprovações. A avaliação substitutiva será pontuada de 0,0 (zero) a 10,0 (dez inteiros).
+        Considera-se aprovado por Exame Final o acadêmico que obtiver média aritmética igual ou superior a 6,0
+        (seis
+        inteiros), somando-se a nota do exame final com a média obtida durante o semestre (MS).
+      </p>
+    </q-collapsible>
+    <br>
+    <q-collapsible opened class="bg-light q-pa-sm">
+      <template slot="header">
+        <q-item-main class="q-title">
+          5. Bibliografia
+        </q-item-main>
+      </template>
+      <div class="row gutter-md">
+        <div class="col-xs-12 col-md-6">
+          <p>
+            5.1 Bibliografia Básica
+          </p>
+          <p>
+            ABREU, A. S. Curso de redação. São Paulo: Editora Ática. 2004. p 168. <br><br>
+            MARTINS, D. S.; ZILBERKNOP, L. S. Português instrumental: de acordo com as atuais normas da ABNT. 27
+            ed.
+            São Paulo: Atlas, 2008.<br><br>
+            BECHARA, E. Moderna gramática portuguesa. São Paulo: Editora Nacional. 2001.
+          </p>
         </div>
-        <q-editor v-model="conteudo" v-if="editaConteudo"/>
-      </q-card-main>
-    </q-card>
-    <br>
-    <q-card class="text-primary bg-light">
-      <q-card-title class="relative-position">
-        <span class="q-title">4. Padrões e Critérios do Sistema de Avaliação</span>
-        <q-btn slot="right" flat icon="chat" color="primary" label="Comentar"/>
-        <q-btn slot="right" flat icon="edit" color="primary" label="Editar"/>
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="text-justify">
-        <p>
-          Na Faculdade Católica do Tocantins o Sistema de Avaliação da Aprendizagem está a serviço de um processo, que
-          também visa ao melhoramento da ação educativa. Tal processo deve ser contínuo e abrangente, priorizando a
-          utilização de instrumentos diversificados como: testes, trabalhos individuais e em grupos, projetos,
-          seminários, debates, provas entre outros meios.
-          A metodologia para avaliação será explicitada no item 6- CRONOGRAMA DE ATIVIDADES/PLANO DE TRABALHO
-          O docente é responsável pela forma de mensuração dos resultados finais para obtenção nas notas da primeira
-          avaliação bimestral (A1), até dia 05 de abril e a segunda avaliação bimestral (A2), até dia 06 de junho.
-          A nota da Avaliação Semestral será resultante da média aritmética da primeira avaliação com a segunda
-          avaliação. Sendo que as notas atribuídas a cada avaliação do desempenho do acadêmico variam de 0,0 (zero) a
-          10,0 (dez inteiros). Concluindo o semestre, considera-se aprovado por média, em cada disciplina, o acadêmico
-          que tiver frequência igual ou superior a 75% (setenta e cinco por cento) e média aritmética semestral (MS)
-          igual ou superior a 7,0 (sete inteiros).
-          Ao acadêmico que não obtiver média semestral igual ou superior a 7,0 (sete inteiros) e possuir frequência
-          igual ou superior a 75% na disciplina, é garantido o direito de realizar Exame Final. E caso o acadêmico
-          falte a uma das avaliações (A1 ou A2) poderá se valer da Avaliação Substitutiva, o que independe de razões e
-          comprovações. A avaliação substitutiva será pontuada de 0,0 (zero) a 10,0 (dez inteiros).
-          Considera-se aprovado por Exame Final o acadêmico que obtiver média aritmética igual ou superior a 6,0 (seis
-          inteiros), somando-se a nota do exame final com a média obtida durante o semestre (MS).
-        </p>
-      </q-card-main>
-    </q-card>
-    <br>
-    <q-card class="text-primary bg-light">
-      <q-card-title class="relative-position">
-        <span class="q-title">5. Bibliografia</span>
-        <q-btn slot="right" flat icon="chat" color="primary" label="Comentar"/>
-        <q-btn slot="right" flat icon="edit" color="primary" label="Editar"/>
-      </q-card-title>
-      <q-card-separator/>
-      <q-card-main class="text-justify">
-        <div class="row gutter-md">
-          <div class="col-xs-12 col-md-6">
-            <p>
-              5.1 Bibliografia Básica
-            </p>
-            <p>
-              ABREU, A. S. Curso de redação. São Paulo: Editora Ática. 2004. p 168. <br><br>
-              MARTINS, D. S.; ZILBERKNOP, L. S. Português instrumental: de acordo com as atuais normas da ABNT. 27 ed.
-              São Paulo: Atlas, 2008.<br><br>
-              BECHARA, E. Moderna gramática portuguesa. São Paulo: Editora Nacional. 2001.
-            </p>
-          </div>
-          <div class="col-xs-12 col-md-6">
-            <p>
-              5.1 Bibliografia Complementar
-            </p>
-            <p>
-              ABREU, A. S. Curso de redação. São Paulo: Editora Ática. 2004. p 168.<br><br>
-              MARTINS, D. S.; ZILBERKNOP, L. S. Português instrumental: de acordo com as atuais normas da ABNT. 27 ed.
-              São Paulo: Atlas, 2008.<br><br>
-              BECHARA, E. Moderna gramática portuguesa. São Paulo: Editora Nacional. 2001.
-            </p>
-          </div>
+        <div class="col-xs-12 col-md-6">
+          <p>
+            5.1 Bibliografia Complementar
+          </p>
+          <p>
+            ABREU, A. S. Curso de redação. São Paulo: Editora Ática. 2004. p 168.<br><br>
+            MARTINS, D. S.; ZILBERKNOP, L. S. Português instrumental: de acordo com as atuais normas da ABNT. 27
+            ed.
+            São Paulo: Atlas, 2008.<br><br>
+            BECHARA, E. Moderna gramática portuguesa. São Paulo: Editora Nacional. 2001.
+          </p>
         </div>
-      </q-card-main>
-    </q-card>
+      </div>
+    </q-collapsible>
+    <br>
+    <q-collapsible opened class="bg-light q-pa-sm">
+      <template slot="header">
+        <q-item-main class="q-title">
+          6. Cronograma
+        </q-item-main>
+      </template>
+      <div class="row">
+        <q-collapsible v-for="(item, index) in itensCronograma" :key="item.id"
+                       :label="(index+1) + '. ' + item.competencia">
+          <q-collapsible v-for="(habilidade, index2) in item.habilidades" :key="habilidade.id"
+                         :label="(index+1) +'.'+(index2+1) + ' '+ habilidade.descricao">
+            Teste
+          </q-collapsible>
+        </q-collapsible>
+      </div>
+    </q-collapsible>
     <q-modal v-model="modalCopiar" :content-css="{minWidth: '600px', minHeight: '250px'}">
       <q-modal-layout>
         <q-toolbar slot="header">
@@ -229,7 +264,12 @@
 </template>
 
 <script>
+import {VueEditor} from 'vue2-editor';
+
 export default {
+  components: {
+    VueEditor
+  },
   props: {
     id: {
       type: String,
@@ -244,8 +284,25 @@ export default {
       modalAprovacao: false,
       modalComentarios: false,
       editaConteudo: false,
-      conteudo: 'Funções (1º grau, 2º grau, exponencial e logarítmica): Definições, raízes, gráficos e situações problemas. Matrizes e Determinantes: Definição, tipos de matrizes, operações com matrizes e matriz inversa. Determinante de uma matriz. Sistemas Lineares: Resolução de sistemas lineares por da substituição, escalonamento e por determinantes. Limites e funções contínuas: limites Laterais e limites infinitos. Derivação: taxa de derivação, regras de derivação. Aplicação da derivada: funções crescentes e decrescentes, concavidade de gráficos de funções, problemas de máximos e mínimos. Integração: integral indefinida: primitivação por substituição, regras de integrações, Integral definida, propriedades e aplicações ao cálculo de áreas, teorema Fundamental do Cálculo.',
+      conteudo: '<p>Funções (1º grau, 2º grau, exponencial e logarítmica): Definições, raízes, gráficos e situações problemas. </p><p>Matrizes e Determinantes: Definição, tipos de matrizes, operações com matrizes e matriz inversa. Determinante de uma matriz. </p><p>Sistemas Lineares: Resolução de sistemas lineares por da substituição, escalonamento e por determinantes.</p><p>Limites e funções contínuas: limites Laterais e limites infinitos. </p><p>Derivação: taxa de derivação, regras de derivação. Aplicação da derivada<strong>: </strong>funções crescentes e decrescentes, concavidade de gráficos de funções, problemas de máximos e mínimos. </p><p>Integração: integral indefinida: primitivação por substituição, regras de integrações, Integral definida, propriedades e aplicações ao cálculo de áreas, teorema Fundamental do Cálculo.</p>',
       message: '',
+      itensCronograma: [
+        {
+          id: '123976',
+          competencia: 'Resolver situações problemas que envolvem conceitos de função do primeiro grau',
+          habilidades: [
+            {
+              id: '159753',
+              descricao: 'Desenvolver o conceito de função do primeiro grau associado a assuntos simples do cotidiano e a conceitos da economia.',
+              datas: [],
+              conteudos: [],
+              metodologias: [],
+              recursos: [],
+              avaliacao: []
+            }
+          ]
+        }
+      ],
       messages: [
         {
           label: 'Friday, 18th'
@@ -399,3 +456,8 @@ export default {
   }
 };
 </script>
+
+<style lang="stylus">
+  .q-card .q-card-main p
+    font-size 16px
+</style>

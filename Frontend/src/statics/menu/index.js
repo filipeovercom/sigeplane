@@ -4,7 +4,7 @@ const menu = [
   {
     title: 'Planos de Ensino',
     icon: '',
-    permissionRequired: [profiles.ADMINISTRADOR, profiles.COORDENADOR, profiles.PROFESSOR],
+    permissionRequired: [profiles.COORDENADOR, profiles.PROFESSOR],
     children: [
       {title: 'Gerenciar', icon: 'settings', route: '/'}
     ]
@@ -27,6 +27,7 @@ const menu = [
     icon: '',
     permissionRequired: [profiles.ADMINISTRADOR],
     children: [
+      {title: 'Períodos', icon: 'date_range', route: '/configuracoes/periodos'},
       {title: 'Usuários', icon: 'people', route: '/configuracoes/usuarios'}
     ]
   }
