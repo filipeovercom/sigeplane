@@ -59,8 +59,13 @@
         </q-item-main>
       </template>
       <p>
-        Elementos de matemática: trigonometria no triângulo, conjuntos numéricos, equações, inequações, funções,
-        gráficos, limites, matrizes, sistemas lineares.
+        Sociologia como ciência. Conceitos básicos. Características das principais escolas / teorias da administração e
+        sua localização na história. Fundamentos teóricos para análise das organizações como unidades sociais; estudo da
+        formação e manutenção dos grupos formais e informais na empresa, destacando aspectos relativos ao poder,
+        autoridade, comunicações e processos sociais. Análise da empresa no contexto da sociedade e suas relações com as
+        mudanças tecnológicas e sociais. A organização formal como unidade social. Cultura organizacional. A inserção
+        dos indivíduos nas organizações formais e a pressão interna para o trabalho. Poder e autoridade nas
+        organizações. Mudança Social e organizacional. O novo mundo do trabalho.
       </p>
     </q-collapsible>
     <br>
@@ -96,7 +101,8 @@
               Ver e Responder Comentários
             </q-tooltip>
           </q-btn>
-          <q-btn push :icon="!editaConteudo ? 'edit' : 'save'" color="primary"
+          <q-btn push :icon="!editaConteudo ? 'edit' : 'save'"
+                 :color="!editaConteudo ? 'primary' : 'positive'"
                  class="q-ml-sm"
                  @click.stop="editaConteudo = !editaConteudo">
             <q-tooltip :offset="[10, 10]">
@@ -152,7 +158,7 @@
       </template>
       <div class="row gutter-md">
         <div class="col-xs-12 col-md-6">
-          <p>
+          <p class="text-weight-bold">
             5.1 Bibliografia Básica
           </p>
           <p>
@@ -164,7 +170,7 @@
           </p>
         </div>
         <div class="col-xs-12 col-md-6">
-          <p>
+          <p class="text-weight-bold">
             5.1 Bibliografia Complementar
           </p>
           <p>
@@ -185,13 +191,9 @@
         </q-item-main>
       </template>
       <div class="row">
-        <q-collapsible v-for="(item, index) in itensCronograma" :key="item.id"
-                       :label="(index+1) + '. ' + item.competencia">
-          <q-collapsible v-for="(habilidade, index2) in item.habilidades" :key="habilidade.id"
-                         :label="(index+1) +'.'+(index2+1) + ' '+ habilidade.descricao">
-            Teste
-          </q-collapsible>
-        </q-collapsible>
+        <div class="col-xs-12">
+          <cronograma/>
+        </div>
       </div>
     </q-collapsible>
     <q-modal v-model="modalCopiar" :content-css="{minWidth: '600px', minHeight: '250px'}">
@@ -222,7 +224,9 @@
         </q-toolbar>
       </q-modal-layout>
     </q-modal>
-    <q-modal v-model="modalComentarios" :content-css="{minWidth: '600px', minHeight: '500px'}">
+    <q-modal v-model="modalComentarios"
+             :content-css="{minWidth: '600px', minHeight: '500px'}"
+             @show="scrollModalMsgToEnd">
       <q-modal-layout>
         <q-toolbar slot="header">
           <q-btn flat round dense @click="modalCopiar = false"
@@ -231,13 +235,13 @@
             Comentários
           </q-toolbar-title>
         </q-toolbar>
-        <div class="q-pa-lg">
+        <div id="msgContainer" class="q-pa-lg">
           <q-chat-message
             v-for="(msg, index) in messages"
             :key="`avatar-${index}`"
             :label="msg.label"
             :sent="msg.sent"
-            :text-color="msg.sent ? 'primary' : 'light'"
+            :text-color="msg.sent ? 'black' : 'white'"
             :bg-color="msg.sent ? 'light' : 'primary'"
             :name="msg.name"
             :text="msg.text"
@@ -264,11 +268,12 @@
 </template>
 
 <script>
-import {VueEditor} from 'vue2-editor';
+import { VueEditor } from 'vue2-editor';
+import Cronograma from './cronograma';
 
 export default {
   components: {
-    VueEditor
+    VueEditor, Cronograma
   },
   props: {
     id: {
@@ -294,126 +299,45 @@ export default {
             {
               id: '159753',
               descricao: 'Desenvolver o conceito de função do primeiro grau associado a assuntos simples do cotidiano e a conceitos da economia.',
-              datas: [],
-              conteudos: [],
-              metodologias: [],
-              recursos: [],
-              avaliacao: []
+              datas: [
+                {
+                  data: '',
+                  conteudos: [],
+                  metodologias: [],
+                  recursos: [],
+                  avaliacao: []
+                }
+              ]
             }
           ]
         }
       ],
       messages: [
         {
-          label: 'Friday, 18th'
+          label: 'Quinta-Feira 31/05/2018, 10:00'
         },
         {
-          name: 'Vladimir',
-          text: ['How are you?'],
-          stamp: 'Yesterday 13:34'
+          name: 'Stephany',
+          text: [ 'Precisa melhorar o cronograma, as datas estão erradas.' ],
+          stamp: '13:34'
         },
         {
-          name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?'],
+          name: 'Professor',
+          text: [ 'Ok Stephany. E agora?' ],
           sent: true,
-          stamp: 'Yesterday at 13:50'
+          stamp: '18:10'
         },
         {
-          name: 'Jane',
-          text: ['And you?'],
-          sent: true,
-          stamp: 'Yesterday at 13:51'
+          name: 'Stephany',
+          text: [ 'Agora ficou legal.' ],
+          stamp: '18:30'
         },
         {
-          label: 'Saturday, 19th'
+          label: 'Hoje'
         },
         {
-          name: 'Vladimir',
-          text: ['Fine. Nice weather today, right?', 'Hmm...'],
-          stamp: '13:55'
-        },
-        {
-          label: 'Sunday, 20th'
-        },
-        {
-          name: 'Vladimir',
-          text: ['How are you?'],
-          stamp: 'Yesterday 13:34'
-        },
-        {
-          name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?'],
-          sent: true,
-          stamp: 'Yesterday at 13:50'
-        },
-        {
-          name: 'Jane',
-          text: ['And you?'],
-          sent: true,
-          stamp: 'Yesterday at 13:51'
-        },
-        {
-          label: 'Monday, 20th'
-        },
-        {
-          name: 'Vladimir',
-          text: ['Fine. Nice weather today, right?', 'Hmm...'],
-          stamp: '13:55'
-        },
-        {
-          label: 'Tuesday, 21th'
-        },
-        {
-          name: 'Vladimir',
-          text: ['How are you?'],
-          stamp: 'Yesterday 13:34'
-        },
-        {
-          name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?'],
-          sent: true,
-          stamp: 'Yesterday at 13:50'
-        },
-        {
-          name: 'Jane',
-          text: ['And you?'],
-          sent: true,
-          stamp: 'Yesterday at 13:51'
-        },
-        {
-          label: 'Sunday, 19th'
-        },
-        {
-          name: 'Vladimir',
-          text: ['Fine. Nice weather today, right?', 'Hmm...'],
-          stamp: '13:55'
-        },
-        {
-          label: 'Wednesday, 22th'
-        },
-        {
-          name: 'Vladimir',
-          text: ['How are you?'],
-          stamp: 'Yesterday 13:34'
-        },
-        {
-          name: 'Jane',
-          text: ['I\'m good, thank you!', 'And you?'],
-          sent: true,
-          stamp: 'Yesterday at 13:50'
-        },
-        {
-          name: 'Jane',
-          text: ['And you?'],
-          sent: true,
-          stamp: 'Yesterday at 13:51'
-        },
-        {
-          label: 'Thursday, 23th'
-        },
-        {
-          name: 'Vladimir',
-          text: ['Fine. Nice weather today, right?', 'Hmm...'],
+          name: 'Stephany',
+          text: [ 'O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma' ],
           stamp: '13:55'
         }
       ]
@@ -421,7 +345,7 @@ export default {
   },
   computed: {
     turmas () {
-      return this.$store.getters['turmas/getData'].map(turma => {
+      return this.$store.getters[ 'turmas/getData' ].map(turma => {
         return {
           label: `${turma.semestre} - ${turma.disciplina} - ${turma.codInterno}`,
           sublabel: `${turma.professor} - ${turma.curso}`,
@@ -452,12 +376,16 @@ export default {
     abreVisualizacaoTurma () {
       let route = this.$router.resolve('/planoensino/3');
       window.window.open(route.href, '_blank');
+    },
+    scrollModalMsgToEnd () {
+      var container = document.querySelector('#msgContainer').parentElement;
+      container.scrollTop = container.scrollHeight;
     }
   }
 };
 </script>
 
 <style lang="stylus">
-  .q-card .q-card-main p
-    font-size 16px
+.q-card .q-card-main p
+  font-size 16px
 </style>
