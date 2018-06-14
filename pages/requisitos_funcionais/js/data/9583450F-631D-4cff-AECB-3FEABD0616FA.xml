@@ -1,0 +1,7 @@
+tocTab[tocTab.length] = new Array("0.2.2:1", "", "Gerenciar Turmas", "EARoot/EA2/EA2/EA37.html", "7.png", "E86", "0", "", "UseCase0","{8CB1F9C3-B30A-44e1-80E8-F0A442011ACD}");
+tocTab[tocTab.length] = new Array("0.2.2:2", "", "Gerenciar Disciplinas", "EARoot/EA2/EA2/EA38.html", "7.png", "E88", "0", "", "UseCase0","{3AB1930E-8DE4-4d2b-ADA3-94EC1653CF60}");
+tocTab[tocTab.length] = new Array("0.2.2:3", "", "Gerenciar Competências", "EARoot/EA2/EA2/EA39.html", "7.png", "E89", "0", "", "UseCase0","{15A8E292-E3C0-4eee-814E-3AA28031D900}");
+tocTab[tocTab.length] = new Array("0.2.2:4", "", "Gerenciar Habilidades", "EARoot/EA2/EA2/EA40.html", "7.png", "E90", "0", "", "UseCase0","{B8D18280-C578-4c8c-ADC4-B1AFE79D42A8}");
+tocTab[tocTab.length] = new Array("0.2.2:5", "", "Gerenciar Conteúdos", "EARoot/EA2/EA2/EA41.html", "7.png", "E91", "0", "", "UseCase0","{B50408F9-EF7B-432d-BE84-B1C84C435795}");
+tocTab[tocTab.length] = new Array("0.2.2:6", "", "Gerenciar Metodologias", "EARoot/EA2/EA2/EA42.html", "7.png", "E92", "0", "", "UseCase0","{E2DC2410-95A4-4b7d-97C1-EF65E6C7B535}");
+tocTab[tocTab.length] = new Array("0.2.2:7", "", "Gerenciar Recursos", "EARoot/EA2/EA2/EA43.html", "7.png", "E93", "0", "", "UseCase0","{F93E1C7A-B776-4da8-8D21-E458C01F99AD}");

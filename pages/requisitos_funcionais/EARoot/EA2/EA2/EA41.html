@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Gerenciar Conteúdos</title>
+<link href="../../../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {	
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+
+function nameClassifier(name, separator)
+{
+  var str = name;
+  var classifierName;
+  var node = document.getElementById('name_classifier');
+  if(node != null)
+  {
+    classifierName = node.innerHTML;
+  }
+  if(classifierName != "")
+  {
+   str += separator + classifierName;
+  }
+  
+  return str;
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="pageHeader"></div>
+<div class="PageBody">
+	<div id="name_classifier" style="display: none;"></div>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("Gerenciar Conteúdos", " : "))</script>  : Public   UseCase</span>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">15/04/2018 21:22:08</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic">Modified:</td>
+			<td class="ObjectDetailsValue">07/06/2018 17:09:17</td>
+		</tr>
+		<tr style="height: 10px"><td colspan="2"></td></tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td class="ObjectDetailsValue">Filipe</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj02" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Phase:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj03" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Status:</td>
+			<td class="ObjectDetailsValue">Proposed</td>
+		</tr>
+		<tr id="proj04" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Complexity:</td>
+			<td class="ObjectDetailsValue">Easy</td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Difficulty:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj06" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Priority:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Multiplicity:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
+			<td class="ObjectDetailsValue">{B50408F9-EF7B-432d-BE84-B1C84C435795}</td>
+		</tr>
+		<tr id="adv01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
+			<td class="ObjectDetailsValue"><a href="../EA21.html">Requisitos Funcionais</a></td>
+		</tr>
+	</table>
+	<div class="ObjectDetailsNotes">Como Administrador ou Coordenador desejo cadastrar Conteúdos para serem utilizados como sugestão no preenchimento do plano de ensino pelo professor.&lt;br/&gt;&lt;br/&gt;Em um plano de ensino um dos objetivos é ensinar habilidades aos alunos. São exemplos de habilidades:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Conhecer as riquezas e diversidades da língua portuguesa.&lt;/li&gt;&lt;li&gt;Comunicar-se em língua portuguesa, interpretando e produzindo discursos em diferentes modalidades e&#160;&#160;situações comunicativas&lt;/li&gt;&lt;/ul&gt;<br />&lt;br/&gt;Para que o aluno obtenha uma habilidade é nessário que o professor ministre os conteúdos adequados. Ex:&lt;br/&gt;&lt;br/&gt;Em uma determinada disciplina para a seguinte habilidade:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Entender problemas e possíveis soluções para integração de ambientes e componentes de hardware e software heterogêneos;&lt;/li&gt;&lt;/ul&gt;<br />&lt;br/&gt;Os seguintes conteúdos são ministrados:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Conceitos e informações sobre as coletas de dados, técnica de amostragem e distribuição de Frequência.&lt;/li&gt;&lt;li&gt;Orientações sobre medidas de tendência central; &lt;/li&gt;&lt;li&gt;Orientações sobre dispersão e medidas de assimetria e curtose.&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+	<div class="TableGroup" id="TableGroup">
+		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('AssociationsFrom');" id="AssociationsFromTitle">Associations From</li>
+			<li onClick="parent.toggleItem('Requirements');" id="RequirementsTitle">Requirements</li>
+			<li onClick="parent.toggleItem('Constraints');" id="ConstraintsTitle">Constraints</li>
+			<li onClick="parent.toggleItem('Scenario');" id="ScenarioTitle">Scenarios</li>
+		</ul>
+		<div class="ItemBody" id="AssociationsFromTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="40%" class="TableHeading">Element</td>
+					<td width="30%" class="TableHeading">Source Role</td>
+					<td width="30%" class="TableHeading">Target Role</td>
+				</tr>
+				<tr>
+					<td width="40%" class="TableRow" valign="top">
+						<a href="../../EA1/EA18.html">Coordenador (Docente)</a><br />
+						Actor &nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;	
+					</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageLink132" onclick="parent.toggleDiv('detailsDIVLink132','DetailsImageLink132')" />Details:
+							<div id="detailsDIVLink132" class="DetailsDiv" >
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="RequirementsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="60%" class="TableHeading">Requirement</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+					<td width="10%" class="TableHeading">Difficulty</td>
+					<td width="10%" class="TableHeading">Priority</td>
+					<td width="10%" class="TableHeading">Stability</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Alteração de Conteúdos</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement133" onclick="parent.toggleDiv('detailsDIVRequirement133','DetailsImageRequirement133')" />Details:
+							<div id="detailsDIVRequirement133" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao acionar a ação alterar conteúdo na tela de listagem de conteúdos o sistema deve exibir um formulário com os seguintes campos:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Descrição do conteúdo&lt;/li&gt;&lt;li&gt;Curso(s) [Curso(s) em que o conteúdo é ministrado]&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Cadastro de Novos Conteúdos</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement134" onclick="parent.toggleDiv('detailsDIVRequirement134','DetailsImageRequirement134')" />Details:
+							<div id="detailsDIVRequirement134" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Na tela de listagem de conteúdos deve existir uma opção para cadastro de um novo conteúdo.&lt;br/&gt;&lt;br/&gt;Ao acionar a ação o sistema deve exibir um formulário contendo os seguintes campos:&lt;br/&gt;&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Descrição [Descrição do conteúdo]&lt;/li&gt;&lt;li&gt;Curso(s) [Seleção do(s) cursos em que o conteúdo é ministrado]&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Exclusão de Conteúdos</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement135" onclick="parent.toggleDiv('detailsDIVRequirement135','DetailsImageRequirement135')" />Details:
+							<div id="detailsDIVRequirement135" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Na tela de listagem de conteúdos deve existir uma opção para excluir um ou vários conteúdos.&lt;br/&gt;&lt;br/&gt;Ao selecionar os conteúdos desejados e clicar em excluir o sistema deve exigir confirmação da ação. Caso o usuário confirme a exclusão o sistema elimina o registro na base de dados.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Listagem de Conteúdos</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement136" onclick="parent.toggleDiv('detailsDIVRequirement136','DetailsImageRequirement136')" />Details:
+							<div id="detailsDIVRequirement136" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve possuir uma tela que exibe os conteúdos cadastrados. &lt;br/&gt;&lt;br/&gt;Esta tela deve disponibilizar acesso às funções de cadastrar, editar e excluir um conteúdo.&lt;br/&gt;&lt;br/&gt;Nesta tela o usuário poderá consultar as conteúdos por descrição ou nome do curso.&lt;br/&gt;&lt;br/&gt;Esta tela deve possuir uma tabela com as seguintes colunas:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Descrição do conteúdo&lt;/li&gt;&lt;li&gt;Nome do(s) Curso(s) em que o conteúdo é mais utilizado&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ConstraintsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+			  	<tr>
+					<td width="80%" class="TableHeading">Constraint</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Curso relacionado ao Conteúdo</td>
+					<td width="10%" class="TableRow">Process</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints137" onclick="parent.toggleDiv('detailsDIVConstraints137','DetailsImageConstraints137')" />Details:
+							<div id="detailsDIVConstraints137" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O curso somente é relacionado ao conteúdo para tornar a visualização e procura mais produtiva, não havendo nenhum relacionamento que restringe sua usabilidade.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Permissão de Acesso</td>
+					<td width="10%" class="TableRow">Pre-condition</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints138" onclick="parent.toggleDiv('detailsDIVConstraints138','DetailsImageConstraints138')" />Details:
+							<div id="detailsDIVConstraints138" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Somente usuários com perfil Administrador ou Coordenador podem acessar esta funcionalidade.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ScenarioTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="90%" class="TableHeading">Scenario</td>
+					<td width="10%" class="TableHeading">Type</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Listagem de Conteúdos</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario139" onclick="parent.toggleDiv('detailsDIVScenario139','DetailsImageScenario139')" />Details:
+							<div id="detailsDIVScenario139" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario139" onclick="parent.toggleDiv('stepDIVScenario139','StepImageScenario139')" />Steps:
+							<div id="stepDIVScenario139" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona o menu Conteúdos na seção de Gerenciamento de Cadastros&lt;br/&gt; <br />2. Redireciona para a Tela de Listagem de Conteúdos&lt;br/&gt; <br />3. Verifica as permissões de acesso&lt;br/&gt; <br />4. Exibe a listagem dos conteúdos&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario140" onclick="parent.toggleDiv('detailsDIVScenario140','DetailsImageScenario140')" />Exceptions:				<div id="detailsDIVScenario140" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">4a. Cadastro de Novo Conteúdo (at End)<br />4b. Alteração de Conteúdo (at End)<br />4c. Exclusão de Conteúdo (at End)<br /></div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Cadastro de Novo Conteúdo</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario142" onclick="parent.toggleDiv('detailsDIVScenario142','DetailsImageScenario142')" />Details:
+							<div id="detailsDIVScenario142" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario142" onclick="parent.toggleDiv('stepDIVScenario142','StepImageScenario142')" />Steps:
+							<div id="stepDIVScenario142" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a ação Cadastrar novo Conteúdo&lt;br/&gt; <br />2. Exibe formulário para preenchimento das informações&lt;br/&gt; <br />3. Preenche as informações e clica em salvar&lt;br/&gt; <br />4. Valida os campos obrigatórios e salva o registro na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Alteração de Conteúdo</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario144" onclick="parent.toggleDiv('detailsDIVScenario144','DetailsImageScenario144')" />Details:
+							<div id="detailsDIVScenario144" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario144" onclick="parent.toggleDiv('stepDIVScenario144','StepImageScenario144')" />Steps:
+							<div id="stepDIVScenario144" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona o menu alteração de conteúdo&lt;br/&gt; <br />2. Exibe formulário para alteração das informações&lt;br/&gt; <br />3. Altera as informações desejadas e clica em salvar&lt;br/&gt; <br />4. Valida as informações e salva a alteração na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Exclusão de Conteúdo</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario146" onclick="parent.toggleDiv('detailsDIVScenario146','DetailsImageScenario146')" />Details:
+							<div id="detailsDIVScenario146" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario146" onclick="parent.toggleDiv('stepDIVScenario146','StepImageScenario146')" />Steps:
+							<div id="stepDIVScenario146" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a opção de exclusão do Conteúdo&lt;br/&gt; <br />2. Exibe janela de confirmação da ação&lt;br/&gt; <br />3. Confirma a exclusão&lt;br/&gt; <br />4. Elimina o conteúdo da base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<div class="pageFooter"></div>
+ 
+</body>
+</html>

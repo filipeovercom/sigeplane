@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Gerenciar Usuários</title>
+<link href="../../../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {	
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+
+function nameClassifier(name, separator)
+{
+  var str = name;
+  var classifierName;
+  var node = document.getElementById('name_classifier');
+  if(node != null)
+  {
+    classifierName = node.innerHTML;
+  }
+  if(classifierName != "")
+  {
+   str += separator + classifierName;
+  }
+  
+  return str;
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="pageHeader"></div>
+<div class="PageBody">
+	<div id="name_classifier" style="display: none;"></div>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("Gerenciar Usuários", " : "))</script>  : Public   UseCase</span>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">15/04/2018 21:22:19</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic">Modified:</td>
+			<td class="ObjectDetailsValue">19/05/2018 00:55:59</td>
+		</tr>
+		<tr style="height: 10px"><td colspan="2"></td></tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td class="ObjectDetailsValue">Filipe</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj02" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Phase:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj03" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Status:</td>
+			<td class="ObjectDetailsValue">Proposed</td>
+		</tr>
+		<tr id="proj04" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Complexity:</td>
+			<td class="ObjectDetailsValue">Easy</td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Difficulty:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj06" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Priority:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Multiplicity:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
+			<td class="ObjectDetailsValue">{B370CFC7-7D6C-4dec-BC5C-99065E12CAA8}</td>
+		</tr>
+		<tr id="adv01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+	</table>
+	<div class="ObjectDetailsNotes">Como administrador do sistema desejo gerenciar o cadastro de usuários. Desejo cadastrar, alterar e desativar usuários.&lt;br/&gt;</div>
+
+	<div class="TableGroup" id="TableGroup">
+		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('Requirements');" id="RequirementsTitle">Requirements</li>
+			<li onClick="parent.toggleItem('Constraints');" id="ConstraintsTitle">Constraints</li>
+			<li onClick="parent.toggleItem('Scenario');" id="ScenarioTitle">Scenarios</li>
+			<li onClick="parent.toggleItem('Links');" id="LinksTitle">Other Links</li>
+		</ul>
+		<div class="ItemBody" id="RequirementsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="60%" class="TableHeading">Requirement</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+					<td width="10%" class="TableHeading">Difficulty</td>
+					<td width="10%" class="TableHeading">Priority</td>
+					<td width="10%" class="TableHeading">Stability</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Alterar Informações do Usuário</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement38" onclick="parent.toggleDiv('detailsDIVRequirement38','DetailsImageRequirement38')" />Details:
+							<div id="detailsDIVRequirement38" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao acionar a ação &quot;Alterar Informações do Usuário&quot; o sistema deve exibir uma janela com o formulário para alteração dos dados:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Titulação&lt;/li&gt;&lt;li&gt;Nome&lt;/li&gt;&lt;li&gt;Matrícula&lt;/li&gt;&lt;li&gt;E-mail&lt;/li&gt;&lt;li&gt;Perfis&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Cadastrar Usuário</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement39" onclick="parent.toggleDiv('detailsDIVRequirement39','DetailsImageRequirement39')" />Details:
+							<div id="detailsDIVRequirement39" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao acionar a ação &quot;&lt;b&gt;Cadastrar novo Usuário&lt;/b&gt;&quot; o sistema deve exibir uma janela com um formulário contendo os seguintes campos:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Perfil [Administrador, Coordenador...]&lt;/li&gt;&lt;li&gt;Titulação [Me, Esp, Dr][Caso o perfil escolhido seja Coordenador ou Professor]&lt;/li&gt;&lt;li&gt;Nome [Nome completo]&lt;/li&gt;&lt;li&gt;Matrícula&lt;/li&gt;&lt;li&gt;E-mail&lt;/li&gt;&lt;li&gt;Senha&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Desativar Usuário</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement40" onclick="parent.toggleDiv('detailsDIVRequirement40','DetailsImageRequirement40')" />Details:
+							<div id="detailsDIVRequirement40" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">A listagem de usuários deve possuir a ação &quot;&lt;b&gt;Desativar Usuário&lt;/b&gt;&quot;. Um usuário que foi desativado não poderá mais realizar autenticação no sistema. &lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Listar Usuários</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement41" onclick="parent.toggleDiv('detailsDIVRequirement41','DetailsImageRequirement41')" />Details:
+							<div id="detailsDIVRequirement41" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve possuir uma tela que exibe os usuários cadastrados e disponiblizar acesso as ações:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Cadastrar Usuário&lt;/li&gt;&lt;li&gt;Alterar Informações do Usuário&lt;/li&gt;&lt;li&gt;Desativar Usuário&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ConstraintsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+			  	<tr>
+					<td width="80%" class="TableHeading">Constraint</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Múltiplos Perfis</td>
+					<td width="10%" class="TableRow">Process</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints42" onclick="parent.toggleDiv('detailsDIVConstraints42','DetailsImageConstraints42')" />Details:
+							<div id="detailsDIVConstraints42" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Um usuário poderá acumular perfis. A aplicação deve se adaptar aos perfis de acesso que o usuário possui.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Cadastrar/Alterar Professor</td>
+					<td width="10%" class="TableRow">Process</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints43" onclick="parent.toggleDiv('detailsDIVConstraints43','DetailsImageConstraints43')" />Details:
+							<div id="detailsDIVConstraints43" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao cadastrar ou alterar um usuário é obrigatório o preenchimento do nome, matrícula e perfil(is). A senha é opcional, pois o sistema irá realizar a autenticação com a rede da instituição utilizando a senha informada no momento do login.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ScenarioTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="90%" class="TableHeading">Scenario</td>
+					<td width="10%" class="TableHeading">Type</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Listar Usuários</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario44" onclick="parent.toggleDiv('detailsDIVScenario44','DetailsImageScenario44')" />Details:
+							<div id="detailsDIVScenario44" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario44" onclick="parent.toggleDiv('stepDIVScenario44','StepImageScenario44')" />Steps:
+							<div id="stepDIVScenario44" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona o menu Usuários&lt;br/&gt; <br />2. Redireciona para tela de listagem de Usuários&lt;br/&gt; <br />3. Verifica se usuário possui perfil Administrador&lt;br/&gt; <br />4. Exibe listagem dos usuários cadastrados no sistema&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Cadastrar Usuário</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario46" onclick="parent.toggleDiv('detailsDIVScenario46','DetailsImageScenario46')" />Details:
+							<div id="detailsDIVScenario46" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario46" onclick="parent.toggleDiv('stepDIVScenario46','StepImageScenario46')" />Steps:
+							<div id="stepDIVScenario46" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a ação Cadastrar novo Usuário&lt;br/&gt; <br />2. Exibe janela com formulário para cadastro&lt;br/&gt; <br />3. Preenche formulário e aciona ação salvar&lt;br/&gt; <br />4.  Valida informações e registra Usuário na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Alterar Informações do Usuário</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario48" onclick="parent.toggleDiv('detailsDIVScenario48','DetailsImageScenario48')" />Details:
+							<div id="detailsDIVScenario48" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario48" onclick="parent.toggleDiv('stepDIVScenario48','StepImageScenario48')" />Steps:
+							<div id="stepDIVScenario48" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona menu Alterar Informações do Usuário&lt;br/&gt; <br />2. Exibe janela com formulário para alteração dos dados&lt;br/&gt; <br />3. Altera informações e aciona ação Salvar&lt;br/&gt; <br />4. Valida informações e registra a alteração na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Desativar Usuário</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario50" onclick="parent.toggleDiv('detailsDIVScenario50','DetailsImageScenario50')" />Details:
+							<div id="detailsDIVScenario50" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario50" onclick="parent.toggleDiv('stepDIVScenario50','StepImageScenario50')" />Steps:
+							<div id="stepDIVScenario50" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a ação Desativar Usuário&lt;br/&gt; <br />2. Exibe janela de confirmação&lt;br/&gt; <br />3. Confirma desativação&lt;br/&gt; <br />4. Desativa o Usuário na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="LinksTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="30%" class="TableHeading">Object</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Connection</td>
+					<td width="10%" class="TableHeading">Direction</td>
+					<td width="40%" class="TableHeading">Notes</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../EA1/EA18.html">Coordenador (Docente)</a></td>
+					<td width="10%" class="TableRow" valign="top">Actor</td>
+					<td width="10%" class="TableRow" valign="top">UseCase</td>
+					<td width="10%" class="TableRow" valign="top">From</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<div class="pageFooter"></div>
+ 
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Gerenciar Disciplinas</title>
+<link href="../../../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {	
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+
+function nameClassifier(name, separator)
+{
+  var str = name;
+  var classifierName;
+  var node = document.getElementById('name_classifier');
+  if(node != null)
+  {
+    classifierName = node.innerHTML;
+  }
+  if(classifierName != "")
+  {
+   str += separator + classifierName;
+  }
+  
+  return str;
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="pageHeader"></div>
+<div class="PageBody">
+	<div id="name_classifier" style="display: none;"></div>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("Gerenciar Disciplinas", " : "))</script>  : Public   UseCase</span>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">15/04/2018 21:14:16</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic">Modified:</td>
+			<td class="ObjectDetailsValue">07/06/2018 17:24:41</td>
+		</tr>
+		<tr style="height: 10px"><td colspan="2"></td></tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td class="ObjectDetailsValue">Filipe</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj02" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Phase:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj03" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Status:</td>
+			<td class="ObjectDetailsValue">Proposed</td>
+		</tr>
+		<tr id="proj04" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Complexity:</td>
+			<td class="ObjectDetailsValue">Easy</td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Difficulty:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj06" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Priority:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Multiplicity:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
+			<td class="ObjectDetailsValue">{3AB1930E-8DE4-4d2b-ADA3-94EC1653CF60}</td>
+		</tr>
+		<tr id="adv01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
+			<td class="ObjectDetailsValue"><a href="../EA21.html">Requisitos Funcionais</a></td>
+		</tr>
+	</table>
+	<div class="ObjectDetailsNotes">O sistema deve disponibilizar um gerenciamento das disciplinas ofertadas pelos cursos da instituição.&lt;br/&gt;&lt;br/&gt;As disciplinas são utilizadas para formar as turmas e distinguir cadastros.&lt;br/&gt;&lt;br/&gt;As disciplinas podem ou não ser agrupdas por curso. Para acessar o gerencimaento de disciplinas o usuário deve possuir o perfil Administrador.&lt;br/&gt;</div>
+
+	<div class="TableGroup" id="TableGroup">
+		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('Requirements');" id="RequirementsTitle">Requirements</li>
+			<li onClick="parent.toggleItem('Constraints');" id="ConstraintsTitle">Constraints</li>
+			<li onClick="parent.toggleItem('Scenario');" id="ScenarioTitle">Scenarios</li>
+			<li onClick="parent.toggleItem('Links');" id="LinksTitle">Other Links</li>
+		</ul>
+		<div class="ItemBody" id="RequirementsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="60%" class="TableHeading">Requirement</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+					<td width="10%" class="TableHeading">Difficulty</td>
+					<td width="10%" class="TableHeading">Priority</td>
+					<td width="10%" class="TableHeading">Stability</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Alteração de Disciplinas</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement82" onclick="parent.toggleDiv('detailsDIVRequirement82','DetailsImageRequirement82')" />Details:
+							<div id="detailsDIVRequirement82" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao acionar a ação &quot;Alterar Disciplina&quot; o sistema deve exibir uma janela com um formulário para alterar os dados de uma disciplina.&lt;br/&gt;&lt;br/&gt;O usuário poderá alterar: &lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Código Interno&lt;/li&gt;&lt;li&gt;Nome&lt;/li&gt;&lt;li&gt;Nome Reduzido&lt;/li&gt;&lt;li&gt;Curso&lt;/li&gt;&lt;li&gt;Ementa&lt;/li&gt;&lt;li&gt;Contribuição para formação&lt;/li&gt;&lt;li&gt;Bibliografia&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Cadastro de Disciplinas</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement83" onclick="parent.toggleDiv('detailsDIVRequirement83','DetailsImageRequirement83')" />Details:
+							<div id="detailsDIVRequirement83" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao acionar a ação &quot;Cadastrar nova Disciplina&quot; o sistema deve exibir uma janela com um formulário para cadastro com os seguintes campos:&lt;br/&gt;&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;&lt;b&gt;Código Interno&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Nome&lt;/b&gt; [Ex: Arquitetura de Computadores I]&lt;/li&gt;&lt;/ul&gt;<br />&lt;ul&gt;<br />&lt;li&gt;&lt;b&gt;Nome Reduzido&lt;/b&gt; [Ex: Arq. Comp. I]&lt;/li&gt;&lt;li&gt;&lt;b&gt;Curso&lt;/b&gt; [Selecionar da tabela de cursos]&lt;/li&gt;&lt;li&gt;&lt;b&gt;Ementa&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Carga horária Prática&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Carga horária Teórica&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;<br />&lt;ul&gt;<br />&lt;li&gt;&lt;b&gt;Ementa&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Contribuição para formação&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Bibliografia&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Desativação/Exclusão de Disciplinas</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement84" onclick="parent.toggleDiv('detailsDIVRequirement84','DetailsImageRequirement84')" />Details:
+							<div id="detailsDIVRequirement84" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve possuir uma funcionalidade onde um usuário devidamente autorizado poderá desativar/excluir disciplinas.&lt;br/&gt;&lt;br/&gt;Esta funcionalidade deve estar acessível na tela de listagem de disciplinas.&lt;br/&gt;&lt;br/&gt;Caso a disciplina não esteja vinculada a nenhuma turma a mesma deve ser removida. Caso contrário somente será desativada, podendo ser reativa posteriormente.&lt;br/&gt;&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Listagem de Disciplinas</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement85" onclick="parent.toggleDiv('detailsDIVRequirement85','DetailsImageRequirement85')" />Details:
+							<div id="detailsDIVRequirement85" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve possuir uma tela que exibe as disciplinas cadastradas.&lt;br/&gt;&lt;br/&gt;Esta tela deve disponibilizar acesso às funções de cadastrar, editar e desativar uma disciplina.&lt;br/&gt;&lt;br/&gt;Nesta tela o usuário poderá consultar as disciplinas por código interno, nome, nome reduzido e nome do curso.&lt;br/&gt;&lt;br/&gt;Esta tela deve possuir uma tabela com as seguintes colunas:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;&lt;b&gt;Código Interno&lt;/b&gt;. Ex: SI001&lt;/li&gt;&lt;li&gt;&lt;b&gt;Nome&lt;/b&gt;. Ex: Arquitetura de Computadores I&lt;/li&gt;&lt;li&gt;&lt;b&gt;Nome Reduzido&lt;/b&gt;. Ex: Arq. de Comp. I&lt;/li&gt;&lt;li&gt;&lt;b&gt;Ativa&lt;/b&gt;. Ex: Sim ou Não&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ConstraintsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+			  	<tr>
+					<td width="80%" class="TableHeading">Constraint</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Controle de Acesso</td>
+					<td width="10%" class="TableRow">Pre-condition</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints86" onclick="parent.toggleDiv('detailsDIVConstraints86','DetailsImageConstraints86')" />Details:
+							<div id="detailsDIVConstraints86" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Somente os usuários com o perfil Administrador e/ou Coordenador podem acessar esta tela.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Cadastro e Alteração</td>
+					<td width="10%" class="TableRow">Process</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints87" onclick="parent.toggleDiv('detailsDIVConstraints87','DetailsImageConstraints87')" />Details:
+							<div id="detailsDIVConstraints87" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve exigir um nome para a disciplina, não permitindo o usuário salvar uma disciplina sem nome.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Desativar/Excluir Disciplina</td>
+					<td width="10%" class="TableRow">Process</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints88" onclick="parent.toggleDiv('detailsDIVConstraints88','DetailsImageConstraints88')" />Details:
+							<div id="detailsDIVConstraints88" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Não é possível excluir uma disciplina caso a mesma esteja vinculada a uma turma. Caso a mesma esteja vinculada somente é possível desativá-la.&lt;br/&gt;&lt;br/&gt;Ao desativar uma disciplina:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Não é possível relacionar a disciplina desativa com uma turma.&lt;/li&gt;&lt;li&gt;Os planos de ensino de todas as turmas relacionadas a disciplina desativa ficam inacessíveis.&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ScenarioTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="90%" class="TableHeading">Scenario</td>
+					<td width="10%" class="TableHeading">Type</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Listagem de Disciplinas</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario89" onclick="parent.toggleDiv('detailsDIVScenario89','DetailsImageScenario89')" />Details:
+							<div id="detailsDIVScenario89" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario89" onclick="parent.toggleDiv('stepDIVScenario89','StepImageScenario89')" />Steps:
+							<div id="stepDIVScenario89" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Acessa o menu Disciplinas na seção de Gerenciamento de Cadastros&lt;br/&gt; <br />2. Verifica permissão de acesso&lt;br/&gt; <br />3. Exibe as disciplinas cadastradas no sistema&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario90" onclick="parent.toggleDiv('detailsDIVScenario90','DetailsImageScenario90')" />Exceptions:				<div id="detailsDIVScenario90" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">3a. Cadastro de disciplina (at End)<br />3b. Alteração de disciplina (at End)<br />3c. Desativação/Exclusão de disciplina (at End)<br /></div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Cadastrar Nova Disciplina</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario92" onclick="parent.toggleDiv('detailsDIVScenario92','DetailsImageScenario92')" />Details:
+							<div id="detailsDIVScenario92" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario92" onclick="parent.toggleDiv('stepDIVScenario92','StepImageScenario92')" />Steps:
+							<div id="stepDIVScenario92" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona ação Cadastrar nova Disciplina&lt;br/&gt; <br />2. Exibe janela com formulário para cadastro&lt;br/&gt; <br />3. Preenche o formulário e aciona ação Salvar&lt;br/&gt; <br />4. Valida informações e registra a disciplina na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Alterar Disciplina</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario94" onclick="parent.toggleDiv('detailsDIVScenario94','DetailsImageScenario94')" />Details:
+							<div id="detailsDIVScenario94" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario94" onclick="parent.toggleDiv('stepDIVScenario94','StepImageScenario94')" />Steps:
+							<div id="stepDIVScenario94" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona ação Alterar Disciplina&lt;br/&gt; <br />2. Exibe formulário para alteração da disciplina&lt;br/&gt; <br />3. Altera informações e aciona ação Salvar&lt;br/&gt; <br />4. Valida informações e registra alteração na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Desativar Disciplina</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario96" onclick="parent.toggleDiv('detailsDIVScenario96','DetailsImageScenario96')" />Details:
+							<div id="detailsDIVScenario96" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario96" onclick="parent.toggleDiv('stepDIVScenario96','StepImageScenario96')" />Steps:
+							<div id="stepDIVScenario96" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona ação Desativar Disciplina&lt;br/&gt; <br />2. Exibe janela de confirmação&lt;br/&gt; <br />3. Confirma desativação&lt;br/&gt; <br />4. Desativa a disciplina&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Cadastro de disciplina</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario98" onclick="parent.toggleDiv('detailsDIVScenario98','DetailsImageScenario98')" />Details:
+							<div id="detailsDIVScenario98" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario98" onclick="parent.toggleDiv('stepDIVScenario98','StepImageScenario98')" />Steps:
+							<div id="stepDIVScenario98" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona o menu de cadastro de disciplina na tela de listagem&lt;br/&gt; <br />2. Exibe o formulário para cadastro da disciplina&lt;br/&gt; <br />3. Preenche as informações e clica em salvar&lt;br/&gt; <br />4. Valida as informações e salva o registro na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Alteração de disciplina</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario100" onclick="parent.toggleDiv('detailsDIVScenario100','DetailsImageScenario100')" />Details:
+							<div id="detailsDIVScenario100" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario100" onclick="parent.toggleDiv('stepDIVScenario100','StepImageScenario100')" />Steps:
+							<div id="stepDIVScenario100" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona o menu de Alteração de uma disciplina&lt;br/&gt; <br />2. Exibe formulário para alteração das informações&lt;br/&gt; <br />3. Altera as informações desejadas e clica em salvar&lt;br/&gt; <br />4. Valida as informações e registra a alteração na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Desativação/Exclusão de disciplina</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario102" onclick="parent.toggleDiv('detailsDIVScenario102','DetailsImageScenario102')" />Details:
+							<div id="detailsDIVScenario102" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario102" onclick="parent.toggleDiv('stepDIVScenario102','StepImageScenario102')" />Steps:
+							<div id="stepDIVScenario102" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a opção de desativação/exclusão&lt;br/&gt; <br />2. Exibe janeja para confirmação da ação&lt;br/&gt; <br />3. Confirma a desativação/exclusão da disciplina&lt;br/&gt; <br />4. Desativa ou Exclui a disciplina&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="LinksTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="30%" class="TableHeading">Object</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Connection</td>
+					<td width="10%" class="TableHeading">Direction</td>
+					<td width="40%" class="TableHeading">Notes</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../../EA1/EA18.html">Coordenador (Docente)</a></td>
+					<td width="10%" class="TableRow" valign="top">Actor</td>
+					<td width="10%" class="TableRow" valign="top">UseCase</td>
+					<td width="10%" class="TableRow" valign="top">From</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<div class="pageFooter"></div>
+ 
+</body>
+</html>

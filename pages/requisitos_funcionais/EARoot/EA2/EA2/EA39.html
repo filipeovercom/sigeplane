@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Gerenciar Competências</title>
+<link href="../../../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {	
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+
+function nameClassifier(name, separator)
+{
+  var str = name;
+  var classifierName;
+  var node = document.getElementById('name_classifier');
+  if(node != null)
+  {
+    classifierName = node.innerHTML;
+  }
+  if(classifierName != "")
+  {
+   str += separator + classifierName;
+  }
+  
+  return str;
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="pageHeader"></div>
+<div class="PageBody">
+	<div id="name_classifier" style="display: none;"></div>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("Gerenciar Competências", " : "))</script>  : Public   UseCase</span>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">15/04/2018 21:14:36</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic">Modified:</td>
+			<td class="ObjectDetailsValue">20/05/2018 18:35:42</td>
+		</tr>
+		<tr style="height: 10px"><td colspan="2"></td></tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td class="ObjectDetailsValue">Filipe</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj02" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Phase:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj03" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Status:</td>
+			<td class="ObjectDetailsValue">Proposed</td>
+		</tr>
+		<tr id="proj04" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Complexity:</td>
+			<td class="ObjectDetailsValue">Easy</td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Difficulty:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj06" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Priority:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Multiplicity:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
+			<td class="ObjectDetailsValue">{15A8E292-E3C0-4eee-814E-3AA28031D900}</td>
+		</tr>
+		<tr id="adv01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
+			<td class="ObjectDetailsValue"><a href="../EA21.html">Requisitos Funcionais</a></td>
+		</tr>
+	</table>
+	<div class="ObjectDetailsNotes">Como Administrador ou Coordenador desejo cadastrar Competências para serem utilizadas como sugestão no preenchimento do plano de ensino pelo professor.&lt;br/&gt;&lt;br/&gt;Em um plano de ensino um dos objetivos é formar competências nos alunos. São exemplos de competências:&lt;br/&gt;&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Compreender as ciências como construções humanas, relacionando o desenvolvimento científico ao longo da história com a transformação da sociedade.&lt;/li&gt;&lt;/ul&gt;<br />&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Compreender o papel das ciências naturais e das tecnologias a elas associadas, nos processos de produção e no desenvolvimento econômico e social contemporâneo.&lt;/li&gt;&lt;/ul&gt;<br />&lt;br/&gt;Uma competência pode ser trabalhada por um ou mais cursos em uma ou mais disciplinas.&lt;br/&gt;</div>
+
+	<div class="TableGroup" id="TableGroup">
+		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('AssociationsFrom');" id="AssociationsFromTitle">Associations From</li>
+			<li onClick="parent.toggleItem('Requirements');" id="RequirementsTitle">Requirements</li>
+			<li onClick="parent.toggleItem('Constraints');" id="ConstraintsTitle">Constraints</li>
+			<li onClick="parent.toggleItem('Scenario');" id="ScenarioTitle">Scenarios</li>
+		</ul>
+		<div class="ItemBody" id="AssociationsFromTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="40%" class="TableHeading">Element</td>
+					<td width="30%" class="TableHeading">Source Role</td>
+					<td width="30%" class="TableHeading">Target Role</td>
+				</tr>
+				<tr>
+					<td width="40%" class="TableRow" valign="top">
+						<a href="../../EA1/EA18.html">Coordenador (Docente)</a><br />
+						Actor &nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;	
+					</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageLink104" onclick="parent.toggleDiv('detailsDIVLink104','DetailsImageLink104')" />Details:
+							<div id="detailsDIVLink104" class="DetailsDiv" >
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="RequirementsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="60%" class="TableHeading">Requirement</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+					<td width="10%" class="TableHeading">Difficulty</td>
+					<td width="10%" class="TableHeading">Priority</td>
+					<td width="10%" class="TableHeading">Stability</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Alterar Informações da Competência</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement105" onclick="parent.toggleDiv('detailsDIVRequirement105','DetailsImageRequirement105')" />Details:
+							<div id="detailsDIVRequirement105" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao acionar a ação &quot;Alterar Competência&quot; na tela de listagem de competências o sistema deve exibir uma janela com um formulário para alteração das informações da competência selecionada. O formulário deve conter os seguintes campos:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Descrição da Competência&lt;/li&gt;&lt;li&gt;Curso(s) relacionado(s)&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Cadastrar Competências</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement106" onclick="parent.toggleDiv('detailsDIVRequirement106','DetailsImageRequirement106')" />Details:
+							<div id="detailsDIVRequirement106" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao acionar a ação &quot;Cadastrar nova Competência&quot; o sistema deve exibir uma janela com um formulário para cadastro contendo os seguintes campos:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Descrição&lt;/li&gt;&lt;/ul&gt;<br />&lt;ul&gt;<br />&lt;li&gt;Curso(s) [Selecionar da tabela de cursos]&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Desativar Competências</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement107" onclick="parent.toggleDiv('detailsDIVRequirement107','DetailsImageRequirement107')" />Details:
+							<div id="detailsDIVRequirement107" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve possuir uma função para desativar competências que não serão mais utilizadas.&lt;br/&gt;Ao desativar uma competência o sistema não a sugere mais no preenchimento do plano de ensino.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Listagem de Competências</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement108" onclick="parent.toggleDiv('detailsDIVRequirement108','DetailsImageRequirement108')" />Details:
+							<div id="detailsDIVRequirement108" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve possuir uma tela que exibe as competências cadastradas. &lt;br/&gt;&lt;br/&gt;Esta tela deve disponibilizar acesso às funções de cadastrar, editar e desativar uma competência.&lt;br/&gt;&lt;br/&gt;Nesta tela o usuário poderá consultar as competências por descrição ou nome do curso.&lt;br/&gt;&lt;br/&gt;Esta tela deve possuir uma tabela com as seguintes colunas:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Descrição da competência&lt;/li&gt;&lt;li&gt;Nome do(s) Curso(s)&lt;/li&gt;&lt;/ul&gt;<br />&lt;br/&gt;OBS: O curso somente é relacionado a competência para tornar a visualização e procura mais produtiva, não havendo nenhum relacionamento que restringe sua usabilidade.&lt;br/&gt;&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ConstraintsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+			  	<tr>
+					<td width="80%" class="TableHeading">Constraint</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Controle de Acesso</td>
+					<td width="10%" class="TableRow">Pre-condition</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints109" onclick="parent.toggleDiv('detailsDIVConstraints109','DetailsImageConstraints109')" />Details:
+							<div id="detailsDIVConstraints109" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Para acessar as funcionalidades o usuário deve possuir o perfil Administrador ou Coordenador&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Cadastrar/Alterar Competência</td>
+					<td width="10%" class="TableRow">Process</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints110" onclick="parent.toggleDiv('detailsDIVConstraints110','DetailsImageConstraints110')" />Details:
+							<div id="detailsDIVConstraints110" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao cadastrar ou alterar uma competência o sistema deve exigir o preenchimento da descrição.&lt;br/&gt;O sistema deve exibir competências similares com a descrição que é informada pelo usuário. Antes de salvar o sistema deve exigir uma confirmação e ao mesmo tempo exibir as competências similares. O objetivo desta ação é diminuir a quantidade de dados repetidos.&lt;br/&gt;&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ScenarioTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="90%" class="TableHeading">Scenario</td>
+					<td width="10%" class="TableHeading">Type</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Listar Competências</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario111" onclick="parent.toggleDiv('detailsDIVScenario111','DetailsImageScenario111')" />Details:
+							<div id="detailsDIVScenario111" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario111" onclick="parent.toggleDiv('stepDIVScenario111','StepImageScenario111')" />Steps:
+							<div id="stepDIVScenario111" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona menu Competências&lt;br/&gt; <br />2. Redireciona usuário para tela de listagem de competências&lt;br/&gt; <br />3. Verifica Permissão de Acesso&lt;br/&gt; <br />4. Exibe listagem de competências&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Cadastrar Competência</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario113" onclick="parent.toggleDiv('detailsDIVScenario113','DetailsImageScenario113')" />Details:
+							<div id="detailsDIVScenario113" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario113" onclick="parent.toggleDiv('stepDIVScenario113','StepImageScenario113')" />Steps:
+							<div id="stepDIVScenario113" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona ação Cadastrar Nova Competência na tela de listagem de competências&lt;br/&gt; <br />2. Exibe janela com formulário para preenchimento das informações&lt;br/&gt; <br />3. Preenche as informações e clica em salvar&lt;br/&gt; <br />4. Valida informações e registra a competência na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Alterar Informações da Competência</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario115" onclick="parent.toggleDiv('detailsDIVScenario115','DetailsImageScenario115')" />Details:
+							<div id="detailsDIVScenario115" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario115" onclick="parent.toggleDiv('stepDIVScenario115','StepImageScenario115')" />Steps:
+							<div id="stepDIVScenario115" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Seleciona uma competência na listagem e aciona a ação Alterar Competência&lt;br/&gt; <br />2. Exibe formulário para alteração das informações da competência&lt;br/&gt; <br />3. Altera as informações e clica em salvar&lt;br/&gt; <br />4. Valida as informações e altera o registro na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Desativar Competência</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario117" onclick="parent.toggleDiv('detailsDIVScenario117','DetailsImageScenario117')" />Details:
+							<div id="detailsDIVScenario117" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario117" onclick="parent.toggleDiv('stepDIVScenario117','StepImageScenario117')" />Steps:
+							<div id="stepDIVScenario117" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Seleciona uma ou várias competências na listagem e aciona a ação Desativar&lt;br/&gt; <br />2. Exibe janeja pedindo confirmação da ação&lt;br/&gt; <br />3. Confirma ação e clica em desativar&lt;br/&gt; <br />4. Desativa as competências na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<div class="pageFooter"></div>
+ 
+</body>
+</html>

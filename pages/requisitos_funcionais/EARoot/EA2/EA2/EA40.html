@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Gerenciar Habilidades</title>
+<link href="../../../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {	
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+
+function nameClassifier(name, separator)
+{
+  var str = name;
+  var classifierName;
+  var node = document.getElementById('name_classifier');
+  if(node != null)
+  {
+    classifierName = node.innerHTML;
+  }
+  if(classifierName != "")
+  {
+   str += separator + classifierName;
+  }
+  
+  return str;
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="pageHeader"></div>
+<div class="PageBody">
+	<div id="name_classifier" style="display: none;"></div>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("Gerenciar Habilidades", " : "))</script>  : Public   UseCase</span>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">15/04/2018 21:17:13</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic">Modified:</td>
+			<td class="ObjectDetailsValue">07/06/2018 16:10:45</td>
+		</tr>
+		<tr style="height: 10px"><td colspan="2"></td></tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td class="ObjectDetailsValue">Filipe</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj02" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Phase:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj03" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Status:</td>
+			<td class="ObjectDetailsValue">Proposed</td>
+		</tr>
+		<tr id="proj04" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Complexity:</td>
+			<td class="ObjectDetailsValue">Easy</td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Difficulty:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj06" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Priority:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Multiplicity:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
+			<td class="ObjectDetailsValue">{B8D18280-C578-4c8c-ADC4-B1AFE79D42A8}</td>
+		</tr>
+		<tr id="adv01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
+			<td class="ObjectDetailsValue"><a href="../EA21.html">Requisitos Funcionais</a></td>
+		</tr>
+	</table>
+	<div class="ObjectDetailsNotes">Como Administrador ou Coordenador desejo cadastrar Habilidades para serem utilizadas como sugestão no preenchimento do plano de ensino pelo professor.&lt;br/&gt;&lt;br/&gt;Em um plano de ensino um dos objetivos é ensinar habilidades aos alunos. São exemplos de habilidades:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Conhecer as riquezas e diversidades da língua portuguesa. &lt;/li&gt;&lt;li&gt;Comunicar-se em língua portuguesa, interpretando e produzindo discursos em diferentes modalidades e&#160;&#160;situações comunicativas&lt;/li&gt;&lt;/ul&gt;<br />&lt;br/&gt;Uma habilidade esta relacionada a uma competência e para sua formação é necessário os seguintes elementos:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Conteúdo(s) que será(ão) ministrado(s)&lt;/li&gt;&lt;li&gt;Datas em que acontecerão os encontros e eventos&lt;/li&gt;&lt;li&gt;Metodologia(s) que será(ão) utilizadas para ministração do conteúdo e avaliação dos alunos&lt;/li&gt;&lt;li&gt;Recursos que serão utilizados&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+	<div class="TableGroup" id="TableGroup">
+		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('AssociationsFrom');" id="AssociationsFromTitle">Associations From</li>
+			<li onClick="parent.toggleItem('Requirements');" id="RequirementsTitle">Requirements</li>
+			<li onClick="parent.toggleItem('Constraints');" id="ConstraintsTitle">Constraints</li>
+			<li onClick="parent.toggleItem('Scenario');" id="ScenarioTitle">Scenarios</li>
+		</ul>
+		<div class="ItemBody" id="AssociationsFromTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="40%" class="TableHeading">Element</td>
+					<td width="30%" class="TableHeading">Source Role</td>
+					<td width="30%" class="TableHeading">Target Role</td>
+				</tr>
+				<tr>
+					<td width="40%" class="TableRow" valign="top">
+						<a href="../../EA1/EA18.html">Coordenador (Docente)</a><br />
+						Actor &nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;	
+					</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageLink119" onclick="parent.toggleDiv('detailsDIVLink119','DetailsImageLink119')" />Details:
+							<div id="detailsDIVLink119" class="DetailsDiv" >
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="RequirementsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="60%" class="TableHeading">Requirement</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+					<td width="10%" class="TableHeading">Difficulty</td>
+					<td width="10%" class="TableHeading">Priority</td>
+					<td width="10%" class="TableHeading">Stability</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Cadastro de Nova Habilidade</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement120" onclick="parent.toggleDiv('detailsDIVRequirement120','DetailsImageRequirement120')" />Details:
+							<div id="detailsDIVRequirement120" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao acionar a ação cadastrar nova habilidade na tela de listagem de habilidades o sistema deve exibir um formulário com os seguintes campos:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Descrição da habilidade&lt;/li&gt;&lt;li&gt;Curso [1...*][Selecionar cursos da base de dados]&lt;/li&gt;&lt;li&gt;Metodologias Padrões [Selecionar da tabela de metodologias]&lt;/li&gt;&lt;li&gt;Recursos Padrões [Selecionar da tabela de recursos]&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Listagem de Habilidades</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement121" onclick="parent.toggleDiv('detailsDIVRequirement121','DetailsImageRequirement121')" />Details:
+							<div id="detailsDIVRequirement121" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve possuir uma tela que exibe as habilidades cadastradas. &lt;br/&gt;&lt;br/&gt;Esta tela deve disponibilizar acesso às funções de cadastrar, editar e desativar uma habilidade.&lt;br/&gt;&lt;br/&gt;Nesta tela o usuário poderá consultar as habilidades por descrição ou nome do curso.&lt;br/&gt;&lt;br/&gt;Esta tela deve possuir uma tabela com as seguintes colunas:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Descrição da habilidade&lt;/li&gt;&lt;li&gt;Nome do(s) Curso(s)&lt;/li&gt;&lt;/ul&gt;<br />&lt;br/&gt;OBS: O curso somente é relacionado a habilidade para tornar a visualização e procura mais produtiva, não havendo nenhum relacionamento que restringe sua usabilidade.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ConstraintsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+			  	<tr>
+					<td width="80%" class="TableHeading">Constraint</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Cadastro/Alteração de Habilidades</td>
+					<td width="10%" class="TableRow">Process</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints122" onclick="parent.toggleDiv('detailsDIVConstraints122','DetailsImageConstraints122')" />Details:
+							<div id="detailsDIVConstraints122" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Ao cadastrar ou alterar uma habilidade o sistema deve exigir o preenchimento da descrição.&lt;br/&gt;O sistema deve exibir habilidades similares com a descrição que é informada pelo usuário. Antes de salvar o sistema deve exigir uma confirmação e ao mesmo tempo exibir as habilidades similares. O objetivo desta ação é diminuir a quantidade de dados repetidos.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ScenarioTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="90%" class="TableHeading">Scenario</td>
+					<td width="10%" class="TableHeading">Type</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Listagem de Habilidades</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario123" onclick="parent.toggleDiv('detailsDIVScenario123','DetailsImageScenario123')" />Details:
+							<div id="detailsDIVScenario123" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario123" onclick="parent.toggleDiv('stepDIVScenario123','StepImageScenario123')" />Steps:
+							<div id="stepDIVScenario123" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona menu competências&lt;br/&gt; <br />2. Redireciona o usuário para a tela de listagem de competências&lt;br/&gt; <br />3. Verifica perfil de acesso&lt;br/&gt; <br />4. Exibe listagem das habilidades cadastradas no sistema&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario124" onclick="parent.toggleDiv('detailsDIVScenario124','DetailsImageScenario124')" />Exceptions:				<div id="detailsDIVScenario124" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">4a. Cadastro de nova Habilidade (at End)<br />4b. Alteração de Habilidade (at End)<br />4c. Exclusão de Habilidade (at End)<br /></div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Cadastro de nova Habilidade</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario126" onclick="parent.toggleDiv('detailsDIVScenario126','DetailsImageScenario126')" />Details:
+							<div id="detailsDIVScenario126" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario126" onclick="parent.toggleDiv('stepDIVScenario126','StepImageScenario126')" />Steps:
+							<div id="stepDIVScenario126" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a ação Cadastrar Habilidade&lt;br/&gt; <br />2. Exibe formulário para preenchimento das informações&lt;br/&gt; <br />3. Preenche as informações e clica em salvar&lt;br/&gt; <br />4. Exibe janela de confirmação e listagem de habilidades similares&lt;br/&gt; <br />5. Confirma cadastro de nova habilidade&lt;br/&gt; <br />6. Valida informações e registra nova habilidade na base de dados.&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Alteração de Habilidade</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario128" onclick="parent.toggleDiv('detailsDIVScenario128','DetailsImageScenario128')" />Details:
+							<div id="detailsDIVScenario128" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario128" onclick="parent.toggleDiv('stepDIVScenario128','StepImageScenario128')" />Steps:
+							<div id="stepDIVScenario128" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona o meu Alterar Habilidade&lt;br/&gt; <br />2. Exibe o formulário para alteração das informações&lt;br/&gt; <br />3. Altera as informações e clica em salvar&lt;br/&gt; <br />4. Valida as informações e registra a alteração na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Exclusão de Habilidade</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario130" onclick="parent.toggleDiv('detailsDIVScenario130','DetailsImageScenario130')" />Details:
+							<div id="detailsDIVScenario130" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario130" onclick="parent.toggleDiv('stepDIVScenario130','StepImageScenario130')" />Steps:
+							<div id="stepDIVScenario130" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a opção de exclusão da habilidade&lt;br/&gt; <br />2. Exibe janela de confirmação da exclusão&lt;br/&gt; <br />3. Confirma a exclusão&lt;br/&gt; <br />4. Exclui a habilidade na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<div class="pageFooter"></div>
+ 
+</body>
+</html>

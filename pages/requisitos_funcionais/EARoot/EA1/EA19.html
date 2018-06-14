@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Listagem de Competências</title>
+<title>Professor(Docente)</title>
 <link href="../../css/ea.css" rel="stylesheet" type="text/css" />
 <script>
 function initPage(src) {	
@@ -34,15 +34,15 @@ function nameClassifier(name, separator)
 <div class="pageHeader"></div>
 <div class="PageBody">
 	<div id="name_classifier" style="display: none;"></div>
-	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("Listagem de Competências", " : "))</script>  : Public  &lt;&lt;Feature&gt;&gt; Feature</span>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("Professor(Docente)", " : "))</script>  : Public   Actor</span>
 	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
 		<tr>
 			<td width="15%" class="ObjectDetailsTopic">Created:</td>
-			<td width="85%" class="ObjectDetailsValue">01/04/2018 23:32:55</td>
+			<td width="85%" class="ObjectDetailsValue">28/03/2018 23:30:15</td>
 		</tr>
 		<tr>
 			<td class="ObjectDetailsTopic">Modified:</td>
-			<td class="ObjectDetailsValue">01/04/2018 23:37:20</td>
+			<td class="ObjectDetailsValue">07/05/2018 19:43:55</td>
 		</tr>
 		<tr style="height: 10px"><td colspan="2"></td></tr>
 		<tr>
@@ -71,11 +71,11 @@ function nameClassifier(name, separator)
 		</tr>
 		<tr id="proj05" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Difficulty:</td>
-			<td class="ObjectDetailsValue">Medium</td>
+			<td class="ObjectDetailsValue"></td>
 		</tr>
 		<tr id="proj06" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Priority:</td>
-			<td class="ObjectDetailsValue">Medium</td>
+			<td class="ObjectDetailsValue"></td>
 		</tr>
 		<tr id="proj05" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Multiplicity:</td>
@@ -87,33 +87,292 @@ function nameClassifier(name, separator)
 		</tr>
 		<tr id="adv00" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
-			<td class="ObjectDetailsValue">{601B547A-3395-4819-B04F-F58E608F271D}</td>
+			<td class="ObjectDetailsValue">{EB0DEFD3-B3CC-44c3-AF21-F1C8C79BF887}</td>
 		</tr>
 		<tr id="adv01" style="display: none;">
 			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
-			<td class="ObjectDetailsValue"><a href="../EA1.html">Modelo de Requisitos Funcionais</a></td>
+			<td class="ObjectDetailsValue"><a href="EA10.html">Atores</a>, <a href="../EA2/EA21.html">Requisitos Funcionais</a>, <a href="../EA2/EA1/EA27.html">Autenticação</a>, <a href="../EA2/EA3/EA50.html">Preenchimento do Plano de Ensino</a>, <a href="../EA2/EA3/EA48.html">Envio do Plano para Análise</a>, <a href="../EA2/EA3/EA44.html">Aprovação/Reprovação do Planos de Ensino</a>, <a href="../EA2/EA3/EA46.html">Copiando Plano de Ensino</a></td>
 		</tr>
 	</table>
-	
+	<div class="ObjectDetailsNotes">O professor é responsável por produzir os planos de ensino do sistema e enviá-los ao NDE para aprovação.&lt;br/&gt;</div>
+
 	<div class="TableGroup" id="TableGroup">
 		<ul class="ItemTitle">
-			<li onClick="parent.toggleItem('CustomProperties');" id="CustomPropertiesTitle">Advanced</li>
+			<li onClick="parent.toggleItem('MessagesTo');" id="MessagesToTitle">Messages To</li>
+			<li onClick="parent.toggleItem('MessagesFrom');" id="MessagesFromTitle">Messages From</li>
 			<li onClick="parent.toggleItem('Links');" id="LinksTitle">Other Links</li>
 		</ul>
-		<div class="ItemBody" id="CustomPropertiesTable">
+		<div class="ItemBody" id="MessagesToTable">
 			<table border="0" cellspacing="0" cellpadding="0" class="Table">
 				<tr>
-					<td width="30%" class="TableHeading">Property</td>
-					<td width="70%" class="TableHeading">Value</td>
+					<td width="50%" class="TableHeading">Element</td>
+					<td width="50%" class="TableHeading">Message</td>
 				</tr>
-			<tr>
-				<td width="30%" class="TableRow">isStatic:</td>
-				<td width="70%" class="TableRow">false</td>
-			</tr>
-
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA66.html">«boundary» Tela:TurmasDoProfessor</a></td>
+					<td width="50%" class="TableRow" valign="top">verDetalhesPlanoEnsino</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage10" onclick="parent.toggleDiv('detailsDIVMessage10', 'DetailsImageMessage10')" />Details:
+							<div id="detailsDIVMessage10" class="DetailsDiv" >
+							<strong>Type:</strong> Delete Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA65.html">«boundary» Tela:DetalhesTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">preencheDadosPlanoEnsino</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage11" onclick="parent.toggleDiv('detailsDIVMessage11', 'DetailsImageMessage11')" />Details:
+							<div id="detailsDIVMessage11" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA71.html">«boundary» Tela:DetalhesTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">copiarPlanodeEnsino</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage12" onclick="parent.toggleDiv('detailsDIVMessage12', 'DetailsImageMessage12')" />Details:
+							<div id="detailsDIVMessage12" class="DetailsDiv" >
+							<strong>Type:</strong> <none> Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA68.html">«boundary» Janela:ConsultaTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">selecionaTurma</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage13" onclick="parent.toggleDiv('detailsDIVMessage13', 'DetailsImageMessage13')" />Details:
+							<div id="detailsDIVMessage13" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA66.html">«boundary» Tela:TurmasDoProfessor</a></td>
+					<td width="50%" class="TableRow" valign="top">verDetalhesTurma</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage14" onclick="parent.toggleDiv('detailsDIVMessage14', 'DetailsImageMessage14')" />Details:
+							<div id="detailsDIVMessage14" class="DetailsDiv" >
+							<strong>Type:</strong> <none> Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA69.html">«boundary» Janela:DetalhePlanoCopiar</a></td>
+					<td width="50%" class="TableRow" valign="top">copiarInformacoes</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage15" onclick="parent.toggleDiv('detailsDIVMessage15', 'DetailsImageMessage15')" />Details:
+							<div id="detailsDIVMessage15" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA65.html">«boundary» Tela:DetalhesTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">enviaPlanoParaAprovacao</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage16" onclick="parent.toggleDiv('detailsDIVMessage16', 'DetailsImageMessage16')" />Details:
+							<div id="detailsDIVMessage16" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA1/EA34.html">«boundary» Tela:Autenticação</a></td>
+					<td width="50%" class="TableRow" valign="top">Informa Matrícula e Senha</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage17" onclick="parent.toggleDiv('detailsDIVMessage17', 'DetailsImageMessage17')" />Details:
+							<div id="detailsDIVMessage17" class="DetailsDiv" >
+							<strong>Type:</strong> <none> Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA68.html">«boundary» Janela:ConsultaTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">pesquisaTurma</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage18" onclick="parent.toggleDiv('detailsDIVMessage18', 'DetailsImageMessage18')" />Details:
+							<div id="detailsDIVMessage18" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA66.html">«boundary» Tela:TurmasDoProfessor</a></td>
+					<td width="50%" class="TableRow" valign="top">selecionaTurma</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage19" onclick="parent.toggleDiv('detailsDIVMessage19', 'DetailsImageMessage19')" />Details:
+							<div id="detailsDIVMessage19" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
 
 			</table>
-		</div>		<div class="ItemBody" id="LinksTable">
+		</div>
+		<div class="ItemBody" id="MessagesFromTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="50%" class="TableHeading">Element</td>
+					<td width="50%" class="TableHeading">Message</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA64.html">«control» Serviço:PlanoEnsino</a></td>
+					<td width="50%" class="TableRow" valign="top">notificaProfessor</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage20" onclick="parent.toggleDiv('detailsDIVMessage20', 'DetailsImageMessage20')" />Details:
+							<div id="detailsDIVMessage20" class="DetailsDiv" >
+							<strong>Type:</strong> Delete Asynchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA65.html">«boundary» Tela:DetalhesTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">informaSobreSucessoAlteracao</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage21" onclick="parent.toggleDiv('detailsDIVMessage21', 'DetailsImageMessage21')" />Details:
+							<div id="detailsDIVMessage21" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA65.html">«boundary» Tela:DetalhesTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">informaSobreDadosInválidos</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage22" onclick="parent.toggleDiv('detailsDIVMessage22', 'DetailsImageMessage22')" />Details:
+							<div id="detailsDIVMessage22" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA1/EA34.html">«boundary» Tela:Autenticação</a></td>
+					<td width="50%" class="TableRow" valign="top">Redireciona Usuário para Dashboard</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage23" onclick="parent.toggleDiv('detailsDIVMessage23', 'DetailsImageMessage23')" />Details:
+							<div id="detailsDIVMessage23" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA71.html">«boundary» Tela:DetalhesTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">informaSobreOperacao</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage24" onclick="parent.toggleDiv('detailsDIVMessage24', 'DetailsImageMessage24')" />Details:
+							<div id="detailsDIVMessage24" class="DetailsDiv" >
+							<strong>Type:</strong> <none> Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA1/EA34.html">«boundary» Tela:Autenticação</a></td>
+					<td width="50%" class="TableRow" valign="top">Exibe mensagem para usuário</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage25" onclick="parent.toggleDiv('detailsDIVMessage25', 'DetailsImageMessage25')" />Details:
+							<div id="detailsDIVMessage25" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA65.html">«boundary» Tela:DetalhesTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">exibeDetalhesPlanoEnsino</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage26" onclick="parent.toggleDiv('detailsDIVMessage26', 'DetailsImageMessage26')" />Details:
+							<div id="detailsDIVMessage26" class="DetailsDiv" >
+							<strong>Type:</strong> Sequence Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="50%" class="TableRow" valign="top"><a href="../EA2/EA3/EA65.html">«boundary» Tela:DetalhesTurma</a></td>
+					<td width="50%" class="TableRow" valign="top">notificaSobreEnvio</td>
+				</tr>
+		   		<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../images/minus03.gif" align="absmiddle" id="DetailsImageMessage27" onclick="parent.toggleDiv('detailsDIVMessage27', 'DetailsImageMessage27')" />Details:
+							<div id="detailsDIVMessage27" class="DetailsDiv" >
+							<strong>Type:</strong> Delete Synchronous Call<br />
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="LinksTable">
 			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
 				<tr>
 					<td width="30%" class="TableHeading">Object</td>
@@ -123,9 +382,37 @@ function nameClassifier(name, separator)
 					<td width="40%" class="TableHeading">Notes</td>
 				</tr>
 				<tr>
-					<td width="30%" class="TableRow" valign="top"><a href="EA11.html">«Functional» Competências</a></td>
-					<td width="10%" class="TableRow" valign="top">Requirement</td>
-					<td width="10%" class="TableRow" valign="top">Realization</td>
+					<td width="30%" class="TableRow" valign="top"><a href="EA20.html">Aluno(Discente)</a></td>
+					<td width="10%" class="TableRow" valign="top">Actor</td>
+					<td width="10%" class="TableRow" valign="top">Generalization</td>
+					<td width="10%" class="TableRow" valign="top">To</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../EA2/EA3/EA58.html">Preencher Plano de Ensino</a></td>
+					<td width="10%" class="TableRow" valign="top">UseCase</td>
+					<td width="10%" class="TableRow" valign="top">UseCase</td>
+					<td width="10%" class="TableRow" valign="top">To</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="EA18.html">Coordenador (Docente)</a></td>
+					<td width="10%" class="TableRow" valign="top">Actor</td>
+					<td width="10%" class="TableRow" valign="top">Generalization</td>
+					<td width="10%" class="TableRow" valign="top">From</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../EA2/EA3/EA60.html">Enviar Plano de Ensino para Aprovação</a></td>
+					<td width="10%" class="TableRow" valign="top">UseCase</td>
+					<td width="10%" class="TableRow" valign="top">UseCase</td>
+					<td width="10%" class="TableRow" valign="top">To</td>
+					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="30%" class="TableRow" valign="top"><a href="../EA2/EA1/EA30.html">Autenticação e Controle de Acesso</a></td>
+					<td width="10%" class="TableRow" valign="top">UseCase</td>
+					<td width="10%" class="TableRow" valign="top">UseCase</td>
 					<td width="10%" class="TableRow" valign="top">To</td>
 					<td width="40%" class="TableRow" valign="top">&nbsp;</td>
 				</tr>

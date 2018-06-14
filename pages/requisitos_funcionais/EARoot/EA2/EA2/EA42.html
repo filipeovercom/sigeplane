@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Gerenciar Metodologias</title>
+<link href="../../../css/ea.css" rel="stylesheet" type="text/css" />
+<script>
+function initPage(src) {	
+	if(parent==this&&(this.location+"").indexOf('EARoot')!=-1)
+		document.location=(this.location+"").substring(0,(this.location+"").indexOf('EARoot'))+"index"+(this.location+"").substring((this.location+"").lastIndexOf('.'))+"?goto="+((this.location+"").substring((this.location+"").indexOf('EARoot')+7,(this.location+"").lastIndexOf('.')).replace(/\//g,':').replace(/EA/g,""));
+	else
+		parent.initPage(src);
+}
+
+function nameClassifier(name, separator)
+{
+  var str = name;
+  var classifierName;
+  var node = document.getElementById('name_classifier');
+  if(node != null)
+  {
+    classifierName = node.innerHTML;
+  }
+  if(classifierName != "")
+  {
+   str += separator + classifierName;
+  }
+  
+  return str;
+}
+</script>
+</head>
+<body onload="initPage(this);" class="Content">
+<div class="pageHeader"></div>
+<div class="PageBody">
+	<div id="name_classifier" style="display: none;"></div>
+	<span class="ObjectTitle"><script type="text/javascript">document.write(nameClassifier("Gerenciar Metodologias", " : "))</script>  : Public   UseCase</span>
+	<table border="0" cellpadding="0" cellspacing="0" class="ObjectDetails">
+		<tr>
+			<td width="15%" class="ObjectDetailsTopic">Created:</td>
+			<td width="85%" class="ObjectDetailsValue">15/04/2018 21:21:43</td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic">Modified:</td>
+			<td class="ObjectDetailsValue">07/06/2018 17:46:24</td>
+		</tr>
+		<tr style="height: 10px"><td colspan="2"></td></tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="proj" onclick="parent.toggleData(this.id)" />Project:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Author:</td>
+			<td class="ObjectDetailsValue">Filipe</td>
+		</tr>
+		<tr id="proj01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Version:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj02" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Phase:</td>
+			<td class="ObjectDetailsValue">1.0</td>
+		</tr>
+		<tr id="proj03" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Status:</td>
+			<td class="ObjectDetailsValue">Proposed</td>
+		</tr>
+		<tr id="proj04" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Complexity:</td>
+			<td class="ObjectDetailsValue">Easy</td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Difficulty:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj06" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Priority:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="proj05" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Multiplicity:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr>
+			<td class="ObjectDetailsTopic"><img src="../../../images/plus03.gif" align="absmiddle" id="adv" onclick="parent.toggleData(this.id)" />Advanced:</td>
+			<td class="ObjectDetailsValue"></td>
+		</tr>
+		<tr id="adv00" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">UUID:</td>
+			<td class="ObjectDetailsValue">{E2DC2410-95A4-4b7d-97C1-EF65E6C7B535}</td>
+		</tr>
+		<tr id="adv01" style="display: none;">
+			<td class="ObjectDetailsTopic" style="padding-left: 18px;">Appears In:</td>
+			<td class="ObjectDetailsValue"><a href="../EA21.html">Requisitos Funcionais</a></td>
+		</tr>
+	</table>
+	<div class="ObjectDetailsNotes">Como Administrador ou Coordenador desejo cadastrar Metodologias para serem utilizados como sugestão no preenchimento do plano de ensino pelo professor.&lt;br/&gt;&lt;br/&gt;Para que o aluno obtenha uma habilidade é nessário que o professor ministre os conteúdos adequados e da forma adequada. A forma como os conteúdos serão ministrados é chamada de metodologia.&lt;br/&gt;&lt;br/&gt;São exemplos de metodologias:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Aulas expositivas dialogadas com a participação ativa dos alunos.&lt;/li&gt;&lt;/ul&gt;<br />&lt;ul&gt;<br />&lt;li&gt;Resolução de exercícios individuais, ou em grupos, em sala de aula/ambiente virtual.&lt;/li&gt;&lt;li&gt;Trabalhos/pesquisas extraclasse (Estudo Dirigido para análise de publicações periódicas&lt;b&gt;).&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;<br />&lt;br/&gt;</div>
+
+	<div class="TableGroup" id="TableGroup">
+		<ul class="ItemTitle">
+			<li onClick="parent.toggleItem('AssociationsFrom');" id="AssociationsFromTitle">Associations From</li>
+			<li onClick="parent.toggleItem('Requirements');" id="RequirementsTitle">Requirements</li>
+			<li onClick="parent.toggleItem('Constraints');" id="ConstraintsTitle">Constraints</li>
+			<li onClick="parent.toggleItem('Scenario');" id="ScenarioTitle">Scenarios</li>
+		</ul>
+		<div class="ItemBody" id="AssociationsFromTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="40%" class="TableHeading">Element</td>
+					<td width="30%" class="TableHeading">Source Role</td>
+					<td width="30%" class="TableHeading">Target Role</td>
+				</tr>
+				<tr>
+					<td width="40%" class="TableRow" valign="top">
+						<a href="../../EA1/EA18.html">Coordenador (Docente)</a><br />
+						Actor &nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;
+					</td>
+					<td width="30%" class="TableRow" valign="top">
+						<strong>Name:</strong> &nbsp;<br />
+						&nbsp;	
+					</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageLink148" onclick="parent.toggleDiv('detailsDIVLink148','DetailsImageLink148')" />Details:
+							<div id="detailsDIVLink148" class="DetailsDiv" >
+							&nbsp;
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="RequirementsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="60%" class="TableHeading">Requirement</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+					<td width="10%" class="TableHeading">Difficulty</td>
+					<td width="10%" class="TableHeading">Priority</td>
+					<td width="10%" class="TableHeading">Stability</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Alteração de uma metodologia</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement149" onclick="parent.toggleDiv('detailsDIVRequirement149','DetailsImageRequirement149')" />Details:
+							<div id="detailsDIVRequirement149" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">A tela de listagem deve possuir uma opção para alterar uma metodologia.&lt;br/&gt;&lt;br/&gt;Ao acionar a ação o sistema deve exibir um formulário para alteração das informações:&lt;br/&gt;&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Nome&lt;/li&gt;&lt;li&gt;Descrição&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Cadastro de nova metodologia</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement150" onclick="parent.toggleDiv('detailsDIVRequirement150','DetailsImageRequirement150')" />Details:
+							<div id="detailsDIVRequirement150" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Na tela de listagem deve existir a opção para cadastrar novas metodologias.&lt;br/&gt;&lt;br/&gt;Ao acionar esta ação o sistema deve exibir um formulário com os seguintes campos:&lt;br/&gt;&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Nome da Metodologia&lt;/li&gt;&lt;li&gt;Descrição da metodologia&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Exclusão de Metodologias</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement151" onclick="parent.toggleDiv('detailsDIVRequirement151','DetailsImageRequirement151')" />Details:
+							<div id="detailsDIVRequirement151" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">A tela de listagem de metodologias deve possuir a opção de exclusão de uma metodologia.&lt;br/&gt;&lt;br/&gt;Ao acionar esta ação o sistema deve exigir confirmação por parte do usuário. Ao confirmar a realização da ação o sistema deve eliminar a metodologia da base de dados.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="60%" class="TableRow">Listagem de metodologias</td>
+					<td width="10%" class="TableRow">Functional</td>
+					<td width="10%" class="TableRow">Proposed</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Medium</td>
+					<td width="10%" class="TableRow">Moderate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="6">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageRequirement152" onclick="parent.toggleDiv('detailsDIVRequirement152','DetailsImageRequirement152')" />Details:
+							<div id="detailsDIVRequirement152" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">O sistema deve possuir uma tela para listagem de todas as metodologias cadastradas na base de dados.&lt;br/&gt;&lt;br/&gt;Nesta tela deve ser exibido também as opçãos de cadastro, alteração e exclusão de metodologias. As metodologias devem ser exibidas em uma tabela com as seguintes colunas:&lt;br/&gt;&lt;ul&gt;<br />&lt;li&gt;Nome&lt;/li&gt;&lt;li&gt;Descrição&lt;/li&gt;&lt;li&gt;Dados de Utilização&lt;/li&gt;&lt;/ul&gt;&lt;p/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ConstraintsTable">
+			<table border="0" cellspacing="0" cellpadding="0" class="Table">
+			  	<tr>
+					<td width="80%" class="TableHeading">Constraint</td>
+					<td width="10%" class="TableHeading">Type</td>
+					<td width="10%" class="TableHeading">Status</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Controle de Acesso</td>
+					<td width="10%" class="TableRow">Pre-condition</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints153" onclick="parent.toggleDiv('detailsDIVConstraints153','DetailsImageConstraints153')" />Details:
+							<div id="detailsDIVConstraints153" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Para ter acesso a esta funcionalidade o usuário deve possuir o perfil Administrador e/ou Coordenador.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="80%" class="TableRow">Validação do Cadastro/Alteração</td>
+					<td width="10%" class="TableRow">Post-condition</td>
+					<td width="10%" class="TableRow">Approved</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="3">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageConstraints154" onclick="parent.toggleDiv('detailsDIVConstraints154','DetailsImageConstraints154')" />Details:
+							<div id="detailsDIVConstraints154" class="DetailsDiv" >
+							<div class="ObjectDetailsNotes">Para cadastro e alteração de uma metodologia é obrigatório a informação do nome da mesma.&lt;br/&gt;</div>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="ItemBody" id="ScenarioTable">
+			<table align="center" border="0" cellspacing="0" cellpadding="0" class="Table">
+				<tr>
+					<td width="90%" class="TableHeading">Scenario</td>
+					<td width="10%" class="TableHeading">Type</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Listagem de Metodologias</td>
+					<td width="10%" class="TableRow">Basic Path</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario155" onclick="parent.toggleDiv('detailsDIVScenario155','DetailsImageScenario155')" />Details:
+							<div id="detailsDIVScenario155" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario155" onclick="parent.toggleDiv('stepDIVScenario155','StepImageScenario155')" />Steps:
+							<div id="stepDIVScenario155" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona o menu Metodologias na seção Gerenciamento de Cadastros&lt;br/&gt; <br />2. Redireciona o usuário para a tela de listagem de metodologias&lt;br/&gt; <br />3. Verifica as permissões de acesso&lt;br/&gt; <br />4. Exibe as metodologias cadastradas no sistema&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario156" onclick="parent.toggleDiv('detailsDIVScenario156','DetailsImageScenario156')" />Exceptions:				<div id="detailsDIVScenario156" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">4a. Cadastro de Metodologia (at End)<br />4b. Alteração de Metodologia (at End)<br />4c. Exclusão de Metodologia (at End)<br /></div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Cadastro de Metodologia</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario158" onclick="parent.toggleDiv('detailsDIVScenario158','DetailsImageScenario158')" />Details:
+							<div id="detailsDIVScenario158" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario158" onclick="parent.toggleDiv('stepDIVScenario158','StepImageScenario158')" />Steps:
+							<div id="stepDIVScenario158" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a ação Cadastro de Nova Metodologia&lt;br/&gt; <br />2. Exibe formulário para preenchimento das informações&lt;br/&gt; <br />3. Preenche as informações e clica em salvar&lt;br/&gt; <br />4. Valida as informações e salva o registro na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Alteração de Metodologia</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario160" onclick="parent.toggleDiv('detailsDIVScenario160','DetailsImageScenario160')" />Details:
+							<div id="detailsDIVScenario160" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario160" onclick="parent.toggleDiv('stepDIVScenario160','StepImageScenario160')" />Steps:
+							<div id="stepDIVScenario160" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a ação Alterar Metodologia&lt;br/&gt; <br />2. Exibe formulário para alteração das informações&lt;br/&gt; <br />3. Altera as informações desejadas e clica em salvar&lt;br/&gt; <br />4. Valida as informações e registra a alteração na base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td width="90%" class="TableRow">Exclusão de Metodologia</td>
+					<td width="10%" class="TableRow">Alternate</td>
+				</tr>
+				<tr>
+					<td class="TableRowBottomDashed"  colspan="2">
+						<div class="DetailsDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="DetailsImageScenario162" onclick="parent.toggleDiv('detailsDIVScenario162','DetailsImageScenario162')" />Details:
+							<div id="detailsDIVScenario162" class="DetailsDiv" >
+							
+							</div>
+						</div>
+						<div class="StrucuturedDivParent"><img src="../../../images/minus03.gif" align="absmiddle" id="StepImageScenario162" onclick="parent.toggleDiv('stepDIVScenario162','StepImageScenario162')" />Steps:
+							<div id="stepDIVScenario162" class="StrucuturedDiv" >
+							<div class="ObjectDetailsNotes">1. Aciona a ação Excluir Metodologia&lt;br/&gt; <br />2. Exibe janela de confirmação&lt;br/&gt; <br />3. Confirma a ação&lt;br/&gt; <br />4. Elimina a metodologia da base de dados&lt;br/&gt; <br /></div>
+							</div>
+						</div>
+						
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+<div class="pageFooter"></div>
+ 
+</body>
+</html>

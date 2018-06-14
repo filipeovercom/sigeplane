@@ -5,14 +5,12 @@ layout: default
 # Documentação
 
 - **Requisitos**
-  - [Funcionais](./pages/requisitos_funcionais/index.html)
-  - [Não-Funcionais](./pages/work-in-progress)
+  - [Funcionais, Não Funcionais e Casos de Uso](./pages/requisitos_funcionais/index.html)
 - **UML**
-  - [Casos de Uso](./pages/work-in-progress)
-  - [Classes](./pages/work-in-progress)
-  - [Atividade](./pages/work-in-progress)
-  - [Sequência](./pages/work-in-progress)
-  - [Estado](./pages/work-in-progress)
+  - [Classes](./pages/diagrama_classes/diagrama_classes)
+  - [Estado](./pages/diagrama_estado/status_plano_ensino)
+  - [Componentes](./pages/diagrama_componentes/componentes)
+  - [Implantação](./pages/diagrama_implantacao/implantacao)
 - **Banco de Dados**
-  - [Dicionário de Dados](./pages/mer/index.html)  
+  - [Dicionário de Dados](./pages/mer/index.html)
 - **[Protótipo de Alta Fidelidade](./pages/prototipo/index.html)**
