@@ -7,27 +7,32 @@
   "author": "Filipe Damasceno Abreu <filipeovercom@gmail.com>",
   "private": true,
   "scripts": {
+    "start": "quasar dev",
+    "build": "quasar build",
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "element-ui": "^2.4.0",
     "luxon": "^0.5.3",
     "npm": "^6.0.1",
-    "vue2-editor": "^2.4.4"
+    "vue2-editor": "^2.4.4",
+    "vuetify": "^1.2.2"
   },
   "devDependencies": {
-    "babel-eslint": "8.2.1",
-    "eslint": "4.15.0",
-    "eslint-config-standard": "10.2.1",
-    "eslint-friendly-formatter": "3.0.0",
-    "eslint-loader": "1.7.1",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-node": "5.2.0",
-    "eslint-plugin-promise": "3.4.0",
-    "eslint-plugin-standard": "3.0.1",
-    "eslint-plugin-vue": "4.0.0",
-    "quasar-cli": "^0.15.20"
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.3.0",
+    "quasar-cli": "^0.17.17",
+    "strip-ansi": "^3.0.1"
   },
   "engines": {
     "node": ">= 8.9.0",

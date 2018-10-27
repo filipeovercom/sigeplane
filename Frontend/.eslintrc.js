@@ -31,6 +31,8 @@ module.exports = {
     
     // Semicolons
     'semi': [2, 'always'],
+
+    'no-multi-spaces': 0,
     
     // allow paren-less arrow functions
     'arrow-parens': 0,
@@ -45,7 +47,11 @@ module.exports = {
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/no-extraneous-dependencies': 0,
-    
+
+    'no-trailing-spaces': 1,
+    'vue/html-indent': 0,
+    'indent': 0,
+
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }

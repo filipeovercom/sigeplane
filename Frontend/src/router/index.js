@@ -1,7 +1,7 @@
-import Vue from 'vue';
+import Vue       from 'vue';
 import VueRouter from 'vue-router';
-import routes from './routes';
-import {Loading, QSpinnerGrid} from 'quasar';
+import routes    from './routes';
+import {Loading} from 'quasar';
 
 Vue.use(VueRouter);
 
@@ -22,14 +22,7 @@ const Router = new VueRouter({
 });
 
 Router.beforeEach((to, from, next) => {
-  Loading.show({
-    spinner: QSpinnerGrid,
-    spinnerSize: 200,
-    spinnerColor: 'light',
-    message: 'Aguarde sua página está sendo carregada!',
-    messageColor: 'light',
-    customClass: 'bg-primary'
-  });
+  Loading.show();
   next();
 });
 

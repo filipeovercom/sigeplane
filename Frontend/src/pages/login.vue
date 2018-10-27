@@ -13,6 +13,7 @@
                 SGPE
               </h3>
               <h6 class="q-mt-xs">Sistema de Gerenciamento de Planos de Ensino</h6>
+              <br>
             </div>
             <q-field icon="person" class="col-xs-12">
               <q-input v-model="form.matricula" float-label="Matrícula"
@@ -27,7 +28,11 @@
             </q-field>
             <br>
             <br>
-            <q-btn label="Entrar" @click="submit" size="lg" color="primary" class="full-width"/>
+            <q-btn label="Entrar"
+                   size="lg"
+                   color="primary"
+                   class="full-width"
+                   @click="submit"/>
           </q-card>
         </div>
       </q-page>
@@ -51,8 +56,7 @@ export default {
           password: this.form.password
         })
         .then(() => {
-          this.$store.dispatch('contexto/updateFirstLogin', true);
-          this.$router.replace({path: '/'});
+          this.$router.push({path: '/'});
         })
         .catch(error => {
           this.$q.notify({

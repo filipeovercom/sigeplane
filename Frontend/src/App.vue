@@ -1,6 +1,8 @@
 <template>
   <div id="q-app">
-    <router-view/>
+    <v-app>
+      <router-view/>
+    </v-app>
     <q-ajax-bar/>
   </div>
 </template>

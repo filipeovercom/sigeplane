@@ -1,4 +1,4 @@
-import * as DateTimeOperators from '../services/core/dateTimeOperators';
+import * as DateTimeOperators from '../utils/dateTimeOperators';
 
 export default {
   filters: {

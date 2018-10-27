@@ -1,25 +1,23 @@
-import Vue from 'vue';
+import Vue  from 'vue';
 import Vuex from 'vuex';
 
-import contexto from './modules/contexto';
-import turmas from './modules/turmas';
-import cursos from './modules/cursos';
-import disciplinas from './modules/disciplinas';
-import professores from './modules/professores';
+import contexto     from './modules/contexto';
 import competencias from './modules/competencias';
-import habilidades from './modules/habilidades';
+import habilidades  from './modules/habilidades';
+import conteudos    from './modules/conteudos';
+import metodologias from './modules/metodologias';
+import recursos     from './modules/recursos';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
     contexto,
-    turmas,
-    cursos,
-    disciplinas,
-    professores,
     competencias,
-    habilidades
+    habilidades,
+    conteudos,
+    metodologias,
+    recursos
   }
 });
 

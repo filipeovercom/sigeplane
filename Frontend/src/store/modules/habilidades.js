@@ -48,6 +48,96 @@ export default {
             qtd: '10'
           }
         ]
+      },
+      {
+        id: uid(),
+        descricao: 'Desenvolver o conceito de função do primeiro grau associado a assuntos simples do cotidiano ' +
+          'e a conceitos da economia.',
+        utilizacao: [
+          {
+            curso: 'Sistemas de Informação',
+            qtd: '15'
+          },
+          {
+            curso: 'Administração',
+            qtd: '10'
+          }
+        ]
+      },
+      {
+        id: uid(),
+        descricao: ' Aplicar o conceito e as propriedades das funções para resolver problemas simples de ' +
+          'interessada Economia e Administração.',
+        utilizacao: [
+          {
+            curso: 'Sistemas de Informação',
+            qtd: '15'
+          },
+          {
+            curso: 'Administração',
+            qtd: '10'
+          }
+        ]
+      },
+      {
+        id: uid(),
+        descricao: 'Desenvolver o conceito de função do segundo grau associado a assuntos simples do cotidiano ' +
+          'e a conceitos da economia.',
+        utilizacao: [
+          {
+            curso: 'Sistemas de Informação',
+            qtd: '15'
+          },
+          {
+            curso: 'Administração',
+            qtd: '10'
+          }
+        ]
+      },
+      {
+        id: uid(),
+        descricao: 'Desenvolver o conceito de função do primeiro grau associado a assuntos simples do cotidiano ' +
+          'e a conceitos da economia.',
+        utilizacao: [
+          {
+            curso: 'Sistemas de Informação',
+            qtd: '15'
+          },
+          {
+            curso: 'Administração',
+            qtd: '10'
+          }
+        ]
+      },
+      {
+        id: uid(),
+        descricao: ' Aplicar o conceito e as propriedades das funções para resolver problemas simples de ' +
+          'interessada Economia e Administração.',
+        utilizacao: [
+          {
+            curso: 'Sistemas de Informação',
+            qtd: '15'
+          },
+          {
+            curso: 'Administração',
+            qtd: '10'
+          }
+        ]
+      },
+      {
+        id: uid(),
+        descricao: 'Desenvolver o conceito de função do segundo grau associado a assuntos simples do cotidiano ' +
+          'e a conceitos da economia.',
+        utilizacao: [
+          {
+            curso: 'Sistemas de Informação',
+            qtd: '15'
+          },
+          {
+            curso: 'Administração',
+            qtd: '10'
+          }
+        ]
       }
     ]
   },

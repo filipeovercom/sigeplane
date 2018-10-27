@@ -2,7 +2,7 @@
 
 module.exports = function (ctx) {
   return {
-    plugins: ['localStorage', 'SGPEAcl'],
+    plugins: ['localStorage', 'sgpeACL', 'vuetify', 'sgpeFilters'],
     css: ['app.styl'],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
@@ -19,7 +19,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
-      publicPath: '/sigeplane/pages/prototipo',
+      publicPath: '/',
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
@@ -43,6 +43,7 @@ module.exports = function (ctx) {
       iconSet: 'material-icons',
       components: [
         'QLayout',
+        'QInnerLoading',
         'QLayoutHeader',
         'QLayoutDrawer',
         'QLayoutFooter',
@@ -54,6 +55,7 @@ module.exports = function (ctx) {
         'QToolbar',
         'QToolbarTitle',
         'QBtn',
+        'QPagination',
         'QBreadcrumbs',
         'QBreadcrumbsEl',
         'QBtnDropdown',
@@ -74,6 +76,7 @@ module.exports = function (ctx) {
         'QInput',
         'QScrollArea',
         'QPopover',
+        'QPopupEdit',
         'QSearch',
         'QAutocomplete',
         'QTree',
@@ -92,7 +95,14 @@ module.exports = function (ctx) {
         'QModalLayout'
       ],
       directives: ['Ripple', 'CloseOverlay'],
-      plugins: ['Notify', 'Dialog', 'Loading']
+      plugins: ['Notify', 'Dialog', 'Loading', 'LocalStorage'],
+      config: {
+        loading: {
+          message: 'Carregando Informações...',
+          messageColor: 'blue',
+          spinnerSize: 250
+        }
+      }
     },
     // animations: 'all' --- includes all animations
     animations: [],

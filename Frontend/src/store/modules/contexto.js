@@ -1,62 +1,49 @@
-import {removeItemFromLocalStorage, setItemToLocalStorage} from '../../services/core/storageUtils';
-import profiles from '../../services/core/securityPermissions';
+import {atualizaTokenDeAcesso, autenticaUsuario} from '../../utils/securityService';
+import {LocalStorage}                            from 'quasar';
 
 export default {
   namespaced: true,
   state: {
-    firstLogin: false
+    firstLogin: false,
+    userPermissions: undefined
   },
   getters: {
     isFirstLogin (state) {
       return state.firstLogin;
+    },
+    getUserPermissions (state) {
+      return state.userPermissions;
+    },
+    usuarioLogado () {
+      const contexto = LocalStorage.get.item('contexto');
+      return contexto ? contexto['usuarioLogado'] : undefined;
     }
   },
   mutations: {
     SET_FIRST_LOGIN (state, firstLogin) {
       state.firstLogin = firstLogin;
+    },
+    SET_USER_PERMISSIONS (state, permissions) {
+      state.userPermissions = permissions;
     }
   },
   actions: {
-    login ({dispatch}, pUsuario) {
-      return new Promise(resolve => {
-        let usuario;
-        if (pUsuario.matricula.toLowerCase().includes('FC2012'.toLowerCase())) {
-          usuario = {
-            matricula: pUsuario.matricula,
-            nome: 'Prof Exemplo 1',
-            titulacao: 'Me.',
-            email: 'professorexemplo1@catolica-to.edu.br',
-            perfis: [profiles.ADMINISTRADOR]
-          };
-        } else if (pUsuario.matricula.toLowerCase().includes('FC2013'.toLowerCase())) {
-          usuario = {
-            matricula: pUsuario.matricula,
-            nome: 'Prof Exemplo 2',
-            titulacao: 'Esp.',
-            email: 'professorexemplo2@catolica-to.edu.br',
-            perfis: [profiles.COORDENADOR, profiles.PROFESSOR]
-          };
-        } else {
-          usuario = {
-            matricula: pUsuario.matricula,
-            nome: 'Prof Exemplo 3',
-            titulacao: 'Esp.',
-            email: 'professorexemplo3@catolica-to.edu.br',
-            perfis: [profiles.PROFESSOR]
-          };
-        }
-        setItemToLocalStorage('usuario', usuario);
-        resolve();
-      });
+    setUserPermissions ({commit}, permissions) {
+      commit('SET_USER_PERMISSIONS', permissions);
     },
-    logout () {
+    login ({commit}, pUsuario) {
+      commit('SET_FIRST_LOGIN', true);
+      return autenticaUsuario(pUsuario);
+    },
+    atualizarToken: () => {
+      return atualizaTokenDeAcesso();
+    },
+    logout ({commit}) {
       return new Promise(async resolve => {
-        await removeItemFromLocalStorage('usuario');
+        await LocalStorage.remove('contexto');
+        await commit('SET_USER_PERMISSIONS', undefined);
         resolve();
       });
-    },
-    updateFirstLogin ({commit}, isFirstLogin) {
-      commit('SET_FIRST_LOGIN', isFirstLogin);
     }
   }
 };

@@ -6,11 +6,11 @@
         style="width:30vw;max-width:150px;"
       >
     </p>
-    <p class="text-faded">Ooops"! You don't have access...<strong>(401)</strong></p>
+    <p class="text-faded">Oops! Você não possui acesso para acessar esta página...<strong>(401)</strong></p>
     <q-btn
       color="secondary"
       style="width: 200px;"
-      @click="$router.replace('/')"
+      @click="$router.back(1)"
     >Go back
     </q-btn>
   </div>
