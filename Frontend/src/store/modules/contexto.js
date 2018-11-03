@@ -1,5 +1,5 @@
-import {atualizaTokenDeAcesso, autenticaUsuario} from '../../utils/securityService';
-import {LocalStorage}                            from 'quasar';
+import {segurancaService} from '../../utils/securityService';
+import {LocalStorage}     from 'quasar';
 
 export default {
   namespaced: true,
@@ -33,10 +33,10 @@ export default {
     },
     login ({commit}, pUsuario) {
       commit('SET_FIRST_LOGIN', true);
-      return autenticaUsuario(pUsuario);
+      return segurancaService.autenticaUsuario(pUsuario);
     },
     atualizarToken: () => {
-      return atualizaTokenDeAcesso();
+      return segurancaService.atualizaTokenDeAcesso();
     },
     logout ({commit}) {
       return new Promise(async resolve => {

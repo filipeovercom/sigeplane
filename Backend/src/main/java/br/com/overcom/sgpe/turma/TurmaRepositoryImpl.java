@@ -6,7 +6,6 @@ import br.com.overcom.sgpe.disciplina.QDisciplina;
 import br.com.overcom.sgpe.seguranca.usuario.QUsuario;
 import br.com.overcom.sgpe.utilidades.QueryDslSupport;
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.data.domain.Page;
@@ -50,17 +49,17 @@ public class TurmaRepositoryImpl extends QueryDslSupport implements TurmaReposit
 	}
 
 	@Override
-	public Page<TurmaDTO> findAllByPeriodoAndParams(UUID periodoLetivo, ConsultaTurmasParams params,
+	public Page<TurmaDTO> findAllByPeriodoAndParams(
+		UUID periodoLetivo, ConsultaTurmasParams params,
 		Pageable pageable) {
 		QTurma      turma       = QTurma.turma;
-		QDisciplina disciplina  = QDisciplina.disciplina;
 		QCurso      curso       = QCurso.curso;
-		QUsuario    professor   = new QUsuario("professor");
 		QUsuario    coordenador = new QUsuario("coordenador");
+		QDisciplina disciplina  = QDisciplina.disciplina;
+		QUsuario    professor   = new QUsuario("professor");
 
 		JPQLQuery<TurmaDTO> query = getQuerydsl().createQuery()
-			.select(Projections.constructor(TurmaDTO.class, turma.uuid, turma.nome,
-				curso.nome, professor.nome, disciplina.nome, turma.statusPlanoEnsino))
+			.select(TurmaDTO.getProjectionConstructor(turma, curso, coordenador, disciplina, professor))
 			.from(turma)
 			.innerJoin(turma.disciplina, disciplina)
 			.innerJoin(turma.professor, professor)

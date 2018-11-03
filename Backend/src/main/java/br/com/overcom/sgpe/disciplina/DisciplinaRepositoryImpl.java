@@ -6,6 +6,7 @@ import br.com.overcom.sgpe.bibliografia.QReferenciaBibliografica;
 import br.com.overcom.sgpe.curso.QCurso;
 import br.com.overcom.sgpe.utilidades.QueryDslSupport;
 import com.querydsl.jpa.impl.JPAQuery;
+import org.javers.spring.annotation.JaversAuditable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,8 +53,8 @@ public class DisciplinaRepositoryImpl extends QueryDslSupport implements Discipl
 				.from(disciplina)
 				.leftJoin(disciplina.curso).fetchJoin()
 				.leftJoin(disciplina.bibliografias, referencia).fetchJoin()
-				.innerJoin(referencia.bibliografia).fetchJoin()
-				.where(referencia.deleted.eq(false).and(disciplina.deleted.eq(false).and(disciplina.uuid.eq(uuid))))
+				.leftJoin(referencia.bibliografia).fetchJoin()
+				.where(disciplina.deleted.eq(false).and(disciplina.uuid.eq(uuid)))
 				.fetchOne()
 		);
 	}
@@ -72,6 +73,7 @@ public class DisciplinaRepositoryImpl extends QueryDslSupport implements Discipl
 	}
 
 	@Override
+	@JaversAuditable
 	public void update(Disciplina pDisciplina) throws NegocioException {
 		QDisciplina disciplina = QDisciplina.disciplina;
 		boolean updated = update(disciplina)

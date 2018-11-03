@@ -1,16 +1,13 @@
-import _axios      from './axiosWrapper';
-import {resources} from './constants';
+import {httpService} from './httpService';
 
 export const CursoService = (() => {
+  const apiUrl = '/api/cursos';
   return {
     buscaLimitadaPorNome: (nome) => {
-      return _axios.request({
-        url: resources.cursos.root,
-        params: {
-          nome: nome || '',
-          page: 0,
-          size: 5
-        }
+      return httpService.get(apiUrl, {
+        nome: nome || '',
+        page: 0,
+        size: 5
       }).then(({data}) => data.content);
     }
   };

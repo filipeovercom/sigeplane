@@ -1,5 +1,5 @@
 package br.com.overcom.sgpe.comentario;
 
 public enum TipoComentario {
-	BIBLIOGRAFIA, CRONOGRAMA
+	CONTRIBUICAO_FORMACAO, CONTEUDO, CRITERIOS_AVALIACAO, CRONOGRAMA
 }

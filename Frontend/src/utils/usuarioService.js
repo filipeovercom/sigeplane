@@ -1,7 +1,7 @@
-import _axios      from './axiosWrapper';
-import {resources} from './constants';
+import {httpService} from './httpService';
 
 export const UsuarioService = (() => {
+  const apiUrl = '/api/usuarios';
   return {
     getAllProfessores ({page, rowsPerPage, sortBy, descending}, nome, ativos) {
       const params = {
@@ -13,12 +13,7 @@ export const UsuarioService = (() => {
 
       if (ativos !== undefined) params.ativos = ativos;
 
-      return _axios.request({
-        url: `${resources.usuarios.professoresByNome}`,
-        params: params
-      }).then(({data}) => {
-        return data;
-      });
+      return httpService.get(`${apiUrl}/professores`, params).then(({data}) => data);
     }
   };
 })();

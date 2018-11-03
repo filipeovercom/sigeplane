@@ -1,5 +1,6 @@
 package br.com.overcom.sgpe.periodoletivo;
 
+import br.com.overcom.sgpe.abstracao.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

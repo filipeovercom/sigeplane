@@ -1,6 +1,6 @@
 <template>
   <div class="row gutter-xs">
-    <!--region AGUARDANDO PRODUÇÃO - TEXT_INDIGO-->
+    <!--region AGUARDANDO PRODUÇÃO-->
     <div :class="gridForCards">
       <q-card class="relative-position">
         <q-card-title class="text-blue-grey">
@@ -19,7 +19,7 @@
                            class="text-blue-grey"/>
               <q-item-main>
                 <span>{{ turma.nome }}</span>
-                <span>{{ turma.disciplina }}</span>
+                <span> {{ turma.disciplina.nome }}</span>
               </q-item-main>
             </q-item>
             <q-item v-if="turmasAguardandoProducao.data.length === 0">
@@ -42,7 +42,7 @@
     </div>
     <!--endregion-->
 
-    <!--region AGUARDANDO ANÁLISE - TEXT-BLUE -->
+    <!--region AGUARDANDO ANÁLISE -->
     <div v-if="$can('COORDENADOR')"
          :class="gridForCards">
       <q-card class="relative-position">
@@ -62,7 +62,7 @@
                            class="text-cyan"/>
               <q-item-main>
                 <span>{{ turma.nome }}</span>
-                <span>{{ turma.disciplina }}</span>
+                <span> {{ turma.disciplina.nome }}</span>
               </q-item-main>
             </q-item>
             <q-item v-if="turmasAguardandoAnalise.data.length === 0">
@@ -85,7 +85,7 @@
     </div>
     <!--endregion-->
 
-    <!--region EM PRODUÇÃO - TEXT-LIGHT-GREEN-9-->
+    <!--region EM PRODUÇÃO-->
     <div :class="gridForCards">
       <q-card class="relative-position">
         <q-card-title class="text-indigo">
@@ -104,7 +104,7 @@
                            class="text-indigo"/>
               <q-item-main>
                 <span>{{ turma.nome }}</span>
-                <span>{{ turma.disciplina }}</span>
+                <span> {{ turma.disciplina.nome }}</span>
               </q-item-main>
             </q-item>
             <q-item v-if="turmasEmProducao.data.length === 0">
@@ -127,7 +127,7 @@
     </div>
     <!--endregion-->
 
-    <!--region NECESSITA REVISÃO TEXT-DEEP-ORANGE-->
+    <!--region NECESSITA REVISÃO-->
     <div :class="gridForCards">
       <q-card class="relative-position">
         <q-card-title class="text-deep-orange">
@@ -146,7 +146,7 @@
                            class="text-deep-orange"/>
               <q-item-main>
                 <span>{{ turma.nome }}</span>
-                <span>{{ turma.disciplina }}</span>
+                <span> {{ turma.disciplina.nome }}</span>
               </q-item-main>
             </q-item>
             <q-item v-if="turmasNecessitaRevisao.data.length === 0">
@@ -188,7 +188,7 @@
                            class="text-green-7"/>
               <q-item-main>
                 <span>{{ turma.nome }}</span>
-                <span>{{ turma.disciplina }}</span>
+                <span> {{ turma.disciplina.nome }}</span>
               </q-item-main>
             </q-item>
             <q-item v-if="turmasAprovadas.data.length === 0">

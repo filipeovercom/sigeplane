@@ -1,5 +1,6 @@
 package br.com.overcom.sgpe.turma;
 
+import br.com.overcom.sgpe.abstracao.AbstractEntity;
 import br.com.overcom.sgpe.curso.Curso;
 import br.com.overcom.sgpe.disciplina.Disciplina;
 import br.com.overcom.sgpe.periodoletivo.PeriodoLetivo;

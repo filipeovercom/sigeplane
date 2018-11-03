@@ -12,7 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @MappedSuperclass
@@ -34,4 +36,12 @@ public abstract class AbstractEntity implements Serializable {
 	@JsonIgnore
 	private boolean deleted;
 
+	@Column(name = "DATA_HORA_CADASTRO")
+	private LocalDateTime dataHoraCadastro;
+
+	@PrePersist
+	public void onPrePersist() {
+		this.dataHoraCadastro = LocalDateTime.now();
+		this.uuid = UUID.randomUUID();
+	}
 }

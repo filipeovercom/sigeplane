@@ -1,6 +1,7 @@
 package br.com.overcom.sgpe.turma;
 
 import br.com.overcom.sgpe.abstracao.AbstractCtrl;
+import br.com.overcom.sgpe.planoensino.PlanoEnsinoService;
 import br.com.overcom.sgpe.planoensino.StatusPlanoEnsino;
 import br.com.overcom.sgpe.utilidades.CtrlUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,15 @@ import java.util.UUID;
 @RequestMapping(TurmaCtrl.PATH)
 public class TurmaCtrl extends AbstractCtrl<Turma> {
 
-	static final  String       PATH = "/api/turmas";
-	private final TurmaService service;
+	static final  String             PATH = "/api/turmas";
+	private final TurmaService       service;
+	private final PlanoEnsinoService planoEnsinoService;
 
 	@Autowired
-	public TurmaCtrl(TurmaService service) {
+	public TurmaCtrl(TurmaService service, PlanoEnsinoService planoEnsinoService) {
 		super(service);
 		this.service = service;
+		this.planoEnsinoService = planoEnsinoService;
 	}
 
 	@GetMapping("/periodo/{periodoLetivo}")

@@ -1,0 +1,47 @@
+server:
+    servlet:
+        context-path: @sgpe.contexto@
+spring:
+    http    :
+        encoding:
+            charset: UTF-8
+    jpa     :
+        show-sql         : true
+        properties       :
+            hibernate:
+                format_sql: true
+                hbm2ddl   :
+                    import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+        hibernate        :
+            ddl-auto: validate
+        database-platform: org.hibernate.dialect.MySQL57Dialect
+    flyway  :
+        enabled                 : true
+        baseline-on-migrate     : true
+        batch                   : true
+        ignore-future-migrations: true
+    profiles:
+        active: @activatedProperties@
+javers:
+    mappingStyle                              : FIELD
+    algorithm                                 : SIMPLE
+    prettyPrint                               : true
+    typeSafeValues                            : false
+    newObjectSnapshot                         : false
+    auditableAspectEnabled                    : true
+    springDataAuditableRepositoryAspectEnabled: true
+    sqlSchemaManagementEnabled                : true
+    prettyPrintDateFormats                    :
+        localDateTime: "dd MMM yyyy, HH:mm:ss"
+        zonedDateTime: "dd MMM yyyy, HH:mm:ssZ"
+        localDate    : "dd MMM yyyy"
+        localTime    : "HH:mm:ss"
+sgpe  :
+    security:
+        oauth2:
+            resource-id                   : sgpe_api
+            client-id                     : frontendsgpe
+            client-secret                 : frontendsgpepassword
+            jwt-signing-key               : sgpejwtkey@123
+            access-token-validity-seconds : 86400
+            refresh-token-validity-seconds: 172800

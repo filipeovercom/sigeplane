@@ -1,41 +1,26 @@
-import _axios      from '../../utils/axiosWrapper';
-import {resources} from '../../utils/constants';
+import {httpService} from '../../utils/httpService';
 
 export const DisciplinaService = (() => {
+  const apiUrl = '/api/disciplinas';
   return {
     getDisciplinas ({page, rowsPerPage, sortBy, descending}, filter) {
-      return _axios.request({
-        url: `${resources.disciplinas.root}`,
-        params: {
-          searchValue: filter ? encodeURI(filter) : '',
-          page: page ? page - 1 : 0,
-          size: rowsPerPage || 10,
-          sort: sortBy ? `${sortBy},${descending ? 'desc' : 'asc'}` : 'nome,asc'
-        }
+      return httpService.get(apiUrl, {
+        searchValue: filter ? encodeURI(filter) : '',
+        page: page ? page - 1 : 0,
+        size: rowsPerPage || 10,
+        sort: sortBy ? `${sortBy},${descending ? 'desc' : 'asc'}` : 'nome,asc'
       }).then(({data}) => {
         return data;
       });
     },
     insertDisciplina (disciplina) {
-      console.log('Entrou no insert');
-      return _axios.request({
-        method: 'post',
-        url: resources.disciplinas.root,
-        data: disciplina
-      });
+      return httpService.post(apiUrl, disciplina);
     },
     updateDisciplina (disciplina) {
-      console.log('Entrou no update');
-      return _axios.request({
-        method: 'put',
-        url: resources.disciplinas.root,
-        data: disciplina
-      });
+      return httpService.put(apiUrl, disciplina);
     },
     getDisciplinaByUUID (uuid) {
-      return _axios.request({
-        url: `${resources.disciplinas.root}/${uuid}`
-      }).then(({data}) => data);
+      return httpService.get(`${apiUrl}/${uuid}`).then(({data}) => data);
     }
   };
 })();

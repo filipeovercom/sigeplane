@@ -1,5 +1,6 @@
 package br.com.overcom.sgpe.curso;
 
+import br.com.overcom.sgpe.abstracao.AbstractEntity;
 import br.com.overcom.sgpe.seguranca.usuario.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

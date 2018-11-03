@@ -25,7 +25,7 @@ export default [
         component: () => import('../pages/index'),
         meta: {
           requiresLogin: true,
-          title: 'Planos de Ensino'
+          title: 'Início - Planos de Ensino'
         }
       },
       {
@@ -55,7 +55,7 @@ export default [
             }
           },
           {
-            path: ':idTurma/planoensino',
+            path: ':uuid/planoensino',
             component: () => import('../pages/turmas/plano_ensino/detalhes'),
             props: true,
             meta: {

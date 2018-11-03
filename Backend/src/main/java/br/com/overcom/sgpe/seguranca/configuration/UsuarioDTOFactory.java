@@ -14,7 +14,8 @@ public class UsuarioDTOFactory {
 
 	public static UsuarioDTO create(Usuario usuario) {
 		if (Objects.nonNull(usuario))
-			return new UsuarioDTO(usuario.getNome(), usuario.getMatricula(), usuario.getEmail(), usuario.getPassword(),
+			return new UsuarioDTO(usuario.getUuid(), usuario.getNome(), usuario.getMatricula(), usuario.getEmail(),
+				usuario.getPassword(),
 				mapToGrantedAuthorities(usuario));
 		else return null;
 	}

@@ -1,5 +1,4 @@
-import _axios                 from '../utils/axiosWrapper';
-import {resources}            from '../utils/constants';
+import {httpService}          from '../utils/httpService';
 import {LocalStorage, Notify} from 'quasar';
 
 export default ({app, router, store, Vue}) => {
@@ -14,7 +13,7 @@ export default ({app, router, store, Vue}) => {
       const routeRequireLogin = to.meta && to.meta.requiresLogin;
 
       if (hasContexto && !userPermissions) {
-        await fetchUserPermissions().catch((error) => {
+        await getUserPermissions().catch((error) => {
           Notify.create({
             message: error.message,
             position: 'top'
@@ -36,10 +35,9 @@ export default ({app, router, store, Vue}) => {
     }
   });
 
-  const fetchUserPermissions = () => {
-    return _axios.request({
-      url: `${resources.seguranca.perfis}`
-    }).then(({data}) => {
+  const getUserPermissions = () => {
+    return httpService.get('/api/seguranca/perfis')
+    .then(({data}) => {
       return store.dispatch('contexto/setUserPermissions', data);
     });
   };

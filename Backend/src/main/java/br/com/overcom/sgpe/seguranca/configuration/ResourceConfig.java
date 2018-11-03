@@ -21,7 +21,7 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 
 	@Autowired
 	public ResourceConfig(DefaultTokenServices tokenServices, TokenStore tokenStore,
-		@Value("${sgpe.security.oauth2.resource.id}") String resourceId) {
+		@Value("${sgpe.security.oauth2.resource-id}") String resourceId) {
 		this.tokenServices = tokenServices;
 		this.tokenStore = tokenStore;
 		this.resourceId = resourceId;

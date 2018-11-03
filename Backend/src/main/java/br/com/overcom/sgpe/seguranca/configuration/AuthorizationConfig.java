@@ -32,14 +32,14 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
 	@Autowired
 	public AuthorizationConfig(AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder,
-		@Value("${sgpe.security.oauth2.resource.id}") String resourceId,
-		@Value("${sgpe.security.oauth2.client.refresh-token-validity-seconds}")
+		@Value("${sgpe.security.oauth2.resource-id}") String resourceId,
+		@Value("${sgpe.security.oauth2.refresh-token-validity-seconds}")
 			int refreshTokenValiditySeconds,
-		@Value("${sgpe.security.oauth2.client.access-token-validity-seconds}")
+		@Value("${sgpe.security.oauth2.access-token-validity-seconds}")
 			int accessTokenValiditySeconds,
-		@Value("${sgpe.security.oauth2.clientId}") String clientId,
-		@Value("${sgpe.security.oauth2.clientSecret}") String clientSecret,
-		@Value("${sgpe.security.oauth2.jwtSigningKey}") String jwtSigningKey) {
+		@Value("${sgpe.security.oauth2.client-id}") String clientId,
+		@Value("${sgpe.security.oauth2.client-secret}") String clientSecret,
+		@Value("${sgpe.security.oauth2.jwt-signing-key}") String jwtSigningKey) {
 		this.authenticationManager = authenticationManager;
 		this.passwordEncoder = passwordEncoder;
 		this.resourceId = resourceId;

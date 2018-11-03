@@ -59,6 +59,8 @@ module.exports = function (ctx) {
         'QBreadcrumbs',
         'QBreadcrumbsEl',
         'QBtnDropdown',
+        'QFab',
+        'QFabAction',
         'QIcon',
         'QList',
         'QListHeader',
@@ -99,8 +101,7 @@ module.exports = function (ctx) {
       config: {
         loading: {
           message: 'Carregando Informações...',
-          messageColor: 'blue',
-          spinnerSize: 250
+          spinnerSize: 130
         }
       }
     },

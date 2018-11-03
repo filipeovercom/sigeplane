@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="Lhh lpr lFf">
+  <q-layout view="Lhh lpr lff">
     <!--region Header Toolbar-->
     <q-layout-header reveal>
       <q-toolbar style="height: 60px;">
@@ -53,7 +53,7 @@
     </q-layout-header>
     <!--endregion-->
     <!--region Footer-->
-    <q-layout-footer reveal>
+    <q-layout-footer>
       <q-toolbar :inverted="$q.theme === 'ios'">
         <q-toolbar-title>
           Sistema de Gerenciamento de Planos de Ensino | Católica do Tocantins | v1.0
@@ -204,11 +204,11 @@
 </template>
 
 <script>
-import menu                        from '../statics/menu';
-import profiles                    from '../utils/securityPermissions';
-import {PeriodoService}            from '../utils/periodoService';
-import {atualizaPeriodoNoContexto} from '../utils/securityService';
-import Breadcrumb                  from '../components/breadcrumb';
+import menu               from '../statics/menu';
+import profiles           from '../utils/securityPermissions';
+import {PeriodoService}   from '../utils/periodoService';
+import {segurancaService} from '../utils/securityService';
+import Breadcrumb         from '../components/breadcrumb';
 
 export default {
   components: {Breadcrumb},
@@ -273,7 +273,7 @@ export default {
   methods: {
     alterarContexto () {
       console.log(this.periodos.periodoSelecionado);
-      atualizaPeriodoNoContexto(this.periodos.periodoSelecionado.uuid)
+      segurancaService.atualizaPeriodoNoContexto(this.periodos.periodoSelecionado.uuid)
       .then(({data}) => {
         const contexto         = this.$q.localStorage.get.item('contexto');
         contexto.usuarioLogado = data;

@@ -98,16 +98,14 @@ INSERT INTO disciplina (id
 					   , codigo_interno
 					   , contribuicao_formacao
 					   , ementa
-					   , data_hora_cadastro
-					   , id_usuario_cadastro)
+					   , data_hora_cadastro)
 	VALUES (1
 		   , unhex(replace(uuid(), '-', ''))
 		   , 'Língua Portuguesa'
 		   , 'INS001'
 		   , 'O egresso do  Curso de Sistemas de Informação da Católica do Tocantins terá uma formação sólida, multidisciplinar e ética, com visão sistêmica para atuar como profissional íntegro  e engajado no contexto em que vive e trabalha. Profissional crítico e perspicaz que se posiciona em favor do bem estar da sociedade, na defesa das oportunidades das gerações futuras e da manutenção da vida. Dessa forma, a disciplina LÍNGUA PORTUGUESA  objetiva  a inserção e disseminação dos conhecimentos acerca da estrutura e funcionamento dos aspectos que compõem o seu sistema linguístico. Esta disciplina visa  auxiliar os profissionais das outras áreas a compreenderem a forma com que sistemas de informação podem contribuir para as áreas de negócio, bem como,  expressar ideias de forma clara, empregando técnicas de comunicação apropriadas para cada situação. Além disso, proporciona ao egresso, no exercício da  sua profissão,  participar e conduzir processos de negociação para o alcance de objetivos, e  também a comunicar-se em língua portuguesa, interpretando e produzindo discursos em diferentes modalidades e em diferentes situações sociolinguísticas.'
 		   , 'A leitura e a escrita na universidade: linguagem e conhecimento. Pressupostos básicos: concepções de linguagem, texto, leitura e escrita. Condições de produção da leitura e da escrita do texto acadêmico. Tipos de textos: estrutura e funcionamento. Argumentação. Coesão e coerência. Correção gramatical'
-		   , CURRENT_TIMESTAMP
-		   , 1);
+		   , CURRENT_TIMESTAMP);
 INSERT INTO disciplina (id
 					   , uuid
 					   , nome
@@ -115,8 +113,7 @@ INSERT INTO disciplina (id
 					   , id_curso
 					   , contribuicao_formacao
 					   , ementa
-					   , data_hora_cadastro
-					   , id_usuario_cadastro)
+					   , data_hora_cadastro)
 	VALUES (2
 		   , unhex(replace(uuid(), '-', ''))
 		   , 'Linguagens e Técnicas de Programação I'
@@ -124,8 +121,7 @@ INSERT INTO disciplina (id
 		   , 1
 		   , 'Modelar, especificar, implementar, implantar, validar e manter soluções baseadas em sistemas de informação, incluindo aspectos de interação humano-computador.<br/>Diagnosticar e mapear, com base científica, problemas e pontos de melhoria nas organizações, propondo alternativas de soluções baseadas em Tecnologias da Informação.'
 		   , 'Aspectos do estudo de Linguagens - Sintaxe, Semântica e Paradigmas. Linguagens fonte e objeto, Tradução, Compilação e Interpretação. Programação Estruturada. Pseudocódigo. Fundamentos de algoritmos: Variáveis e Constantes, Aplicação das Estruturas de Controle (sequência, seleção e repetição), Variáveis indexadas unidimensionais (vetores). Variáveis indexadas bidimensionais (matrizes).'
-		   , CURRENT_TIMESTAMP
-		   , 1);
+		   , CURRENT_TIMESTAMP);
 -- endregion
 
 -- region BIBLIOGRAFIAS
@@ -217,192 +213,135 @@ INSERT INTO turma (id, uuid, nome, id_curso, id_disciplina, id_periodo_letivo, i
 INSERT INTO config_sistema (id
 						   , deleted
 						   , uuid
-						   , data_hora_alteracao
-						   , data_hora_cadastro
-						   , id_usuario_alteracao
-						   , id_usuario_cadastro)
-	VALUES (1, FALSE, unhex(replace(uuid(), '-', '')), CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 1);
+						   , data_hora_cadastro)
+	VALUES (1, FALSE, unhex(replace(uuid(), '-', '')), CURRENT_TIMESTAMP);
 -- endregion
 
 -- region PLANOS DE ENSINO
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (1
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 1);
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (2
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 2);
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (3
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 3);
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (4
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 4);
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (5
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 5);
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (6
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 6);
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (7
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 7);
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (8
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 8);
 INSERT INTO plano_ensino (id
 						 , deleted
 						 , uuid
-						 , data_hora_alteracao
 						 , data_hora_cadastro
 						 , qtd_horas_pratica
 						 , qtd_horas_teorica
-						 , id_usuario_alteracao
-						 , id_usuario_cadastro
 						 , ID_TURMA)
 	VALUES (9
 		   , FALSE
 		   , unhex(replace(uuid(), '-', ''))
 		   , CURRENT_TIMESTAMP
-		   , CURRENT_TIMESTAMP
 		   , 40
 		   , 20
-		   , 1
-		   , 1
 		   , 8);
 -- endregion

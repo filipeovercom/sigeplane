@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 @Service
 public class BibliografiaService extends AbstractService<Bibliografia> {
@@ -27,5 +28,9 @@ public class BibliografiaService extends AbstractService<Bibliografia> {
 	@Override
 	public Optional<Bibliografia> findByUUID(UUID uuid) {
 		return repository.findOne(QBibliografia.bibliografia.uuid.eq(uuid));
+	}
+
+	public Stream<ReferenciaBibliografica> findReferenciasByDisciplina(UUID uuidDisciplina) {
+		return repository.findReferenciasByDisciplina(uuidDisciplina);
 	}
 }

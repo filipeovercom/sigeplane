@@ -1,19 +1,25 @@
 package br.com.overcom.sgpe.seguranca.configuration;
 
+import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.UUID;
 
 public class UsuarioDTO implements UserDetails {
+	private UUID                                   uuid;
 	private String                                 nome;
 	private String                                 email;
 	private String                                 matricula;
 	private String                                 password;
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UsuarioDTO(String nome, String matricula, String email, String password,
+	@Builder
+	public UsuarioDTO(
+		UUID uuid, String nome, String matricula, String email, String password,
 		Collection<? extends GrantedAuthority> authorities) {
+		this.uuid = uuid;
 		this.nome = nome;
 		this.matricula = matricula;
 		this.email = email;
@@ -66,5 +72,9 @@ public class UsuarioDTO implements UserDetails {
 
 	public String getMatricula() {
 		return matricula;
+	}
+
+	public UUID getUuid() {
+		return uuid;
 	}
 }

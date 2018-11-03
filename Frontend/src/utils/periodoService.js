@@ -1,29 +1,20 @@
-import _axios      from './axiosWrapper';
-import {resources} from './constants';
+import {httpService} from './httpService';
 
 export const PeriodoService = (() => {
+  const apiUrl = '/api/periodoletivo';
+
   return {
     saveNewPeriodo: (periodo) => {
-      return _axios.request({
-        method: 'post',
-        url: resources.periodos.root,
-        data: periodo
-      }).then((data) => !!data.id);
+      return httpService.post(apiUrl, periodo).then((data) => !!data.id);
     },
     getPeriodosByNome (descricao) {
-      return _axios.request({
-        url: `${resources.periodos.root}/consulta`,
-        params: {
-          descricao,
-          size: 5
-        }
+      return httpService.get(`${apiUrl}/consulta`, {
+        descricao,
+        size: 5
       }).then(({data}) => data);
     },
     selecionaPeriodo (periodoUUID) {
-      return _axios.request({
-        method: 'post',
-        url: resources.periodos.selecionaPeriodo(periodoUUID)
-      });
+      return httpService.post(`${apiUrl}/${periodoUUID}`);
     }
   };
 })();

@@ -1,5 +1,6 @@
 package br.com.overcom.sgpe.disciplina;
 
+import br.com.overcom.sgpe.abstracao.AbstractEntity;
 import br.com.overcom.sgpe.bibliografia.ReferenciaBibliografica;
 import br.com.overcom.sgpe.curso.Curso;
 import lombok.AllArgsConstructor;

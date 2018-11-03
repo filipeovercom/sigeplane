@@ -3,40 +3,50 @@
     <!--region Identificação da Turma-->
     <q-card class="bg-light">
       <div class="row q-pa-md">
-        <div class="col-xs-12 col-lg-6 q-title"
+        <div :class="{'col-xs-12 q-title': true, 'col-lg-6': showBtnEdicao || showBtnEdicao}"
              style="line-height: 36px;">
-          302N4A - Fundamentos de Matemática da Computação Forense
+          {{ plano.turma.nome }} - {{ plano.turma.disciplina.nome }}
         </div>
-        <div :class="{'col-xs-12 col-md-6':true, 'q-mt-sm': $vuetify.breakpoint.smAndDown, 'text-right': $vuetify.breakpoint.mdAndUp}">
+        <div
+          v-if="showBtnEdicao || showBtnEdicao"
+          :class="{'col-xs-12 col-md-6':true, 'q-mt-sm': $vuetify.breakpoint.smAndDown, 'text-right': $vuetify.breakpoint.mdAndUp}">
           <div class="gutter-xs d-inline-flex">
             <div>
-              <q-btn push
-                     icon="file_copy"
-                     color="primary"
-                     label="Copiar"
-                     title="Copiar dados de outro plano de ensino"
-                     @click="modalCopiar = !modalCopiar"/>
+              <q-btn
+                v-if="showBtnEdicao"
+                push
+                icon="file_copy"
+                color="primary"
+                label="Copiar"
+                title="Copiar dados de outro plano de ensino"
+                @click="modalCopiar = !modalCopiar"/>
             </div>
             <div>
-              <q-btn push
-                     icon="send"
-                     label="Enviar"
-                     title="Enviar plano para aprovação"
-                     color="blue-grey"/>
+              <q-btn
+                v-if="showBtnEdicao"
+                push
+                icon="send"
+                label="Enviar"
+                title="Enviar plano para aprovação"
+                color="blue-grey"/>
             </div>
             <div>
-              <q-btn push
-                     icon="check"
-                     label="Aprovar"
-                     title="Aprovar plano de ensino"
-                     color="positive"/>
+              <q-btn
+                v-if="showBtnAprovarReprovar"
+                push
+                icon="check"
+                label="Aprovar"
+                title="Aprovar plano de ensino"
+                color="positive"/>
             </div>
             <div>
-              <q-btn push
-                     icon="close"
-                     label="Reprovar"
-                     title="Reprovar plano de ensino"
-                     color="negative"/>
+              <q-btn
+                v-if="showBtnAprovarReprovar"
+                push
+                icon="close"
+                label="Reprovar"
+                title="Reprovar plano de ensino"
+                color="negative"/>
             </div>
           </div>
         </div>
@@ -49,10 +59,17 @@
                     square
                     icon="timer">
               <v-btn
+                v-if="showBtnEdicao"
                 flat
-                style="height: 32px;margin: 0px;font-weight: normal;text-transform: capitalize">
-                CH Teórica:&nbsp;<strong>{{ turma.cargaHorariaTeorica }}h</strong>
+                style="height: 32px;margin: 0px;font-weight: normal;text-transform: capitalize"
+                @click="onShowModalCargaHoraria()">
+                CH Teórica:&nbsp;
+                <strong>{{ plano.qtdHorasTeorica }}h</strong>
               </v-btn>
+              <span v-if="!showBtnEdicao">
+                CH Teórica:&nbsp;
+                <strong>{{ plano.qtdHorasTeorica }}h</strong>
+              </span>
             </q-chip>
           </div>
           <div>
@@ -60,30 +77,40 @@
                     square
                     icon="timer">
               <v-btn
+                v-if="showBtnEdicao"
                 flat
-                style="height: 32px;margin: 0px;font-weight: normal;text-transform: capitalize">
-                CH Prática:&nbsp;<strong>{{ turma.cargaHorariaPratica }}h</strong>
+                style="height: 32px;margin: 0px;font-weight: normal;text-transform: capitalize"
+                @click="onShowModalCargaHoraria()">
+                CH Prática:&nbsp;
+                <strong>{{ plano.qtdHorasPratica }}h</strong>
               </v-btn>
+              <span v-if="!showBtnEdicao">
+                CH Prática:&nbsp;
+                <strong>{{ plano.qtdHorasPratica }}h</strong>
+              </span>
             </q-chip>
           </div>
           <div>
             <q-chip detail
                     square
                     icon="dashboard">
-              Sistemas de Informação
+              {{ plano.turma.curso.nome }}
             </q-chip>
           </div>
           <div>
             <q-chip detail
                     square
-                    icon="person">Me. Thiago Ruiz Garcia
+                    icon="person">
+              {{ plano.turma.professor.nome }}
             </q-chip>
           </div>
           <div>
-            <q-chip detail
-                    square
-                    color="green"
-                    icon="bookmark">Em Produção
+            <q-chip
+              :color="colorByStatus"
+              detail
+              square
+              icon="bookmark">
+              {{ plano.turma.statusPlanoEnsino | statusPlanoEnsino }}
             </q-chip>
           </div>
         </div>
@@ -94,14 +121,15 @@
     <br>
 
     <!--region Ementa-->
-    <q-collapsible opened
-                   class="q-pa-sm bg-light">
+    <q-collapsible
+      opened
+      class="q-pa-sm bg-light">
       <template slot="header">
         <q-item-main class="q-title">
           1. Ementa
         </q-item-main>
       </template>
-      <div v-html="turma.ementa"/>
+      <div v-html="plano.turma.disciplina.ementa"/>
     </q-collapsible>
     <!--endregion-->
 
@@ -119,17 +147,17 @@
                  icon="chat"
                  color="primary"
                  @click.stop="showModalComentariosContribuicao()">
-            <q-chip v-if="contribuicaoFormacao.qtdComentariosNaoLidos"
+            <q-chip v-if="contribuicaoFormacao.comentarios.qtdNaoLidos"
                     floating
                     color="red">
-              {{ contribuicaoFormacao.qtdComentariosNaoLidos }}
+              {{ contribuicaoFormacao.comentarios.qtdNaoLidos }}
             </q-chip>
             <q-tooltip :offset="[10, 10]">
               Ver e Responder Comentários
             </q-tooltip>
           </q-btn>
           <q-btn
-            v-if="!contribuicaoFormacao.editaContribuicao"
+            v-if="showBtnEdicao && !contribuicaoFormacao.editaContribuicao"
             icon="edit"
             color="primary"
             push
@@ -140,7 +168,7 @@
             </q-tooltip>
           </q-btn>
           <q-btn
-            v-if="contribuicaoFormacao.editaContribuicao"
+            v-if="showBtnEdicao && contribuicaoFormacao.editaContribuicao"
             icon="save"
             color="positive"
             push
@@ -154,9 +182,9 @@
       </template>
       <div v-if="!contribuicaoFormacao.editaContribuicao"
            @dblclick="contribuicaoFormacao.editaContribuicao = !contribuicaoFormacao.editaContribuicao"
-           v-html="turma.contribuicaoFormacao"/>
+           v-html="plano.contribuicaoFormacao"/>
       <q-editor v-if="contribuicaoFormacao.editaContribuicao"
-                v-model="turma.contribuicaoFormacao"/>
+                v-model="plano.contribuicaoFormacao"/>
     </q-collapsible>
     <!--endregion-->
 
@@ -185,7 +213,7 @@
             </q-tooltip>
           </q-btn>
           <q-btn
-            v-if="!conteudo.editaConteudo"
+            v-if="showBtnEdicao && !conteudo.editaConteudo"
             icon="edit"
             color="primary"
             push
@@ -196,7 +224,7 @@
             </q-tooltip>
           </q-btn>
           <q-btn
-            v-if="conteudo.editaConteudo"
+            v-if="showBtnEdicao && conteudo.editaConteudo"
             icon="save"
             color="positive"
             push
@@ -210,9 +238,9 @@
       </template>
       <div v-if="!conteudo.editaConteudo"
            @dblclick="conteudo.editaConteudo = !conteudo.editaConteudo"
-           v-html="turma.conteudo"/>
+           v-html="plano.conteudo"/>
       <q-editor v-if="conteudo.editaConteudo"
-                v-model="turma.conteudo"/>
+                v-model="plano.conteudo"/>
     </q-collapsible>
     <!--endregion-->
 
@@ -241,7 +269,7 @@
             </q-tooltip>
           </q-btn>
           <q-btn
-            v-if="!criteriosAvaliacao.editaCriterios"
+            v-if="showBtnEdicao && !criteriosAvaliacao.editaCriterios"
             icon="edit"
             color="primary"
             push
@@ -252,7 +280,7 @@
             </q-tooltip>
           </q-btn>
           <q-btn
-            v-if="criteriosAvaliacao.editaCriterios"
+            v-if="showBtnEdicao && criteriosAvaliacao.editaCriterios"
             icon="save"
             color="positive"
             push
@@ -266,17 +294,18 @@
       </template>
       <div v-if="!criteriosAvaliacao.editaCriterios"
            @dblclick="criteriosAvaliacao.editaCriterios = !criteriosAvaliacao.editaCriterios"
-           v-html="turma.criteriosAvaliacao"/>
+           v-html="plano.criteriosAvaliacao"/>
       <q-editor v-if="criteriosAvaliacao.editaCriterios"
-                v-model="turma.criteriosAvaliacao"/>
+                v-model="plano.criteriosAvaliacao"/>
     </q-collapsible>
     <!--endregion-->
 
     <br>
 
     <!--region Bibliografia-->
-    <q-collapsible opened
-                   class="bg-light q-pa-sm">
+    <q-collapsible
+      opened
+      class="bg-light q-pa-sm">
       <template slot="header">
         <q-item-main class="q-title">
           5. Bibliografia
@@ -287,18 +316,24 @@
           <p class="text-weight-bold">
             5.1 Bibliografia Básica
           </p>
-          <p v-for="(ref, index) in turma.bibliografiaBasica"
+          <p v-for="(ref, index) in plano.turma.disciplina.bibliografiaBasica"
              :key="index">
             {{ ref }}
+          </p>
+          <p v-if="!plano.turma.disciplina.bibliografiaBasica">
+            Nenhuma informação encontrada!
           </p>
         </div>
         <div class="col-xs-12 col-md-6">
           <p class="text-weight-bold">
             5.1 Bibliografia Complementar
           </p>
-          <p v-for="(ref, index) in turma.bibliografiaComplementar"
+          <p v-for="(ref, index) in plano.turma.disciplina.bibliografiaComplementar"
              :key="index">
             {{ ref }}
+          </p>
+          <p v-if="!plano.turma.disciplina.bibliografiaComplementar">
+            Nenhuma informação encontrada!
           </p>
         </div>
       </div>
@@ -341,7 +376,7 @@
       </template>
       <div class="row">
         <div class="col-xs-12">
-          <cronograma :itens="turma.itensCronograma"
+          <cronograma :itens="plano.itensCronograma"
                       :edicao="cronograma.editaCronograma"/>
         </div>
       </div>
@@ -349,57 +384,29 @@
     <!--endregion-->
 
     <!--region Modal Comentários-->
-    <q-modal v-model="showModalComentarios"
-             :content-css="{minWidth: '600px', minHeight: '500px'}"
-             @show="scrollModalMsgToEnd">
-      <q-modal-layout>
-        <q-toolbar slot="header">
-          <q-btn flat
-                 round
-                 dense
-                 icon="close"
-                 wait-for-ripple
-                 @click="modalComentarios = false"/>
-          <q-toolbar-title>
-            Comentários
-          </q-toolbar-title>
-        </q-toolbar>
-        <div id="msgContainer"
-             class="q-pa-lg">
-          <q-chat-message
-            v-for="(msg, index) in messages"
-            :key="`avatar-${index}`"
-            :label="msg.label"
-            :sent="msg.sent"
-            :text-color="msg.sent ? 'black' : 'white'"
-            :bg-color="msg.sent ? 'light' : 'primary'"
-            :name="msg.name"
-            :text="msg.text"
-            :stamp="msg.stamp"
-          />
-        </div>
-        <div slot="footer"
-             style="height: 100px;">
-          <div class="q-pa-sm">
-            <q-input
-              :max-height="50"
-              v-model="message"
-              :after="[
-                {
-                  icon: 'send'
-                }
-              ]"
-              placeholder="informe um comentário aqui..."
-              type="textarea"
-            />
-          </div>
-        </div>
-      </q-modal-layout>
-    </q-modal>
+    <modal-comentario
+      id="modalComentarioContribuicao"
+      :show-modal="contribuicaoFormacao.comentarios.showModal"
+      :messages="contribuicaoFormacao.comentarios.data"
+      @onSaveNewMessage="registraComentarioContribuicao"
+      @onHideModal="contribuicaoFormacao.comentarios.showModal = false"/>
+    <modal-comentario
+      id="modalComentarioConteudo"
+      :show-modal="conteudo.comentarios.showModal"
+      :messages="conteudo.comentarios.data"
+      @onSaveNewMessage="registraComentarioConteudo"
+      @onHideModal="conteudo.comentarios.showModal = false"/>
+    <modal-comentario
+      id="modalComentarioCriterios"
+      :show-modal="criteriosAvaliacao.comentarios.showModal"
+      :messages="criteriosAvaliacao.comentarios.data"
+      @onSaveNewMessage="registraComentarioCriterios"
+      @onHideModal="criteriosAvaliacao.comentarios.showModal = false"/>
     <!--endregion-->
 
     <!--region Menu Fab-->
     <v-speed-dial
+      v-if="showBtnAprovarReprovar || showBtnEdicao"
       v-model="showMenuFab"
       right
       bottom
@@ -417,6 +424,7 @@
       </v-btn>
 
       <v-btn
+        v-if="showBtnEdicao"
         fab
         dark
         small
@@ -430,6 +438,7 @@
       </v-btn>
 
       <v-btn
+        v-if="showBtnEdicao"
         fab
         dark
         small
@@ -443,6 +452,7 @@
       </v-btn>
 
       <v-btn
+        v-if="showBtnAprovarReprovar"
         fab
         dark
         small
@@ -456,6 +466,7 @@
       </v-btn>
 
       <v-btn
+        v-if="showBtnAprovarReprovar"
         fab
         dark
         small
@@ -469,18 +480,70 @@
       </v-btn>
     </v-speed-dial>
     <!--endregion-->
+
+    <!--region Modal Alteração Carga Horária-->
+    <v-dialog v-model="showModalCargaHoraria"
+              :fullscreen="$vuetify.breakpoint.smAndDown"
+              width="70vw"
+              scrollable>
+      <v-card tile>
+        <v-toolbar card
+                   color="light">
+          <v-toolbar-title>Alterar Carga Horária</v-toolbar-title>
+          <v-spacer/>
+          <q-btn push
+                 label="Cancelar"
+                 icon="close"
+                 class="q-mr-sm"
+                 @click="showModalCargaHoraria = false"/>
+          <q-btn push
+                 label="Salvar"
+                 icon="save"
+                 color="green"
+                 @click="saveCargaHoraria()"/>
+        </v-toolbar>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field
+                  v-model="cargaHoraria.teorica"
+                  type="number"
+                  label="Teórica"
+                  placeholder="Informe a carga horária teórica"
+                  outline/>
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field
+                  v-model="cargaHoraria.pratica"
+                  type="number"
+                  label="Prática"
+                  placeholder="Informe a carga horária prática"
+                  outline/>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+    <!--endregion-->
   </div>
 </template>
 
 <script>
-import {uid}          from 'quasar';
-import Cronograma     from './cronograma';
-import {TurmaService} from '../turmaService';
+import {LocalStorage, uid}                 from 'quasar';
+import Cronograma                          from './cronograma';
+import {statusPlanoEnsino, tipoComentario} from '../../../utils/constants';
+import {planoEnsinoService}                from '../planoEnsinoService';
+import ModalComentario                     from './modal-comentario';
+
+const NO_CONTENT_MESSAGE = 'Nenhuma informação encontrada!';
 
 export default {
-  components: {Cronograma},
+  name: 'DetalhesPlanoEnsino',
+  components: {ModalComentario, Cronograma},
   props: {
-    id: {
+    uuid: {
       type: String,
       default: undefined,
       require: true
@@ -489,76 +552,188 @@ export default {
   data () {
     return {
       contribuicaoFormacao: {
+        comentarios: {
+          data: [
+            {
+              label: 'Quinta-Feira 31/05/2018, 10:00'
+            },
+            {
+              name: 'Stephany',
+              text: ['Precisa melhorar o cronograma, as datas estão erradas.'],
+              stamp: '13:34'
+            },
+            {
+              name: 'Professor',
+              text: ['Ok Stephany. E agora?'],
+              sent: true,
+              stamp: '18:10'
+            },
+            {
+              name: 'Stephany',
+              text: ['Agora ficou legal.'],
+              stamp: '18:30'
+            },
+            {
+              label: 'Hoje'
+            },
+            {
+              name: 'Stephany',
+              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
+              stamp: '13:55'
+            },
+            {
+              name: 'Stephany',
+              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
+              stamp: '13:55'
+            },
+            {
+              name: 'Stephany',
+              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
+              stamp: '13:55'
+            }
+          ],
+          showModal: false,
+          novoComentario: {descricao: ''},
+          qtdNaoLidos: 0
+        },
         collapsible: true,
-        editaContribuicao: false,
-        qtdComentariosNaoLidos: 0
+        editaContribuicao: false
       },
       conteudo: {
+        comentarios: {
+          data: [
+            {
+              label: 'Quinta-Feira 31/05/2018, 10:00'
+            },
+            {
+              name: 'Stephany',
+              text: ['Precisa melhorar o cronograma, as datas estão erradas.'],
+              stamp: '13:34'
+            },
+            {
+              name: 'Professor',
+              text: ['Ok Stephany. E agora?'],
+              sent: true,
+              stamp: '18:10'
+            },
+            {
+              name: 'Stephany',
+              text: ['Agora ficou legal.'],
+              stamp: '18:30'
+            },
+            {
+              label: 'Hoje'
+            },
+            {
+              name: 'Stephany',
+              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
+              stamp: '13:55'
+            }
+          ],
+          showModal: false,
+          novoComentario: {descricao: ''},
+          qtdNaoLidos: 0
+        },
         collapsible: true,
         editaConteudo: false,
         qtdComentariosNaoLidos: 0
       },
       criteriosAvaliacao: {
+        comentarios: {
+          data: [
+            {
+              label: 'Quinta-Feira 31/05/2018, 10:00'
+            },
+            {
+              name: 'Stephany',
+              text: ['Precisa melhorar o cronograma, as datas estão erradas.'],
+              stamp: '13:34'
+            },
+            {
+              name: 'Professor',
+              text: ['Ok Stephany. E agora?'],
+              sent: true,
+              stamp: '18:10'
+            },
+            {
+              name: 'Stephany',
+              text: ['Agora ficou legal.'],
+              stamp: '18:30'
+            },
+            {
+              label: 'Hoje'
+            },
+            {
+              name: 'Stephany',
+              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
+              stamp: '13:55'
+            }
+          ],
+          showModal: false,
+          novoComentario: {descricao: ''},
+          qtdNaoLidos: 0
+        },
         collapsible: true,
         editaCriterios: false,
         qtdComentariosNaoLidos: 0
       },
       cronograma: {
+        comentarios: {
+          data: [
+            {
+              label: 'Quinta-Feira 31/05/2018, 10:00'
+            },
+            {
+              name: 'Stephany',
+              text: ['Precisa melhorar o cronograma, as datas estão erradas.'],
+              stamp: '13:34'
+            },
+            {
+              name: 'Professor',
+              text: ['Ok Stephany. E agora?'],
+              sent: true,
+              stamp: '18:10'
+            },
+            {
+              name: 'Stephany',
+              text: ['Agora ficou legal.'],
+              stamp: '18:30'
+            },
+            {
+              label: 'Hoje'
+            },
+            {
+              name: 'Stephany',
+              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
+              stamp: '13:55'
+            }
+          ],
+          showModal: false,
+          novoComentario: {descricao: ''},
+          qtdNaoLidos: 0
+        },
         collapsible: false,
         editaCronograma: false
       },
-      showModalComentarios: false,
+      cargaHoraria: {
+        teorica: undefined,
+        pratica: undefined
+      },
+      showModalCargaHoraria: false,
       showMenuFab: false,
       showModalCopiar: false,
       showModalAprovacao: false,
+      showBtnAprovarReprovar: false,
+      showBtnEdicao: false,
       addItemCronograma: false,
-      message: '',
-      messages: [
-        {
-          label: 'Quinta-Feira 31/05/2018, 10:00'
-        },
-        {
-          name: 'Stephany',
-          text: ['Precisa melhorar o cronograma, as datas estão erradas.'],
-          stamp: '13:34'
-        },
-        {
-          name: 'Professor',
-          text: ['Ok Stephany. E agora?'],
-          sent: true,
-          stamp: '18:10'
-        },
-        {
-          name: 'Stephany',
-          text: ['Agora ficou legal.'],
-          stamp: '18:30'
-        },
-        {
-          label: 'Hoje'
-        },
-        {
-          name: 'Stephany',
-          text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
-          stamp: '13:55'
-        }
-      ],
-      turma: {
-        ementa: '<p>Nenhuma informação encontrada!</p>',
-        contribuicaoFormacao: '<p>Nenhuma informação encontrada!</p>',
-        conteudo: '<p>Nenhuma informação encontrada!</p>',
-        criteriosAvaliacao: '<p>Nenhuma informação encontrada!</p>',
-        cargaHorariaTeorica: 60,
-        cargaHorariaPratica: 60,
-        bibliografiaBasica: [
-          'ABREU, A. S. Curso de redação. São Paulo: Editora Ática. 2004. p 168.',
-          'MARTINS, D. S.; ZILBERKNOP, L. S. Português instrumental: de acordo com as atuais normas da ABNT. 27 ed. São Paulo: Atlas, 2008.',
-          'BECHARA, E. Moderna gramática portuguesa. São Paulo: Editora Nacional. 2001.'
-        ],
-        bibliografiaComplementar: [
-          'ABREU, A. S. Curso de redação. São Paulo: Editora Ática. 2004. p 168.',
-          'MARTINS, D. S.; ZILBERKNOP, L. S. Português instrumental: de acordo com as atuais normas da ABNT. 27 ed. São Paulo: Atlas, 2008.',
-          'BECHARA, E. Moderna gramática portuguesa. São Paulo: Editora Nacional. 2001.'
-        ],
+      plano: {
+        id: undefined,
+        uuid: undefined,
+        contribuicaoFormacao: NO_CONTENT_MESSAGE,
+        conteudo: NO_CONTENT_MESSAGE,
+        criteriosAvaliacao: NO_CONTENT_MESSAGE,
+        qtdHorasPratica: 0,
+        qtdHorasTeorica: 0,
         itensCronograma: [
           {
             uuid: uid(),
@@ -648,92 +823,228 @@ export default {
               }
             ]
           }
-        ]
+        ],
+        turma: {
+          uuid: undefined,
+          nome: '',
+          statusPlanoEnsino: '',
+          disciplina: {
+            uuid: undefined,
+            nome: '',
+            ementa: NO_CONTENT_MESSAGE,
+            bibliografiaBasica: [NO_CONTENT_MESSAGE],
+            bibliografiaComplementar: [NO_CONTENT_MESSAGE]
+          },
+          professor: {
+            uuid: undefined,
+            nome: ''
+          },
+          curso: {
+            uuid: undefined,
+            nome: '',
+            coordenador: {
+              uuid: undefined,
+              nome: ''
+            }
+          }
+        }
       }
     };
   },
   computed: {
-    turmas () {
-      return this.$store.getters['turmas/getData'].map(turma => {
-        return {
-          label: `${turma.semestre} - ${turma.disciplina} - ${turma.codInterno}`,
-          sublabel: `${turma.professor} - ${turma.curso}`,
-          value: turma
-        };
-      });
-    },
-    semestres () {
-      return [
-        {
-          label: '2018/1',
-          value: '2018/1'
-        }, {
-          label: '2017/2',
-          value: '2017/2'
-        }
-      ];
+    colorByStatus () {
+      return statusPlanoEnsino.getColorByValue(this.plano.turma.statusPlanoEnsino);
     }
   },
-  mounted () {
+  async created () {
     if (this.uuid) {
-      TurmaService.getPlanoTurmaByUUID(this.id)
+      this.$q.loading.show();
+      await planoEnsinoService.getPlanoByTurmaUUID(this.uuid)
       .then(data => {
         if (!data) {
-          this.$router.push({path: '/pages/disciplinas'});
+          this.$router.push({path: '/pages/turmas'});
           this.$q.notify({
             type: 'warning',
             position: 'top',
             message: 'Disciplina não encontrada!'
           });
         } else {
-          this.disciplina = data;
-          this.cursos.items.push(this.disciplina.curso);
+          this.plano                  = {
+            ...this.plano,
+            ...data
+          };
+          this.showBtnAprovarReprovar = this.isShowBtnAprovarReprovar();
+          this.showBtnEdicao          = this.isShowBtnEdicao();
+          console.log(this.plano);
         }
-        this.$q.loading.hide();
-      });
-    } else {
-      this.$q.loading.hide();
+      })
+      .catch(() => {
+        this.$router.push({path: '/pages/turmas'});
+        this.$q.notify({
+          message: `Erro ao buscar informações!`,
+          type: 'negative',
+          detail: 'Aguarde e tente novamente',
+          position: 'top'
+        });
+      })
+      .finally(() => this.$q.loading.hide());
     }
   },
   methods: {
+    saveCargaHoraria () {
+      this.$q.loading.show();
+      planoEnsinoService.updateCargaHoraria(this.plano.id, this.cargaHoraria.teorica, this.cargaHoraria.pratica)
+      .then(() => {
+        this.$q.notify({
+          message: `Carga horária alterada com sucesso!`,
+          type: 'positive',
+          position: 'top'
+        });
+        this.plano.qtdHorasTeorica = this.cargaHoraria.teorica;
+        this.plano.qtdHorasPratica = this.cargaHoraria.pratica;
+        this.showModalCargaHoraria = false;
+      }).catch(() => {
+        this.$q.notify({
+          message: 'Não foi possível salvar as alterações.',
+          detail: 'Atualize a página e tente novamente!',
+          type: 'warning',
+          position: 'top'
+        });
+      }).finally(() => this.$q.loading.hide());
+    },
+    onShowModalCargaHoraria () {
+      this.cargaHoraria.teorica  = this.plano.qtdHorasTeorica;
+      this.cargaHoraria.pratica  = this.plano.qtdHorasPratica;
+      this.showModalCargaHoraria = true;
+    },
     saveContribuicao () {
-      console.log('Salvando contribuição');
-      this.contribuicaoFormacao.editaContribuicao = false;
-      this.$q.notify({
-        message: 'Alterações Salvas com Sucesso',
-        type: 'positive',
-        position: 'top'
-      });
+      this.$q.loading.show({message: 'Salvando Informações!'});
+      planoEnsinoService.updateContribuicaoFormacao(this.plano.id, this.plano.contribuicaoFormacao)
+      .then(() => {
+        this.$q.notify({
+          message: 'Contribuição atualizada com sucesso!',
+          type: 'positive',
+          position: 'top'
+        });
+        this.contribuicaoFormacao.editaContribuicao = false;
+      }).catch(() => {
+        this.$q.notify({
+          message: 'Não foi possível salvar as alterações.',
+          detail: 'Atualize a página e tente novamente!',
+          type: 'warning',
+          position: 'top'
+        });
+      }).finally(() => this.$q.loading.hide());
     },
     saveConteudo () {
-      console.log('Salvando conteúdo');
-      this.conteudo.editaConteudo = false;
-      this.$q.notify({
-        message: 'Alterações Salvas com Sucesso',
-        type: 'positive',
-        position: 'top'
-      });
+      this.$q.loading.show({message: 'Salvando Informações!'});
+      planoEnsinoService.updateConteudo(this.plano.id, this.plano.conteudo)
+      .then(() => {
+        this.$q.notify({
+          message: 'Conteúdo atualizado com sucesso!',
+          type: 'positive',
+          position: 'top'
+        });
+        this.conteudo.editaConteudo = false;
+      }).catch(() => {
+        this.$q.notify({
+          message: 'Não foi possível salvar as alterações.',
+          detail: 'Atualize a página e tente novamente!',
+          type: 'warning',
+          position: 'top'
+        });
+      }).finally(() => this.$q.loading.hide());
     },
     saveCriteriosAvaliacao () {
-      console.log('Salvando critérios de avaliação');
-      this.criteriosAvaliacao.editaCriterios = false;
-      this.$q.notify({
-        message: 'Alterações Salvas com Sucesso',
-        type: 'positive',
-        position: 'top'
-      });
+      this.$q.loading.show({message: 'Salvando Informações!'});
+      planoEnsinoService.updateCriteriosAvaliacao(this.plano.id, this.plano.criteriosAvaliacao)
+      .then(() => {
+        this.$q.notify({
+          message: 'Padrões e Critérios atualizados com sucesso!',
+          type: 'positive',
+          position: 'top'
+        });
+        this.criteriosAvaliacao.editaCriterios = false;
+      }).catch(() => {
+        this.$q.notify({
+          message: 'Não foi possível salvar as alterações.',
+          detail: 'Atualize a página e tente novamente!',
+          type: 'warning',
+          position: 'top'
+        });
+      }).finally(() => this.$q.loading.hide());
     },
     showModalComentariosConteudo () {
       this.showModalComentarios = true;
     },
     showModalComentariosContribuicao () {
-      this.showModalComentarios = true;
+      this.contribuicaoFormacao.comentarios.showModal = true;
     },
     showModalComentariosCriterios () {
       this.showModalComentarios = true;
     },
     showModalComentariosCronograma () {
       this.showModalComentarios = true;
+    },
+    registraComentarioContribuicao (descricao) {
+      this.$q.loading.show({message: 'Salvando Informações'});
+      planoEnsinoService.registraComentario(this.plano.id, {
+        descricao: descricao,
+        tipo: tipoComentario.CONTRIBUICAO_FORMACAO
+      })
+      .then(coment => {
+        this.contribuicaoFormacao.comentarios.data.push(coment);
+      })
+      .catch(err => {
+        console.log(err);
+        this.$q.notify({
+          message: 'Não foi possível salvar as alterações.',
+          detail: 'Atualize a página e tente novamente!',
+          type: 'warning',
+          position: 'top'
+        });
+      })
+      .finally(() => this.$q.loading.hide());
+    },
+    registraComentarioConteudo (descricao) {
+      this.$q.loading.show({message: 'Salvando Informações'});
+      planoEnsinoService.registraComentario(this.plano.id, {
+        descricao: descricao,
+        tipo: tipoComentario.CONTEUDO
+      })
+      .then(coment => {
+        this.conteudo.comentarios.data.push(coment);
+      })
+      .catch(err => {
+        console.log(err);
+        this.$q.notify({
+          message: 'Não foi possível salvar as alterações.',
+          detail: 'Atualize a página e tente novamente!',
+          type: 'warning',
+          position: 'top'
+        });
+      })
+      .finally(() => this.$q.loading.hide());
+    },
+    registraComentarioCriterios (descricao) {
+      this.$q.loading.show({message: 'Salvando Informações'});
+      planoEnsinoService.registraComentario(this.plano.id, {
+        descricao: descricao,
+        tipo: tipoComentario.CRITERIOS_AVALIACAO
+      })
+      .then(coment => {
+        this.criteriosAvaliacao.comentarios.data.push(coment);
+      })
+      .catch(err => {
+        console.log(err);
+        this.$q.notify({
+          message: 'Não foi possível salvar as alterações.',
+          detail: 'Atualize a página e tente novamente!',
+          type: 'warning',
+          position: 'top'
+        });
+      })
+      .finally(() => this.$q.loading.hide());
     },
     copiaDadosDeOutroPlano () {
       this.$q.notify({
@@ -745,10 +1056,6 @@ export default {
     abreVisualizacaoTurma () {
       const route = this.$router.resolve('/planoensino/3');
       window.window.open(route.href, '_blank');
-    },
-    scrollModalMsgToEnd () {
-      const container     = document.querySelector('#msgContainer').parentElement;
-      container.scrollTop = container.scrollHeight;
     },
     onClickBtnEditaContribuicao () {
       this.contribuicaoFormacao.collapsible       = true;
@@ -765,6 +1072,17 @@ export default {
     onClickBtnEditaCronograma () {
       this.cronograma.collapsible     = true;
       this.cronograma.editaCronograma = !this.cronograma.editaCronograma;
+    },
+    isShowBtnEdicao () {
+      const usuarioLogado = LocalStorage.get.item('contexto').usuarioLogado;
+      console.log(this.plano.turma.professor.nome);
+      return (this.plano.turma.statusPlanoEnsino === statusPlanoEnsino.EM_PRODUCAO ||
+        this.plano.turma.statusPlanoEnsino === statusPlanoEnsino.NECESSITA_ALTERACOES) &&
+        this.$can('PROFESSOR') && usuarioLogado.uuid === this.plano.turma.professor.uuid;
+    },
+    isShowBtnAprovarReprovar () {
+      return this.plano.turma.statusPlanoEnsino === statusPlanoEnsino.AGUARDANDO_ANALISE &&
+        this.$can('COORDENADOR');
     }
   }
 };

@@ -70,12 +70,7 @@ export default {
         columns: [
           {name: 'id', field: 'id'},
           {name: 'uuid', field: 'uuid'},
-          {
-            name: 'codigoInterno',
-            label: 'Cód. Interno',
-            field: 'codigoInterno',
-            align: 'left'
-          },
+          {name: 'codigoInterno', label: 'Cód. Interno', field: 'codigoInterno', align: 'left'},
           {name: 'nome', label: 'Nome', field: 'nome', align: 'left'},
           {name: 'curso', label: 'Curso', field: 'curso', align: 'left'}
         ],
@@ -116,8 +111,7 @@ export default {
       this.$router.push({path: `/pages/disciplinas/edicao/${selected.uuid}`});
     },
     onClickDesaDisciplina () {
-      this.$q
-      .dialog({
+      this.$q.dialog({
         title: 'Confirmação',
         message: 'Deseja realmente desativar a disciplina?',
         ok: true,
