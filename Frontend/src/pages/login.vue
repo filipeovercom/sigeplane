@@ -1,35 +1,42 @@
 <template>
-  <q-layout>
+  <q-layout class="bg-light">
     <q-page-container>
       <q-page padding>
         <div class="row justify-center items-center">
           <div class="col-xs-12 text-center">
-            <img class="q-mb-xl" src="http://www.catolica-to.edu.br/portal/portal/media/img/logo_catolica_azul.png"
+            <img class="q-mb-xl"
+                 src="http://www.catolica-to.edu.br/portal/portal/media/img/logo_catolica_azul.png"
                  width="200px">
           </div>
-          <q-card class="q-pa-lg col-xs-12 col-md-6">
-            <div class="col-xs-12 text-center">
-              <h3 style="color: #5db761" class="q-ma-xs">
+          <q-card class="q-pa-lg col-xs-12 col-md-6 bg-white">
+            <div class="col-xs-12 text-center q-mb-lg">
+              <h1 class="q-ma-xs text-primary"
+                  style="font-size: 4rem">
                 SGPE
-              </h3>
-              <h6 class="q-mt-xs">Sistema de Gerenciamento de Planos de Ensino</h6>
-              <br>
+              </h1>
+              <h2 class="q-mt-xs text-primary"
+                  style="font-size: 1.5rem">Sistema de Gerenciamento de Planos de Ensino</h2>
             </div>
-            <q-field icon="person" class="col-xs-12">
-              <q-input v-model="form.matricula" float-label="Matrícula"
-                       required @keyup.enter="submit"/>
-            </q-field>
-            <br>
-            <br>
-            <q-field icon="lock" class="col-xs-12">
-              <q-input v-model="form.password" type="password" visibility-icon=""
-                       float-label="Senha"
-                       required @keyup.enter="submit"/>
-            </q-field>
-            <br>
-            <br>
+            <v-text-field
+              v-model="form.email"
+              label="E-mail Institucional"
+              suffix="@catolica-to.edu.br"
+              required
+              outline
+              prepend-icon="person"
+              @keyup.enter="submit"/>
+            <v-text-field
+              :type="showPassword ? 'text' : 'password'"
+              :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+              v-model="form.password"
+              label="Senha"
+              required
+              outline
+              prepend-icon="lock"
+              @keyup.enter="submit"
+            />
             <q-btn label="Entrar"
-                   size="lg"
+                   push
                    color="primary"
                    class="full-width"
                    @click="submit"/>
@@ -43,30 +50,31 @@
 <script>
 export default {
   data: () => ({
+    showPassword: false,
     form: {
       password: '',
-      matricula: ''
+      email: ''
     }
   }),
   methods: {
     submit () {
       this.$store
-        .dispatch('contexto/login', {
-          matricula: this.form.matricula,
-          password: this.form.password
-        })
-        .then(() => {
-          this.$router.push({path: '/'});
-        })
-        .catch(error => {
-          this.$q.notify({
-            message: `Ooops! Estamos com problemas`,
-            type: 'negative',
-            detail: 'Aguarde e tente novamente',
-            position: 'top'
-          });
-          console.error('Erro ao realizar login: ', error);
+      .dispatch('contexto/login', {
+        email: this.form.email.concat('@catolica-to.edu.br'),
+        password: this.form.password
+      })
+      .then(() => {
+        this.$router.push({path: '/'});
+      })
+      .catch(error => {
+        this.$q.notify({
+          message: `Ooops! Estamos com problemas`,
+          type: 'negative',
+          detail: 'Aguarde e tente novamente',
+          position: 'top'
         });
+        console.error('Erro ao realizar login: ', error);
+      });
     }
   }
 };

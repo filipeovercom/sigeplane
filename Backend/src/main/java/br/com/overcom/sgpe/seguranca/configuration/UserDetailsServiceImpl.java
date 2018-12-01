@@ -20,9 +20,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String matricula) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String matriculaOuEmail) throws UsernameNotFoundException {
 		return usuarioService
-			.findByMatriculaWithPerfis(matricula)
+			.findByMatriculaEmailWithPerfis(matriculaOuEmail)
 			.map(UsuarioDTOFactory::create)
 			.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 	}

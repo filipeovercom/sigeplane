@@ -1,5 +1,7 @@
 <template>
-  <table class="tg">
+  <table
+    v-if="itens && itens.length > 0"
+    class="tg">
     <thead>
     <tr>
       <th>Competências<br></th>
@@ -13,46 +15,53 @@
     </thead>
     <tbody>
     <template v-for="(item, index) in itens">
-      <!--PRIMEIRO ITEM DO CRONOGRAMA-->
+      <!--region PRIMEIRO ITEM DO CRONOGRAMA-->
       <tr :key="index + uid()">
         <td :rowspan="getRowSpanCompetencia(item.subItens)">
           <cronograma-list-item
             :itens="item.competencias"
             :edicao="edicao"
             item-id="id"
-            item-label="descricao"/>
+            item-label="descricao"
+            @removeItem="onRemoverCompetencia"/>
         </td>
         <td :rowspan="getRowSpan(item.subItens[0].datas)">
           <cronograma-list-item
             :itens="item.subItens[0].habilidades"
             :edicao="edicao"
             item-id="id"
-            item-label="descricao"/>
+            item-label="descricao"
+            @removeItem="onRemoverHabilidade"/>
         </td>
         <td>
           <cronograma-list-item
             :itens="item.subItens[0].datas[0].data"
-            :edicao="edicao"/>
+            :edicao="edicao"
+            @removeItem="onRemoverData"/>
         </td>
         <td>
           <cronograma-list-item
             :itens="item.subItens[0].datas[0].conteudos"
-            :edicao="edicao"/>
+            :edicao="edicao"
+            @removeItem="onRemoverConteudo"/>
         </td>
         <td>
           <cronograma-list-item
             :itens="item.subItens[0].datas[0].recursos"
-            :edicao="edicao"/>
+            :edicao="edicao"
+            @removeItem="onRemoverRecurso"/>
         </td>
         <td>
           <cronograma-list-item
             :itens="item.subItens[0].datas[0].metodologias"
-            :edicao="edicao"/>
+            :edicao="edicao"
+            @removeItem="onRemoverMetodologia"/>
         </td>
         <td>
           <cronograma-list-item
             :itens="item.subItens[0].datas[0].avaliacao"
-            :edicao="edicao"/>
+            :edicao="edicao"
+            @removeItem="onRemoverAvaliacao"/>
         </td>
       </tr>
 
@@ -61,102 +70,111 @@
           <td>
             <cronograma-list-item
               :itens="dataSubItem.data"
-              :edicao="edicao"/>
+              :edicao="edicao"
+              @removeItem="onRemoverData"/>
           </td>
           <td>
             <cronograma-list-item
               :itens="dataSubItem.conteudos"
-              :edicao="edicao"/>
+              :edicao="edicao"
+              @removeItem="onRemoverConteudo"/>
           </td>
           <td>
             <cronograma-list-item
               :itens="dataSubItem.recursos"
-              :edicao="edicao"/>
+              :edicao="edicao"
+              @removeItem="onRemoverRecurso"/>
           </td>
           <td>
             <cronograma-list-item
               :itens="dataSubItem.metodologias"
-              :edicao="edicao"/>
+              :edicao="edicao"
+              @removeItem="onRemoverMetodologia"/>
           </td>
           <td>
             <cronograma-list-item
               :itens="dataSubItem.avaliacao"
-              :edicao="edicao"/>
+              :edicao="edicao"
+              @removeItem="onRemoverAvaliacao"/>
           </td>
         </tr>
       </template>
-      <!--end-->
+      <!--endregion-->
 
       <!--region DEMAIS ITENS DO CRONOGRAMA-->
       <template v-for="(subItem, index3) in item.subItens.slice(1, item.subItens.length)">
         <tr :key="index3 + uid()">
           <td :rowspan="getRowSpan(subItem.datas)">
-            <p v-for="habilidade in subItem.habilidades"
-               :key="habilidade.id">
-              {{ habilidade.nome }}
-            </p>
+            <cronograma-list-item
+              :itens="subItem.habilidades"
+              :edicao="edicao"
+              item-id="id"
+              item-label="descricao"
+              @removeItem="onRemoverHabilidade"/>
           </td>
           <td>
-            <p v-for="(data, indexData) in subItem.datas[0].data"
-               :key="indexData">
-              {{ data }}
-            </p>
+            <cronograma-list-item
+              :itens="subItem.datas[0].data"
+              :edicao="edicao"
+              @removeItem="onRemoverData"/>
           </td>
           <td>
-            <p v-for="(conteudo, indexConteudo) in subItem.datas[0].conteudos"
-               :key="indexConteudo">
-              {{ conteudo }}
-            </p>
+            <cronograma-list-item
+              :itens="subItem.datas[0].conteudos"
+              :edicao="edicao"
+              @removeItem="onRemoverConteudo"/>
           </td>
           <td>
-            <p v-for="(recurso, indexRecurso) in subItem.datas[0].recursos"
-               :key="indexRecurso">
-              {{ recurso }}
-            </p>
+            <cronograma-list-item
+              :itens="subItem.datas[0].recursos"
+              :edicao="edicao"
+              @removeItem="onRemoverRecurso"/>
           </td>
           <td>
-            <p v-for="(metodologia, indexMetodologia) in subItem.datas[0].metodologias"
-               :key="indexMetodologia">
-              {{ metodologia }}
-            </p>
+            <cronograma-list-item
+              :itens="subItem.datas[0].metodologias"
+              :edicao="edicao"
+              @removeItem="onRemoverMetodologia"/>
           </td>
           <td>
-            <p v-for="(avaliacao, indexAvaliacao) in subItem.datas[0].avaliacao"
-               :key="indexAvaliacao"
-               v-html="avaliacao"/>
+            <cronograma-list-item
+              :itens="subItem.datas[0].avaliacao"
+              :edicao="edicao"
+              @removeItem="onRemoverAvaliacao"/>
           </td>
         </tr>
 
         <template v-for="(dataSubItem, index4) in subItem.datas.slice(1, subItem.datas.length)">
           <tr :key="index4 + uid()">
             <td>
-              <p v-for="(data2, indexData2) in dataSubItem.data"
-                 :key="indexData2">
-                {{ data2 }}
-              </p>
+              <cronograma-list-item
+                :itens="dataSubItem.data"
+                :edicao="edicao"
+                @removeItem="onRemoverData"/>
             </td>
             <td>
-              <p v-for="(conteudo2, indexConteudo2) in dataSubItem.conteudos"
-                 :key="indexConteudo2">
-                {{ conteudo2 }}
-              </p>
+              <cronograma-list-item
+                :itens="dataSubItem.conteudos"
+                :edicao="edicao"
+                @removeItem="onRemoverConteudo"/>
             </td>
             <td>
-              <p v-for="(recurso2, indexRecurso2) in dataSubItem.recursos"
-                 :key="indexRecurso2">
-                {{ recurso2 }}
-              </p>
+              <cronograma-list-item
+                :itens="dataSubItem.recursos"
+                :edicao="edicao"
+                @removeItem="onRemoverRecurso"/>
             </td>
             <td>
-              <p v-for="(metodologia2, indexMetodologia2) in dataSubItem.metodologias"
-                 :key="indexMetodologia2">
-                {{ metodologia2 }}
-              </p>
+              <cronograma-list-item
+                :itens="dataSubItem.metodologias"
+                :edicao="edicao"
+                @removeItem="onRemoverMetodologia"/>
             </td>
             <td>
-              <p v-for="(avaliacao2, indexAvaliacao2) in dataSubItem.avaliacao"
-                 :key="indexAvaliacao2"
-                 v-html="avaliacao2"/>
+              <cronograma-list-item
+                :itens="dataSubItem.avaliacao"
+                :edicao="edicao"
+                @removeItem="onRemoverAvaliacao"/>
             </td>
           </tr>
         </template>
@@ -171,23 +189,46 @@
 <script>
 import {uid}              from 'quasar';
 import CronogramaListItem from './cronograma-list-item';
+import {itensCronograma}  from '../../../assets/itensCronograma';
 
 export default {
   name: 'Cronograma',
   components: {CronogramaListItem},
   props: {
-    itens: {
-      type: Array,
-      default: () => []
-    },
     edicao: {
       type: Boolean,
       default: () => false
     }
   },
+  data () {
+    return {
+      itens: itensCronograma
+    };
+  },
   methods: {
     uid () {
       return uid();
+    },
+    onRemoverCompetencia (competencia) {
+      this.$emit('removeCompetencia', competencia);
+    },
+    onRemoverHabilidade (habilidade) {
+      this.$emit('removeHabilidade', habilidade);
+    },
+    onRemoverData (data) {
+      this.$emit('removeData', data);
+    },
+    onRemoverConteudo (conteudo) {
+      this.$emit('removeConteudo', conteudo);
+    },
+    onRemoverRecurso (recurso) {
+      this.$emit('removeRecurso', recurso);
+    },
+    onRemoverMetodologia (metodologia) {
+      this.$emit('removeMetodologia', metodologia);
+    },
+    onRemoverAvaliacao (avaliacao) {
+      this.$emit('removeAvaliacao', avaliacao);
     },
     getRowSpan (itens) {
       return itens ? itens.length : 0;

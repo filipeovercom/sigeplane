@@ -34,8 +34,8 @@ public class UsuarioService extends AbstractService<Usuario> {
 		return repository.findByEmailWithPerfis(email);
 	}
 
-	public Optional<Usuario> findByMatriculaWithPerfis(String matricula) {
-		return repository.findByMatriculaWithPerfis(matricula);
+	public Optional<Usuario> findByMatriculaEmailWithPerfis(String matriculaOuEmail) {
+		return repository.findByMatriculaEmailWithPerfis(matriculaOuEmail);
 	}
 
 	@Override

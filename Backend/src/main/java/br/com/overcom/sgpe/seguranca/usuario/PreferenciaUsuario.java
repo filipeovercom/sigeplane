@@ -20,7 +20,7 @@ public class PreferenciaUsuario {
 	private String locale;
 
 	@OneToOne
-	@JoinColumn(name = "ID_PERIODO_SELECIONADO", referencedColumnName = "ID",
+	@JoinColumn(name = "ID_PERIODO_SELECIONADO", referencedColumnName = "UUID",
 		foreignKey = @ForeignKey(name = "FK_USUARIO_PERIODO_SELECIONADO"))
 	private PeriodoLetivo periodoSelecionado;
 

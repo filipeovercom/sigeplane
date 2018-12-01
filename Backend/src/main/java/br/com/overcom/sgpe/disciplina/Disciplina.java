@@ -32,20 +32,20 @@ public class Disciplina extends AbstractEntity {
 
 	private String nome;
 
-	@Column(name = "CODIGO_INTERNO")
+	@Column(name = "COD_INTERNO")
 	private String codigoInterno;
 
 	@Column(columnDefinition = "TEXT")
 	private String ementa;
 
-	@Column(name = "CONTRIBUICAO_FORMACAO", columnDefinition = "TEXT")
-	private String contribuicaoFormacao;
+	@Column(name = "QTD_HORAS_TOTAL")
+	private Integer qtdHorasTtotal;
 
 	@OneToMany(mappedBy = "disciplina", orphanRemoval = true, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private List<ReferenciaBibliografica> bibliografias;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_CURSO", referencedColumnName = "ID",
+	@JoinColumn(name = "ID_CURSO", referencedColumnName = "UUID",
 		foreignKey = @ForeignKey(name = "FK_DISCIPLINA_CURSO"))
 	@Fetch(FetchMode.JOIN)
 	private Curso curso;

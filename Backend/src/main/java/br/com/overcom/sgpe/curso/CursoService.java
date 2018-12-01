@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -28,5 +29,9 @@ public class CursoService extends AbstractService<Curso> {
 	@Override
 	public Optional<Curso> findByUUID(UUID uuid) {
 		return repository.findOne(QCurso.curso.uuid.eq(uuid));
+	}
+
+	public List<CursoDTO> findByNomeLimit10(String nome) {
+		return repository.findByNomeLimit10(nome);
 	}
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="animate-scale">
     <q-list no-border
             highlight>
       <q-item v-for="(item, index) in itens"
@@ -13,16 +13,11 @@
             icon="delete"
             color="negative"
             class="animate-scale"
-            flat/>
+            flat
+            @click="onClickBtnRemoverItem(item)"/>
         </q-item-main>
       </q-item>
     </q-list>
-    <q-btn
-      v-if="edicao"
-      icon="add"
-      class="animate-scale"
-      color="positive"
-      outline/>
   </div>
 </template>
 
@@ -49,6 +44,11 @@ export default {
     idEdicao: {
       type: String,
       default: () => ''
+    }
+  },
+  methods: {
+    onClickBtnRemoverItem (item) {
+      this.$emit('removeItem', item);
     }
   }
 };

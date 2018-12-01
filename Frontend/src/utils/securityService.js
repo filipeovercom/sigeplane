@@ -4,14 +4,14 @@ import {LocalStorage} from 'quasar';
 
 export const segurancaService = (() => {
   const credenciaisBasicas = `Basic ${btoa('frontendsgpe:frontendsgpepassword')}`;
-  const apiUrl             = 'api/seguranca';
+  const apiUrl             = `${httpService.baseUrl()}api/seguranca`;
   const loginUrl           = `${httpService.baseUrl()}oauth/token`;
   return {
     autenticaUsuario: (pUsuario) => {
       return new Promise((resolve, reject) => {
         const authenticationData = new FormData();
         authenticationData.append('grant_type', 'password');
-        authenticationData.append('username', pUsuario.matricula);
+        authenticationData.append('username', pUsuario.email);
         authenticationData.append('password', encodeURIComponent(pUsuario.password));
         axios.request({
           method: 'post',
@@ -21,7 +21,7 @@ export const segurancaService = (() => {
         }).then(({data}) => {
           const tokens = data;
           axios.request({
-            url: `${httpService.baseUrl()}${apiUrl}/contexto`,
+            url: `${apiUrl}/contexto`,
             headers: {'Authorization': `Bearer ${tokens['access_token']}`}
           }).then(async ({data}) => {
             data = data.data;
@@ -50,7 +50,7 @@ export const segurancaService = (() => {
           }).then(({data}) => {
             const tokens = data;
             axios.request({
-              url: `${httpService.baseUrl()}${apiUrl}/contexto`,
+              url: `${apiUrl}/contexto`,
               headers: {'Authorization': `Bearer ${tokens['access_token']}`}
             }).then(async ({data}) => {
               data = data.data;
@@ -69,11 +69,7 @@ export const segurancaService = (() => {
     },
     atualizaPeriodoNoContexto: (periodoUUID) => {
       console.log(periodoUUID);
-      return httpService.put({
-        method: 'put',
-        url: `${apiUrl}/contexto/periodo/${periodoUUID}`,
-        params: {uuid: periodoUUID}
-      });
+      return httpService.put(`${apiUrl}/contexto/periodo/${periodoUUID}`, null, {uuid: periodoUUID});
     }
   };
 })();

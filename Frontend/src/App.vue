@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style>
-  /*Corrigi tamanho dos ícones do Fontawesome*/
+  /*Corrige tamanho dos ícones do Fontawesome*/
   i.q-icon.fa {
     font-size: 18px;
   }

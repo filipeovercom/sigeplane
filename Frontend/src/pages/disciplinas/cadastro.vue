@@ -87,16 +87,6 @@
         <br>
         <div class="row">
           <div class="col-xs-12">
-            <p class="q-title">Contribuição para Formação do Perfil do Egresso</p>
-            <q-editor v-model="disciplina.contribuicaoFormacao"/>
-            <!--<vue-editor v-model="disciplina.contribuicaoFormacao" :editor-toolbar="editor.customToolbar"/>-->
-          </div>
-        </div>
-        <br>
-        <q-card-separator/>
-        <br>
-        <div class="row">
-          <div class="col-xs-12">
             <p class="q-title">
               Bibliografia
               <q-btn icon="add"
@@ -241,7 +231,6 @@ function getNewDisciplina () {
     nome: '',
     curso: undefined,
     ementa: '',
-    contribuicaoFormacao: '',
     bibliografias: []
   };
 }

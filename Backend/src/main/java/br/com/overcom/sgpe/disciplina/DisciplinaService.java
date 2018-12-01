@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -42,7 +43,11 @@ public class DisciplinaService extends AbstractService<Disciplina> {
 		return disciplina;
 	}
 
-	Page<Disciplina> findAllBySearchValue(String searchValue, Pageable pageable) {
+	public Page<DisciplinaDTO> findAllBySearchValue(String searchValue, Pageable pageable) {
 		return disciplinaRepository.findAllBySearchValue(searchValue, pageable);
+	}
+
+	public List<DisciplinaDTO> findAllByCursoAndNomeLimit10(UUID curso, Optional<String> nome) {
+		return disciplinaRepository.findAllDTOByCursoAndNomeLimit10(curso, nome);
 	}
 }

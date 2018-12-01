@@ -30,7 +30,7 @@ import java.time.LocalDateTime;
 public class Comentario extends AbstractEntity {
 
 	@ManyToOne
-	@JoinColumn(name = "ID_PLANO", referencedColumnName = "ID",
+	@JoinColumn(name = "ID_PLANO", referencedColumnName = "UUID",
 		foreignKey = @ForeignKey(name = "FK_COMENTARIO_PLANO"))
 	private PlanoEnsino planoEnsino;
 
@@ -42,7 +42,7 @@ public class Comentario extends AbstractEntity {
 	private LocalDateTime dataHoraCadastro;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID",
+	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "UUID",
 		foreignKey = @ForeignKey(name = "FK_COMENT_USUARIO"))
 	private Usuario usuario;
 

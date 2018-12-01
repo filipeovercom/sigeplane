@@ -8,14 +8,18 @@
              title="Filtros"
              @click="showFilters = !showFilters"/>
       <div slot="right">
-        <q-btn push
-               class="q-mr-sm"
-               color="primary"
-               icon="add"
-               label="Adicionar"
-               title="Nova Turma"
-               @click="onClickAddTurma"/>
-        <q-btn :disable="dataTable.selected.length !== 1"
+        <q-btn
+          v-if="$can('COORDENADOR') || $can('ADMINISTRADOR')"
+          push
+          class="q-mr-sm"
+          color="primary"
+          icon="add"
+          label="Adicionar"
+          title="Nova Turma"
+          @click="onClickAddTurma"/>
+        <q-btn
+          v-if="$can('COORDENADOR') || $can('ADMINISTRADOR')"
+          :disable="dataTable.selected.length !== 1"
                push
                color="secondary"
                icon="edit"
@@ -178,7 +182,14 @@
                     <q-item-tile label>{{ col.label }}</q-item-tile>
                   </q-item-main>
                   <q-item-side right>
-                    <q-item-tile>{{ col.value }}</q-item-tile>
+                    <q-item-tile v-if="col.name !== 'statusPlanoEnsino'">
+                      {{ col.value.hasOwnProperty('nome') ? col.value.nome : col.value }}
+                    </q-item-tile>
+                    <q-item-tile v-else>
+                      <q-chip>
+                        {{ col.value | statusPlanoEnsino }}
+                      </q-chip>
+                    </q-item-tile>
                   </q-item-side>
                 </q-item>
               </q-list>
@@ -199,6 +210,21 @@
         selection="multiple"
         row-key="uuid"
         @request="onDatatableRequest">
+        <q-td slot="body-cell-curso"
+              slot-scope="props"
+              :props="props">
+          {{ props.value ? props.value.nome : '' }}
+        </q-td>
+        <q-td slot="body-cell-professor"
+              slot-scope="props"
+              :props="props">
+          {{ props.value ? props.value.nome : '' }}
+        </q-td>
+        <q-td slot="body-cell-disciplina"
+              slot-scope="props"
+              :props="props">
+          {{ props.value ? props.value.nome : '' }}
+        </q-td>
         <q-td slot="body-cell-statusPlanoEnsino"
               slot-scope="props"
               :props="props">

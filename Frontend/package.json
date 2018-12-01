@@ -14,10 +14,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "element-ui": "^2.4.0",
     "luxon": "^0.5.3",
     "npm": "^6.0.1",
-    "vue2-editor": "^2.4.4",
     "vuetify": "^1.2.2"
   },
   "devDependencies": {

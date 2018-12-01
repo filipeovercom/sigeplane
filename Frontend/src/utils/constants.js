@@ -49,14 +49,18 @@ export const statusPlanoEnsino = (function () {
 })();
 
 export const tipoComentario = (function () {
+  const EMENTA                = 'EMENTA';
   const CONTRIBUICAO_FORMACAO = 'CONTRIBUICAO_FORMACAO';
   const CONTEUDO              = 'CONTEUDO';
   const CRITERIOS_AVALIACAO   = 'CRITERIOS_AVALIACAO';
+  const BIBLIOGRAFIA          = 'BIBLIOGRAFIA';
   const CRONOGRAMA            = 'CRONOGRAMA';
   return {
+    EMENTA,
     CONTRIBUICAO_FORMACAO,
     CONTEUDO,
     CRITERIOS_AVALIACAO,
+    BIBLIOGRAFIA,
     CRONOGRAMA
   };
 })();

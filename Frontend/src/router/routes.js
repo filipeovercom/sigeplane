@@ -6,6 +6,11 @@ export default [
     component: () => import('../pages/login')
   },
   {
+    path: '/planoensino/:uuid',
+    component: () => import('../pages/turmas/plano_ensino/impressao'),
+    props: true
+  },
+  {
     path: '/configinicial',
     component: () => import('../pages/configuracao_inicial')
   },

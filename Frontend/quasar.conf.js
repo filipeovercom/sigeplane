@@ -2,7 +2,7 @@
 
 module.exports = function (ctx) {
   return {
-    plugins: ['localStorage', 'sgpeACL', 'vuetify', 'sgpeFilters'],
+    plugins: ['sgpeACL', 'vuetify', 'sgpeFilters', 'notification'],
     css: ['app.styl'],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
@@ -44,6 +44,7 @@ module.exports = function (ctx) {
       components: [
         'QLayout',
         'QInnerLoading',
+        'QSpinner',
         'QLayoutHeader',
         'QLayoutDrawer',
         'QLayoutFooter',

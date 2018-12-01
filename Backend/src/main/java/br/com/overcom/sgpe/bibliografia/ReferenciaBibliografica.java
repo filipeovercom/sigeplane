@@ -31,16 +31,16 @@ public class ReferenciaBibliografica extends AbstractEntity {
 
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "ID_DISCIPLINA", referencedColumnName = "ID", foreignKey = @ForeignKey(name = "FK_DISCI_BIBLI_DISCI"))
+	@JoinColumn(name = "ID_DISCIPLINA", referencedColumnName = "UUID", foreignKey = @ForeignKey(name = "FK_DISCI_BIBLI_DISCI"))
 	private Disciplina disciplina;
 
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "ID_PLANO_ENSINO", referencedColumnName = "ID", foreignKey = @ForeignKey(name = "FK_DISCI_BIBLI_PLANO"))
+	@JoinColumn(name = "ID_PLANO_ENSINO", referencedColumnName = "UUID", foreignKey = @ForeignKey(name = "FK_DISCI_BIBLI_PLANO"))
 	private PlanoEnsino planoEnsino;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_BIBLIOGRAFIA", referencedColumnName = "ID", foreignKey = @ForeignKey(name = "FK_DISCI_BIBLI_BIBLI"))
+	@JoinColumn(name = "ID_BIBLIOGRAFIA", referencedColumnName = "UUID", foreignKey = @ForeignKey(name = "FK_DISCI_BIBLI_BIBLI"))
 	@Fetch(FetchMode.JOIN)
 	private Bibliografia bibliografia;
 

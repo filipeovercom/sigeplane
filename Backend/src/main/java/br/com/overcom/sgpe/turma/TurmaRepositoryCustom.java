@@ -13,4 +13,6 @@ public interface TurmaRepositoryCustom {
 	void update(Turma turma) throws NegocioException;
 
 	Page<TurmaDTO> findAllByPeriodoAndParams(UUID periodoLetivo, ConsultaTurmasParams params, Pageable pageable);
+
+	void alteraStatusAguardandoProducao(UUID planoUUID) throws NegocioException;
 }

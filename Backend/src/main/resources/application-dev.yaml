@@ -8,3 +8,14 @@ spring:
     jpa       :
         hibernate:
             ddl-auto: create
+#        properties:
+#            hibernate:
+#                hbm2ddl:
+#                    delimiter: ;
+#            javax    :
+#                persistence:
+#                    schema-generation:
+#                        create-source: metadata
+#                        scripts      :
+#                            action       : create
+#                            create-target: SGPE_DDL.sql

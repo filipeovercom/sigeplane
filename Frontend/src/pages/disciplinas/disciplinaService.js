@@ -21,6 +21,10 @@ export const DisciplinaService = (() => {
     },
     getDisciplinaByUUID (uuid) {
       return httpService.get(`${apiUrl}/${uuid}`).then(({data}) => data);
+    },
+    getByCursoAndNomeLimit10 (uuidCurso, nome) {
+      return httpService.get(`${apiUrl}/curso/${uuidCurso}`, {nome})
+      .then(({data}) => data);
     }
   };
 })();

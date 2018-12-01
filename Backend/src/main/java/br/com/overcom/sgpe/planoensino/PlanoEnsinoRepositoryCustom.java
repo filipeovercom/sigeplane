@@ -2,6 +2,7 @@ package br.com.overcom.sgpe.planoensino;
 
 import br.com.overcom.sgpe.abstracao.NegocioException;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -15,4 +16,17 @@ public interface PlanoEnsinoRepositoryCustom {
 	void updateConteudo(PlanoEnsino planoEnsino) throws NegocioException;
 
 	void updateCriteriosAvaliacao(PlanoEnsino planoEnsino) throws NegocioException;
+
+	void insertNewItemCronograma(ItemCronograma itemCronograma) throws NegocioException;
+
+	List<ItemCronograma> findAllItensCronogramaByPlano(UUID planoUUID);
+
+	List<SubItemCronograma> findAllSubItensByItem(UUID itemUUID);
+
+	Optional<PlanoEnsinoPreenchimentoDTO> findUltimoPlanoByDisciplinaAndProfessor(
+		UUID disciplinaUUID, UUID professorUUID);
+
+	void insertNewSubItemCronograma(SubItemCronograma subItem) throws NegocioException;
+
+	void updateItemCronograma(ItemCronograma itemCronograma) throws NegocioException;
 }

@@ -30,7 +30,7 @@ public class Curso extends AbstractEntity {
 
 	@NotNull(message = "Coordenador do curso deve ser informado.")
 	@ManyToOne
-	@JoinColumn(name = "ID_COORDENADOR", referencedColumnName = "ID",
+	@JoinColumn(name = "ID_COORDENADOR", referencedColumnName = "UUID",
 		foreignKey = @ForeignKey(name = "FK_CURSO_COORDENADOR"))
 	private Usuario coordenador;
 }

@@ -5,5 +5,5 @@ import java.util.Optional;
 public interface UsuarioRepositoryCustom {
 	Optional<Usuario> findByEmailWithPerfis(String email);
 
-	Optional<Usuario> findByMatriculaWithPerfis(String matricula);
+	Optional<Usuario> findByMatriculaEmailWithPerfis(String matriculaOuEmail);
 }

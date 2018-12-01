@@ -15,4 +15,8 @@ public class NegocioException extends Exception {
 	public NegocioException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
+
+	public NegocioException(Throwable throwable) {
+		super(throwable);
+	}
 }

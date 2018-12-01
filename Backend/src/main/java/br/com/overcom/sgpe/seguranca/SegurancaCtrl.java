@@ -44,7 +44,7 @@ public class SegurancaCtrl {
 	private Optional<Usuario> getUsuarioLogadoByPrincipal(Principal principal) {
 		if (Objects.nonNull(principal)) {
 			String matricula = principal.getName();
-			return usuarioService.findByMatriculaWithPerfis(matricula);
+			return usuarioService.findByMatriculaEmailWithPerfis(matricula);
 		}
 		return Optional.empty();
 	}

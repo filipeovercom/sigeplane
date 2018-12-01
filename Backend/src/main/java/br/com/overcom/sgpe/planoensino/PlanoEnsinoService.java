@@ -6,6 +6,8 @@ import br.com.overcom.sgpe.bibliografia.BibliografiaService;
 import br.com.overcom.sgpe.bibliografia.TipoBibliografia;
 import br.com.overcom.sgpe.comentario.Comentario;
 import br.com.overcom.sgpe.comentario.ComentarioRepository;
+import br.com.overcom.sgpe.comentario.TipoComentario;
+import br.com.overcom.sgpe.comentario.TotalComentariosNaoLidosDTO;
 import br.com.overcom.sgpe.seguranca.usuario.Usuario;
 import br.com.overcom.sgpe.seguranca.usuario.UsuarioService;
 import org.javers.spring.annotation.JaversAuditable;
@@ -15,6 +17,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -62,31 +66,34 @@ public class PlanoEnsinoService extends AbstractService<PlanoEnsino> {
 		}
 	}
 
-	public void updateCargaHoraria(Long id, Integer teorica, Integer pratica) throws NegocioException {
+	public Optional<PlanoEnsino> findUltimoPlanoImpressaoByTurma(UUID turmaUUID) {
+		QPlanoEnsino planoEnsino = QPlanoEnsino.planoEnsino;
+		return planoEnsinoRepository.findOne(planoEnsino.turma.uuid.eq(turmaUUID));
+	}
+
+	public void updateCargaHoraria(UUID planoUUID, Integer teorica, Integer pratica) throws NegocioException {
 		PlanoEnsino planoEnsino = PlanoEnsino.builder()
-			.qtdHorasTeorica(teorica).qtdHorasPratica(pratica).build();
-		planoEnsino.setId(id);
+			.uuid(planoUUID).qtdHorasTeorica(teorica).qtdHorasPratica(pratica).build();
 		planoEnsinoRepository.updateCargaHoraria(planoEnsino);
 	}
 
-	public void updateContribuicaoFormacao(Long planoID, String contribuicaoFormacao) throws NegocioException {
+	public void updateContribuicaoFormacao(UUID planoUUID, String contribuicaoFormacao) throws NegocioException {
 		PlanoEnsino planoEnsino = PlanoEnsino.builder()
-			.contribuicaoFormacao(contribuicaoFormacao).build();
-		planoEnsino.setId(planoID);
+			.uuid(planoUUID).contribuicaoFormacao(contribuicaoFormacao).build();
 		planoEnsinoRepository.updateContribuicaoFormacao(planoEnsino);
 	}
 
-	public void updateConteudo(Long planoID, String conteudo) throws NegocioException {
+	public void updateConteudo(UUID planoUUID, String conteudo) throws NegocioException {
 		PlanoEnsino planoEnsino = PlanoEnsino.builder()
 			.conteudo(conteudo).build();
-		planoEnsino.setId(planoID);
+		planoEnsino.setUuid(planoUUID);
 		planoEnsinoRepository.updateConteudo(planoEnsino);
 	}
 
-	public void updateCriteriosAvaliacao(Long planoID, String criteriosAvaliacao) throws NegocioException {
+	public void updateCriteriosAvaliacao(UUID planoUUID, String criteriosAvaliacao) throws NegocioException {
 		PlanoEnsino planoEnsino = PlanoEnsino.builder()
 			.criterioAvaliacao(criteriosAvaliacao).build();
-		planoEnsino.setId(planoID);
+		planoEnsino.setUuid(planoUUID);
 		planoEnsinoRepository.updateCriteriosAvaliacao(planoEnsino);
 	}
 
@@ -97,10 +104,55 @@ public class PlanoEnsinoService extends AbstractService<PlanoEnsino> {
 		Usuario usuario = usuarioService.findByMatricula(auth.getName())
 			.orElseThrow(() -> new NegocioException("Usuário responsável pelo comentário não foi encontrado!"));
 		comentario.setUsuario(usuario);
+		comentario.setDataHoraCadastro(LocalDateTime.now());
 		return comentarioRepository.saveAndFlush(comentario);
 	}
 
-	public void atualizaLeituraComentarios(Long planoID) throws NegocioException {
-		comentarioRepository.atualizaLeitura(planoID);
+	public void marcarComentariosComoLidos(UUID planoUUID, TipoComentario tipoComentario) throws NegocioException {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Usuario usuario = usuarioService.findByMatricula(auth.getName())
+			.orElseThrow(() -> new NegocioException("Usuário responsável pelo comentário não foi encontrado!"));
+		PlanoEnsino planoEnsino = PlanoEnsino.builder().uuid(planoUUID).build();
+		comentarioRepository.marcarComentariosComoLidos(planoEnsino, usuario, tipoComentario);
+	}
+
+	public List<TotalComentariosNaoLidosDTO> getTotalComentariosNaoLidos(UUID planoUUID) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		return comentarioRepository.findComentariosNaoLidos(planoUUID, auth.getName());
+	}
+
+	@Transactional
+	public void insertNewItemCronograma(ItemCronograma itemCronograma) throws NegocioException {
+		planoEnsinoRepository.insertNewItemCronograma(itemCronograma);
+	}
+
+	public List<ItemCronograma> findItensCronogramaByPlano(UUID planoUUID) {
+		return planoEnsinoRepository.findAllItensCronogramaByPlano(planoUUID);
+	}
+
+	public List<SubItemCronograma> findSubItensByItem(UUID itemUUID) {
+		return planoEnsinoRepository.findAllSubItensByItem(itemUUID);
+	}
+
+	public Optional<PlanoEnsinoPreenchimentoDTO> findUltimoPlanoByDisciplinaAndProfessor(
+		UUID disciplinaUUID, UUID professorUUID) {
+		return planoEnsinoRepository.findUltimoPlanoByDisciplinaAndProfessor(disciplinaUUID, professorUUID);
+	}
+
+	@Transactional
+	public void insertNewSubItemCronograma(SubItemCronograma subItem) throws NegocioException {
+		try {
+			planoEnsinoRepository.insertNewSubItemCronograma(subItem);
+		} catch (Exception e) {
+			throw new NegocioException(e);
+		}
+	}
+
+	public void updateItemCronograma(ItemCronograma itemCronograma) throws NegocioException {
+		try {
+			planoEnsinoRepository.updateItemCronograma(itemCronograma);
+		} catch (Exception e) {
+			throw new NegocioException(e);
+		}
 	}
 }

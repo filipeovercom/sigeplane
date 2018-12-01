@@ -3,6 +3,8 @@ package br.com.overcom.sgpe.turma;
 import br.com.overcom.sgpe.abstracao.NegocioException;
 import br.com.overcom.sgpe.curso.QCurso;
 import br.com.overcom.sgpe.disciplina.QDisciplina;
+import br.com.overcom.sgpe.periodoletivo.QPeriodoLetivo;
+import br.com.overcom.sgpe.planoensino.StatusPlanoEnsino;
 import br.com.overcom.sgpe.seguranca.usuario.QUsuario;
 import br.com.overcom.sgpe.utilidades.QueryDslSupport;
 import com.querydsl.core.BooleanBuilder;
@@ -13,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -44,7 +47,7 @@ public class TurmaRepositoryImpl extends QueryDslSupport implements TurmaReposit
 			.set(turma.nome, pTurma.getNome())
 			.set(turma.periodoLetivo, pTurma.getPeriodoLetivo())
 			.set(turma.professor, pTurma.getProfessor())
-			.where(turma.id.eq(pTurma.getId())).execute() == 1;
+			.where(turma.uuid.eq(pTurma.getUuid())).execute() == 1;
 		if (!updated) throw new NegocioException("Não foi possível salvar as alterações.");
 	}
 
@@ -52,15 +55,17 @@ public class TurmaRepositoryImpl extends QueryDslSupport implements TurmaReposit
 	public Page<TurmaDTO> findAllByPeriodoAndParams(
 		UUID periodoLetivo, ConsultaTurmasParams params,
 		Pageable pageable) {
-		QTurma      turma       = QTurma.turma;
-		QCurso      curso       = QCurso.curso;
-		QUsuario    coordenador = new QUsuario("coordenador");
-		QDisciplina disciplina  = QDisciplina.disciplina;
-		QUsuario    professor   = new QUsuario("professor");
+		QTurma         turma          = QTurma.turma;
+		QPeriodoLetivo qPeriodoLetivo = QPeriodoLetivo.periodoLetivo;
+		QCurso         curso          = QCurso.curso;
+		QUsuario       coordenador    = new QUsuario("coordenador");
+		QDisciplina    disciplina     = QDisciplina.disciplina;
+		QUsuario       professor      = new QUsuario("professor");
 
 		JPQLQuery<TurmaDTO> query = getQuerydsl().createQuery()
-			.select(TurmaDTO.getProjectionConstructor(turma, curso, coordenador, disciplina, professor))
+			.select(TurmaDTO.getProjectionConstructor(turma, curso, coordenador, disciplina, professor, qPeriodoLetivo))
 			.from(turma)
+			.innerJoin(turma.periodoLetivo, qPeriodoLetivo)
 			.innerJoin(turma.disciplina, disciplina)
 			.innerJoin(turma.professor, professor)
 			.innerJoin(turma.curso, curso)
@@ -89,5 +94,21 @@ public class TurmaRepositoryImpl extends QueryDslSupport implements TurmaReposit
 		query.where(conditions);
 
 		return readPage((JPAQuery) query, pageable);
+	}
+
+	@Override
+	@Transactional
+	public void alteraStatusAguardandoProducao(UUID planoUUID) throws NegocioException {
+		QTurma turma = QTurma.turma;
+		try {
+			update(turma)
+				.set(turma.statusPlanoEnsino, StatusPlanoEnsino.EM_PRODUCAO)
+				.where(
+					turma.planos.any().uuid.eq(planoUUID)
+						.and(turma.statusPlanoEnsino.eq(StatusPlanoEnsino.AGUARDANDO_PRODUCAO)))
+				.execute();
+		} catch (Exception e) {
+			throw new NegocioException(e);
+		}
 	}
 }

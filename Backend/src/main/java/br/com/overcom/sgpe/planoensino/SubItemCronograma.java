@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.Singular;
 
 import javax.persistence.CollectionTable;
@@ -23,17 +24,18 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class SubItemCronograma extends AbstractEntity {
 
 	@ManyToOne
-	@JoinColumn(name = "ID_CRONOGRAMA_ITEM", referencedColumnName = "id",
+	@JoinColumn(name = "ID_CRONOGRAMA_ITEM", referencedColumnName = "UUID",
 		foreignKey = @ForeignKey(name = "FK_SUBITEM_ITEM"))
 	private ItemCronograma itemCronograma;
 
 	@ElementCollection
 	@CollectionTable(name = "CRONOGRAMA_HABILIDADE",
-		joinColumns = @JoinColumn(name = "ID_SUB_ITEM", referencedColumnName = "id",
+		joinColumns = @JoinColumn(name = "ID_SUB_ITEM", referencedColumnName = "UUID",
 			foreignKey = @ForeignKey(name = "FK_CRON_HAB_SUB_ITEM")))
 	@Column(name = "habilidade")
 	private List<String> habilidades;

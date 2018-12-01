@@ -6,18 +6,42 @@ export const TurmaService = (() => {
 
   return {
     getTurmas ({page, rowsPerPage, sortBy, descending}, filters = {}) {
-      const usuarioLogado = LocalStorage.get.item('contexto').usuarioLogado;
-      return httpService.get(`${apiUrl}/periodo/${usuarioLogado.preferenciaUsuario.periodoSelecionado.uuid}`, {
-        ...filters,
-        page: page ? page - 1 : 0,
-        size: rowsPerPage || 10,
-        sort: sortBy ? `${sortBy},${descending ? 'desc' : 'asc'}` : 'dataHoraCadastro,desc'
-      }).then(({data}) => {
-        return data;
+      return new Promise((resolve, reject) => {
+        const usuarioLogado      = LocalStorage.get.item('contexto').usuarioLogado;
+        const periodoSelecionado = usuarioLogado.preferenciaUsuario.periodoSelecionado
+          ? usuarioLogado.preferenciaUsuario.periodoSelecionado.uuid
+          : undefined;
+        if (!periodoSelecionado) {
+          reject(new Error('Selecione um período letivo para buscar turmas'));
+        } else {
+          httpService.get(`${apiUrl}/periodo/${periodoSelecionado}`, {
+            ...filters,
+            page: page ? page - 1 : 0,
+            size: rowsPerPage || 10,
+            sort: sortBy ? `${sortBy},${descending ? 'desc' : 'asc'}` : 'dataHoraCadastro,desc'
+          }).then(({data}) => {
+            resolve(data);
+          });
+        }
       });
     },
     insertTurma (turma) {
-      return httpService.post(apiUrl, turma);
+      return new Promise(async (resolve, reject) => {
+        const usuarioLogado      = LocalStorage.get.item('contexto').usuarioLogado;
+        const periodoSelecionado = usuarioLogado.preferenciaUsuario.periodoSelecionado
+          ? usuarioLogado.preferenciaUsuario.periodoSelecionado
+          : undefined;
+        if (!periodoSelecionado) {
+          reject(new Error('Necessário selecionar um período letivo'));
+        } else {
+          await httpService.post(apiUrl, {
+            periodoLetivo: periodoSelecionado,
+            ...turma
+          })
+          .then(({data}) => resolve(data))
+          .catch(err => reject(err));
+        }
+      });
     },
     updateTurma (turma) {
       return httpService.put(apiUrl, turma);

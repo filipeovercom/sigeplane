@@ -3,12 +3,12 @@
     <!--region Identificação da Turma-->
     <q-card class="bg-light">
       <div class="row q-pa-md">
-        <div :class="{'col-xs-12 q-title': true, 'col-lg-6': showBtnEdicao || showBtnEdicao}"
+        <div :class="{'col-xs-12 q-title': true, 'col-lg-6': showBtnEdicao || showBtnAprovarReprovar}"
              style="line-height: 36px;">
           {{ plano.turma.nome }} - {{ plano.turma.disciplina.nome }}
         </div>
         <div
-          v-if="showBtnEdicao || showBtnEdicao"
+          v-if="showBtnEdicao || showBtnAprovarReprovar"
           :class="{'col-xs-12 col-md-6':true, 'q-mt-sm': $vuetify.breakpoint.smAndDown, 'text-right': $vuetify.breakpoint.mdAndUp}">
           <div class="gutter-xs d-inline-flex">
             <div>
@@ -113,6 +113,14 @@
               {{ plano.turma.statusPlanoEnsino | statusPlanoEnsino }}
             </q-chip>
           </div>
+          <div>
+            <q-btn
+              push
+              icon="print"
+              label="Imprimir"
+              title="Imprimir plano de ensino"
+              @click="onClickBtnImprimir"/>
+          </div>
         </div>
       </q-card-main>
     </q-card>
@@ -128,6 +136,21 @@
         <q-item-main class="q-title">
           1. Ementa
         </q-item-main>
+        <q-item-side slot="right">
+          <q-btn push
+                 icon="chat"
+                 color="primary"
+                 @click.stop="showModalComentariosEmenta()">
+            <q-chip v-if="ementa.comentarios.qtdNaoLidos"
+                    floating
+                    color="red">
+              {{ ementa.comentarios.qtdNaoLidos }}
+            </q-chip>
+            <q-tooltip :offset="[10, 10]">
+              Ver e Responder Comentários
+            </q-tooltip>
+          </q-btn>
+        </q-item-side>
       </template>
       <div v-html="plano.turma.disciplina.ementa"/>
     </q-collapsible>
@@ -310,6 +333,21 @@
         <q-item-main class="q-title">
           5. Bibliografia
         </q-item-main>
+        <q-item-side slot="right">
+          <q-btn push
+                 icon="chat"
+                 color="primary"
+                 @click.stop="showModalComentariosBibliografia()">
+            <q-chip v-if="bibliografia.comentarios.qtdNaoLidos"
+                    floating
+                    color="red">
+              {{ bibliografia.comentarios.qtdNaoLidos }}
+            </q-chip>
+            <q-tooltip :offset="[10, 10]">
+              Ver e Responder Comentários
+            </q-tooltip>
+          </q-btn>
+        </q-item-side>
       </template>
       <div class="row">
         <div class="col-xs-12 col-md-6">
@@ -343,8 +381,11 @@
     <br>
 
     <!--region Cronograma-->
-    <q-collapsible v-model="cronograma.collapsible"
-                   class="bg-light q-pa-sm">
+    <q-collapsible
+      v-model="cronograma.collapsible"
+      :duration="500"
+      class="bg-light q-pa-sm"
+      @show="onOpenCronograma">
       <template slot="header">
         <q-item-main class="q-title">
           6. Cronograma
@@ -354,36 +395,77 @@
                  icon="chat"
                  color="primary"
                  @click.stop="showModalComentariosCronograma()">
-            <q-chip floating
-                    color="red">1
+            <q-chip v-if="cronograma.comentarios.qtdNaoLidos"
+                    floating
+                    color="red">
+              {{ cronograma.comentarios.qtdNaoLidos }}
             </q-chip>
             <q-tooltip :offset="[10, 10]">
               <strong>Ver e Responder Comentários</strong>
             </q-tooltip>
           </q-btn>
-          <q-btn :icon="cronograma.editaCronograma ? 'check' : 'edit'"
-                 :color="cronograma.editaCronograma ? 'positive' : 'primary'"
-                 push
-                 class="q-ml-sm"
-                 @click.stop="onClickBtnEditaCronograma()">
+          <q-btn
+            v-if="showBtnEdicao"
+            icon="add"
+            color="primary"
+            push
+            class="q-ml-sm"
+            @click.stop="onClickBtnAddItemCronograma()">
             <q-tooltip :offset="[10, 10]">
-              <strong>
-                {{ cronograma.editaCronograma ? 'Concluir Alterações' : 'Editar Cronograma' }}
-              </strong>
+              <strong>Adicionar Competência</strong>
+            </q-tooltip>
+          </q-btn>
+          <q-btn
+            v-if="showBtnEdicao && !cronograma.editaCronograma"
+            icon="edit"
+            color="primary"
+            push
+            class="q-ml-sm"
+            @click.stop="onClickBtnEditaCronograma()">
+            <q-tooltip :offset="[10, 10]">
+              <strong>Editar Cronograma</strong>
+            </q-tooltip>
+          </q-btn>
+          <q-btn
+            v-if="showBtnEdicao && cronograma.editaCronograma"
+            icon="check"
+            color="positive"
+            push
+            class="q-ml-sm"
+            @click.stop="cronograma.editaCronograma = false">
+            <q-tooltip :offset="[10, 10]">
+              <strong>Concluir Alterações</strong>
             </q-tooltip>
           </q-btn>
         </q-item-side>
       </template>
-      <div class="row">
-        <div class="col-xs-12">
-          <cronograma :itens="plano.itensCronograma"
-                      :edicao="cronograma.editaCronograma"/>
+      <div class="row animate-scale">
+        <div id="col-cronograma"
+             class="col-xs-12">
+          <div v-if="plano.itensCronograma && plano.itensCronograma.length > 0">
+            <cronograma
+              :itens="plano.itensCronograma"
+              :edicao="cronograma.editaCronograma"
+              @addHabilidade="onClickBtnAddSubItemCronograma"
+              @removeItem="onRemoveItem"
+              @removeCompetencia="onRemoveCompetencia"/>
+          </div>
+          <q-spinner
+            v-if="cronograma.loadingItensCronograma"
+            :size="50"
+            color="primary"/>
         </div>
       </div>
     </q-collapsible>
     <!--endregion-->
 
     <!--region Modal Comentários-->
+    <modal-comentario
+      id="modalComentarioEmenta"
+      :show-modal="ementa.comentarios.showModal"
+      :messages="ementa.comentarios.data"
+      @onSaveNewMessage="registraComentarioEmenta"
+      @onHideModal="ementa.comentarios.showModal = false"/>
     <modal-comentario
       id="modalComentarioContribuicao"
       :show-modal="contribuicaoFormacao.comentarios.showModal"
@@ -402,6 +484,18 @@
       :messages="criteriosAvaliacao.comentarios.data"
       @onSaveNewMessage="registraComentarioCriterios"
       @onHideModal="criteriosAvaliacao.comentarios.showModal = false"/>
+    <modal-comentario
+      id="modalComentarioBibliografia"
+      :show-modal="bibliografia.comentarios.showModal"
+      :messages="bibliografia.comentarios.data"
+      @onSaveNewMessage="registraComentarioBibliografia"
+      @onHideModal="bibliografia.comentarios.showModal = false"/>
+    <modal-comentario
+      id="modalComentarioCronograma"
+      :show-modal="cronograma.comentarios.showModal"
+      :messages="cronograma.comentarios.data"
+      @onSaveNewMessage="registraComentarioCronograma"
+      @onHideModal="cronograma.comentarios.showModal = false"/>
     <!--endregion-->
 
     <!--region Menu Fab-->
@@ -527,21 +621,38 @@
       </v-card>
     </v-dialog>
     <!--endregion-->
+
+    <!--region Modais do Cronograma-->
+    <modal-competencia
+      :show-modal="cronograma.showModalCompetencia"
+      @hideModal="cronograma.showModalCompetencia = false"
+      @addCompetencia="onAddCompetencia"/>
+
+    <modal-habilidade
+      :show-modal="cronograma.showModalHabilidade"
+      :item="cronograma.itemSelecionado"
+      @hideModal="cronograma.showModalHabilidade = false"
+      @addHabilidade="onAddHabilidade"/>
+    <!--endregion-->
   </div>
 </template>
 
 <script>
-import {LocalStorage, uid}                 from 'quasar';
-import Cronograma                          from './cronograma';
+import {LocalStorage}                      from 'quasar';
+import Cronograma                          from './cronograma-edicao';
 import {statusPlanoEnsino, tipoComentario} from '../../../utils/constants';
-import {planoEnsinoService}                from '../planoEnsinoService';
+import {planoEnsinoService}                from './planoEnsinoService';
 import ModalComentario                     from './modal-comentario';
+import {notificationService}               from '../../../utils/notificationService';
+import ModalCompetencia                    from './modal-competencia';
+import {comentarioService}                 from './comentarioService';
+import ModalHabilidade                     from './modal-habilidade';
 
 const NO_CONTENT_MESSAGE = 'Nenhuma informação encontrada!';
 
 export default {
   name: 'DetalhesPlanoEnsino',
-  components: {ModalComentario, Cronograma},
+  components: {ModalHabilidade, ModalCompetencia, ModalComentario, Cronograma},
   props: {
     uuid: {
       type: String,
@@ -551,6 +662,28 @@ export default {
   },
   data () {
     return {
+      ementa: {
+        comentarios: {
+          data: [
+            {
+              label: 'Nenhum comentário encontrado'
+            }
+          ],
+          showModal: false,
+          qtdNaoLidos: 0
+        }
+      },
+      bibliografia: {
+        comentarios: {
+          data: [
+            {
+              label: 'Nenhum comentário encontrado'
+            }
+          ],
+          showModal: false,
+          qtdNaoLidos: 0
+        }
+      },
       contribuicaoFormacao: {
         comentarios: {
           data: [
@@ -593,7 +726,6 @@ export default {
             }
           ],
           showModal: false,
-          novoComentario: {descricao: ''},
           qtdNaoLidos: 0
         },
         collapsible: true,
@@ -603,35 +735,10 @@ export default {
         comentarios: {
           data: [
             {
-              label: 'Quinta-Feira 31/05/2018, 10:00'
-            },
-            {
-              name: 'Stephany',
-              text: ['Precisa melhorar o cronograma, as datas estão erradas.'],
-              stamp: '13:34'
-            },
-            {
-              name: 'Professor',
-              text: ['Ok Stephany. E agora?'],
-              sent: true,
-              stamp: '18:10'
-            },
-            {
-              name: 'Stephany',
-              text: ['Agora ficou legal.'],
-              stamp: '18:30'
-            },
-            {
-              label: 'Hoje'
-            },
-            {
-              name: 'Stephany',
-              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
-              stamp: '13:55'
+              label: 'Nenhum comentário encontrado'
             }
           ],
           showModal: false,
-          novoComentario: {descricao: ''},
           qtdNaoLidos: 0
         },
         collapsible: true,
@@ -642,35 +749,10 @@ export default {
         comentarios: {
           data: [
             {
-              label: 'Quinta-Feira 31/05/2018, 10:00'
-            },
-            {
-              name: 'Stephany',
-              text: ['Precisa melhorar o cronograma, as datas estão erradas.'],
-              stamp: '13:34'
-            },
-            {
-              name: 'Professor',
-              text: ['Ok Stephany. E agora?'],
-              sent: true,
-              stamp: '18:10'
-            },
-            {
-              name: 'Stephany',
-              text: ['Agora ficou legal.'],
-              stamp: '18:30'
-            },
-            {
-              label: 'Hoje'
-            },
-            {
-              name: 'Stephany',
-              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
-              stamp: '13:55'
+              label: 'Nenhum comentário encontrado'
             }
           ],
           showModal: false,
-          novoComentario: {descricao: ''},
           qtdNaoLidos: 0
         },
         collapsible: true,
@@ -681,39 +763,18 @@ export default {
         comentarios: {
           data: [
             {
-              label: 'Quinta-Feira 31/05/2018, 10:00'
-            },
-            {
-              name: 'Stephany',
-              text: ['Precisa melhorar o cronograma, as datas estão erradas.'],
-              stamp: '13:34'
-            },
-            {
-              name: 'Professor',
-              text: ['Ok Stephany. E agora?'],
-              sent: true,
-              stamp: '18:10'
-            },
-            {
-              name: 'Stephany',
-              text: ['Agora ficou legal.'],
-              stamp: '18:30'
-            },
-            {
-              label: 'Hoje'
-            },
-            {
-              name: 'Stephany',
-              text: ['O conteúdo ficou bom, mas é necessário melhorar a distribuição dele com as datas no cronograma'],
-              stamp: '13:55'
+              label: 'Nenhum comentário encontrado'
             }
           ],
           showModal: false,
-          novoComentario: {descricao: ''},
           qtdNaoLidos: 0
         },
         collapsible: false,
-        editaCronograma: false
+        editaCronograma: false,
+        showModalCompetencia: false,
+        loadingItensCronograma: false,
+        itemSelecionado: undefined,
+        showModalHabilidade: false
       },
       cargaHoraria: {
         teorica: undefined,
@@ -734,96 +795,7 @@ export default {
         criteriosAvaliacao: NO_CONTENT_MESSAGE,
         qtdHorasPratica: 0,
         qtdHorasTeorica: 0,
-        itensCronograma: [
-          {
-            uuid: uid(),
-            competencias: [
-              {
-                id: uid(),
-                descricao: 'Diagnosticar e mapear, com base científica, problemas e pontos de melhoria nas organizações, propondo alternativas de soluções baseadas em Tecnologias da Informação.'
-              },
-              {
-                id: uid(),
-                descricao: 'Diagnosticar e mapear, com base científica, problemas e pontos de melhoria nas organizações, propondo alternativas de soluções baseadas em Tecnologias da Informação.'
-              }
-            ],
-            subItens: [
-              {
-                id: uid(),
-                habilidades: [
-                  {
-                    id: uid(),
-                    descricao: 'Entender problemas e possíveis soluções para integração de ambientes e componentes de hardware e software heterogêneos;'
-                  },
-                  {
-                    id: uid(),
-                    descricao: 'Entender problemas e possíveis soluções para integração de ambientes e componentes de hardware e software heterogêneos;'
-                  }
-                ],
-                datas: [
-                  {
-                    id: uid(),
-                    data: ['23/01/17'],
-                    conteudos: ['Apresentação do Plano de Ensino.', 'Introdução da disciplina.'],
-                    metodologias: ['Aulas expositivas dialogadas com a participação ativa dos alunos.'],
-                    recursos: ['Aulas expositivas (utilização de data show e quadro branco).'],
-                    avaliacao: []
-                  },
-                  {
-                    id: uid(),
-                    data: ['30/01/17', '06/02/17', '13/02/17'],
-                    conteudos: ['Orientações quanto ao conteúdo programático e as avaliações.',
-                      'Conceitos e informações sobre as coletas de dados, técnica de amostragem e distribuição de Frequência.',
-                      'Orientações sobre medidas de tendência central.', 'Orientações sobre dispersão e medidas de assimetria e curtose'],
-                    metodologias: ['Aulas expositivas dialogadas com a participação ativa dos alunos.'],
-                    recursos: ['Aulas expositivas (utilização de data show e quadro branco).',
-                      'Exercícios individuais e em grupos (inseridos no black board e utilização do programa excel e software de estatística)'],
-                    avaliacao: ['Os alunos deverão pesquisar e apresentar um artigo científico relacionado ao curso e a disciplina, identificando a possibilidade de aplicação do conteúdo na Instituição.' +
-                    'Pontuação 1,00 (Em dupla, entregar um resumo do artigo e apresentação em forma de discussão em sala de aula).',
-                      'Os alunos deverão pesquisar e apresentar um artigo científico relacionado ao curso e a disciplina, identificando a possibilidade de aplicação do conteúdo na Instituição.' +
-                      'Pontuação 1,00 (Em dupla, entregar um resumo do artigo e apresentação em forma de discussão em sala de aula).']
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            competencias: [
-              {
-                id: uid(),
-                descricao: '2. Participar e conduzir processos de negociação.'
-              }
-            ],
-            subItens: [
-              {
-                id: uid(),
-                habilidades: [
-                  {
-                    id: uid(),
-                    descricao: '2.1 Desenvolver características funcionais de ambientes de trabalho em equipe, incluindo comunicação e compromisso;'
-                  }
-                ],
-                datas: [
-                  {
-                    id: uid(),
-                    data: ['03/04/17'],
-                    conteudos: ['Distribuições discretas: de Bernoulli, Binomial, Poisson e Geométrica.'],
-                    metodologias: ['Aulas expositivas dialogadas com a participação ativa dos alunos;'],
-                    recursos: ['Aulas expositivas (utilização de data show e quadro branco).'],
-                    avaliacao: []
-                  },
-                  {
-                    data: ['17/04/17'],
-                    conteudos: ['Entregar lista de exercícios.'],
-                    metodologias: ['Resolução de exercícios individuais, ou em grupos, em sala de aula/ambiente virtual.'],
-                    recursos: ['Exercícios individuais e em grupos (inseridos no black board)'],
-                    avaliacao: ['Lista de exercícios postada no Black Board (individual). Pontuação 1,50']
-                  }
-                ]
-              }
-            ]
-          }
-        ],
+        itensCronograma: [],
         turma: {
           uuid: undefined,
           nome: '',
@@ -863,11 +835,7 @@ export default {
       .then(data => {
         if (!data) {
           this.$router.push({path: '/pages/turmas'});
-          this.$q.notify({
-            type: 'warning',
-            position: 'top',
-            message: 'Disciplina não encontrada!'
-          });
+          notificationService.warning('Disciplina não encontrada!');
         } else {
           this.plano                  = {
             ...this.plano,
@@ -875,41 +843,50 @@ export default {
           };
           this.showBtnAprovarReprovar = this.isShowBtnAprovarReprovar();
           this.showBtnEdicao          = this.isShowBtnEdicao();
-          console.log(this.plano);
         }
       })
       .catch(() => {
         this.$router.push({path: '/pages/turmas'});
-        this.$q.notify({
-          message: `Erro ao buscar informações!`,
-          type: 'negative',
-          detail: 'Aguarde e tente novamente',
-          position: 'top'
-        });
+        notificationService.error('Erro ao buscar informações!');
       })
-      .finally(() => this.$q.loading.hide());
+      .finally(() => {
+        this.$q.loading.hide();
+      });
     }
   },
   methods: {
+    // region EMENTA
+    registraComentarioEmenta (descricao) {
+      this.$q.loading.show({message: 'Salvando Informações'});
+      comentarioService.registraComentario(this.plano.uuid, {
+        descricao: descricao,
+        tipo: tipoComentario.EMENTA
+      })
+      .then(coment => {
+        notificationService.success('Comentário registrado com sucesso!');
+        this.bibliografia.comentarios.data.push(coment);
+      })
+      .catch(() => {
+        notificationService.errorOnSave();
+      })
+      .finally(() => this.$q.loading.hide());
+    },
+    showModalComentariosEmenta () {
+      this.bibliografia.comentarios.showModal = true;
+    },
+    // endregion
+
+    // region CARGA HORARIA
     saveCargaHoraria () {
-      this.$q.loading.show();
-      planoEnsinoService.updateCargaHoraria(this.plano.id, this.cargaHoraria.teorica, this.cargaHoraria.pratica)
+      this.$q.loading.show({message: 'Salvando Informações'});
+      planoEnsinoService.updateCargaHoraria(this.plano.uuid, this.cargaHoraria.teorica, this.cargaHoraria.pratica)
       .then(() => {
-        this.$q.notify({
-          message: `Carga horária alterada com sucesso!`,
-          type: 'positive',
-          position: 'top'
-        });
+        notificationService.success('Carga horária alterada com sucesso!');
         this.plano.qtdHorasTeorica = this.cargaHoraria.teorica;
         this.plano.qtdHorasPratica = this.cargaHoraria.pratica;
         this.showModalCargaHoraria = false;
       }).catch(() => {
-        this.$q.notify({
-          message: 'Não foi possível salvar as alterações.',
-          detail: 'Atualize a página e tente novamente!',
-          type: 'warning',
-          position: 'top'
-        });
+        notificationService.errorOnSave();
       }).finally(() => this.$q.loading.hide());
     },
     onShowModalCargaHoraria () {
@@ -917,134 +894,212 @@ export default {
       this.cargaHoraria.pratica  = this.plano.qtdHorasPratica;
       this.showModalCargaHoraria = true;
     },
+    // endregion
+
+    // region CONTRIBUIÇÂO FORMAÇÂO
+    onClickBtnEditaContribuicao () {
+      this.contribuicaoFormacao.collapsible       = true;
+      this.contribuicaoFormacao.editaContribuicao = true;
+    },
     saveContribuicao () {
       this.$q.loading.show({message: 'Salvando Informações!'});
-      planoEnsinoService.updateContribuicaoFormacao(this.plano.id, this.plano.contribuicaoFormacao)
+      planoEnsinoService.updateContribuicaoFormacao(this.plano.uuid, this.plano.contribuicaoFormacao)
       .then(() => {
-        this.$q.notify({
-          message: 'Contribuição atualizada com sucesso!',
-          type: 'positive',
-          position: 'top'
-        });
+        notificationService.success('Contribuição atualizada com sucesso!');
         this.contribuicaoFormacao.editaContribuicao = false;
       }).catch(() => {
-        this.$q.notify({
-          message: 'Não foi possível salvar as alterações.',
-          detail: 'Atualize a página e tente novamente!',
-          type: 'warning',
-          position: 'top'
-        });
+        notificationService.errorOnSave();
       }).finally(() => this.$q.loading.hide());
-    },
-    saveConteudo () {
-      this.$q.loading.show({message: 'Salvando Informações!'});
-      planoEnsinoService.updateConteudo(this.plano.id, this.plano.conteudo)
-      .then(() => {
-        this.$q.notify({
-          message: 'Conteúdo atualizado com sucesso!',
-          type: 'positive',
-          position: 'top'
-        });
-        this.conteudo.editaConteudo = false;
-      }).catch(() => {
-        this.$q.notify({
-          message: 'Não foi possível salvar as alterações.',
-          detail: 'Atualize a página e tente novamente!',
-          type: 'warning',
-          position: 'top'
-        });
-      }).finally(() => this.$q.loading.hide());
-    },
-    saveCriteriosAvaliacao () {
-      this.$q.loading.show({message: 'Salvando Informações!'});
-      planoEnsinoService.updateCriteriosAvaliacao(this.plano.id, this.plano.criteriosAvaliacao)
-      .then(() => {
-        this.$q.notify({
-          message: 'Padrões e Critérios atualizados com sucesso!',
-          type: 'positive',
-          position: 'top'
-        });
-        this.criteriosAvaliacao.editaCriterios = false;
-      }).catch(() => {
-        this.$q.notify({
-          message: 'Não foi possível salvar as alterações.',
-          detail: 'Atualize a página e tente novamente!',
-          type: 'warning',
-          position: 'top'
-        });
-      }).finally(() => this.$q.loading.hide());
-    },
-    showModalComentariosConteudo () {
-      this.showModalComentarios = true;
     },
     showModalComentariosContribuicao () {
       this.contribuicaoFormacao.comentarios.showModal = true;
     },
-    showModalComentariosCriterios () {
-      this.showModalComentarios = true;
-    },
-    showModalComentariosCronograma () {
-      this.showModalComentarios = true;
-    },
     registraComentarioContribuicao (descricao) {
       this.$q.loading.show({message: 'Salvando Informações'});
-      planoEnsinoService.registraComentario(this.plano.id, {
+      planoEnsinoService.registraComentario(this.plano.uuid, {
         descricao: descricao,
         tipo: tipoComentario.CONTRIBUICAO_FORMACAO
       })
       .then(coment => {
+        notificationService.success('Comentário registrado com sucesso!');
         this.contribuicaoFormacao.comentarios.data.push(coment);
       })
-      .catch(err => {
-        console.log(err);
-        this.$q.notify({
-          message: 'Não foi possível salvar as alterações.',
-          detail: 'Atualize a página e tente novamente!',
-          type: 'warning',
-          position: 'top'
-        });
+      .catch(() => {
+        notificationService.errorOnSave();
       })
       .finally(() => this.$q.loading.hide());
     },
+    // endregion
+
+    // region CONTEUDO
+    onClickBtnEditaConteudo () {
+      this.conteudo.collapsible   = true;
+      this.conteudo.editaConteudo = true;
+    },
+    saveConteudo () {
+      this.$q.loading.show({message: 'Salvando Informações!'});
+      planoEnsinoService.updateConteudo(this.plano.uuid, this.plano.conteudo)
+      .then(() => {
+        notificationService.success('Conteúdo atualizado com sucesso!');
+        this.conteudo.editaConteudo = false;
+      }).catch(() => {
+        notificationService.errorOnSave();
+      }).finally(() => this.$q.loading.hide());
+    },
+    showModalComentariosConteudo () {
+      this.conteudo.comentarios.showModal = true;
+    },
     registraComentarioConteudo (descricao) {
       this.$q.loading.show({message: 'Salvando Informações'});
-      planoEnsinoService.registraComentario(this.plano.id, {
+      planoEnsinoService.registraComentario(this.plano.uuid, {
         descricao: descricao,
         tipo: tipoComentario.CONTEUDO
       })
       .then(coment => {
+        notificationService.success('Comentário registrado com sucesso!');
         this.conteudo.comentarios.data.push(coment);
       })
-      .catch(err => {
-        console.log(err);
-        this.$q.notify({
-          message: 'Não foi possível salvar as alterações.',
-          detail: 'Atualize a página e tente novamente!',
-          type: 'warning',
-          position: 'top'
-        });
+      .catch(() => {
+        notificationService.errorOnSave();
       })
       .finally(() => this.$q.loading.hide());
     },
+    // endregion
+
+    // region CRITERIOS AVALIACAO
+    onClickBtnEditaCriterios () {
+      this.criteriosAvaliacao.collapsible    = true;
+      this.criteriosAvaliacao.editaCriterios = true;
+    },
+    saveCriteriosAvaliacao () {
+      this.$q.loading.show({message: 'Salvando Informações'});
+      planoEnsinoService.updateCriteriosAvaliacao(this.plano.uuid, this.plano.criteriosAvaliacao)
+      .then(() => {
+        notificationService.success('Critérios atualizados com sucesso!');
+        this.criteriosAvaliacao.editaCriterios = false;
+      }).catch(() => {
+        notificationService.errorOnSave();
+      }).finally(() => this.$q.loading.hide());
+    },
+    showModalComentariosCriterios () {
+      this.criteriosAvaliacao.comentarios.showModal = true;
+    },
     registraComentarioCriterios (descricao) {
       this.$q.loading.show({message: 'Salvando Informações'});
-      planoEnsinoService.registraComentario(this.plano.id, {
+      planoEnsinoService.registraComentario(this.plano.uuid, {
         descricao: descricao,
         tipo: tipoComentario.CRITERIOS_AVALIACAO
       })
       .then(coment => {
+        notificationService.success('Comentário registrado com sucesso!');
         this.criteriosAvaliacao.comentarios.data.push(coment);
       })
-      .catch(err => {
-        console.log(err);
-        this.$q.notify({
-          message: 'Não foi possível salvar as alterações.',
-          detail: 'Atualize a página e tente novamente!',
-          type: 'warning',
-          position: 'top'
-        });
+      .catch(() => {
+        notificationService.errorOnSave();
       })
       .finally(() => this.$q.loading.hide());
+    },
+    // endregion
+
+    // region BIBLIOGRAFIA
+    registraComentarioBibliografia (descricao) {
+      this.$q.loading.show({message: 'Salvando Informações'});
+      planoEnsinoService.registraComentario(this.plano.uuid, {
+        descricao: descricao,
+        tipo: tipoComentario.BIBLIOGRAFIA
+      })
+      .then(coment => {
+        notificationService.success('Comentário registrado com sucesso!');
+        this.bibliografia.comentarios.data.push(coment);
+      })
+      .catch(() => {
+        notificationService.errorOnSave();
+      })
+      .finally(() => this.$q.loading.hide());
+    },
+    showModalComentariosBibliografia () {
+      this.bibliografia.comentarios.showModal = true;
+    },
+    // endregion
+
+    // region CRONOGRAMA
+    onOpenCronograma () {
+      this.cronograma.loadingItensCronograma = true;
+      planoEnsinoService.getItensCronogramaBy(this.plano.uuid)
+      .then(data => {
+        this.plano.itensCronograma = data;
+      })
+      .finally(() => {
+        this.cronograma.loadingItensCronograma = false;
+      });
+    },
+    registraComentarioCronograma (descricao) {
+      this.$q.loading.show({message: 'Salvando Informações'});
+      planoEnsinoService.registraComentario(this.plano.uuid, {
+        descricao: descricao,
+        tipo: tipoComentario.CRONOGRAMA
+      })
+      .then(coment => {
+        notificationService.success('Comentário registrado com sucesso!');
+        this.cronograma.comentarios.data.push(coment);
+      })
+      .catch(() => {
+        notificationService.errorOnSave();
+      })
+      .finally(() => this.$q.loading.hide());
+    },
+    onClickBtnEditaCronograma () {
+      this.cronograma.collapsible     = true;
+      this.cronograma.editaCronograma = !this.cronograma.editaCronograma;
+    },
+    showModalComentariosCronograma () {
+      this.cronograma.comentarios.showModal = true;
+    },
+    onClickBtnAddItemCronograma () {
+      this.cronograma.showModalCompetencia = true;
+    },
+    onRemoveItem (item) {
+      let confirm = window.confirm('Deseja realmente remover o item do cronograma');
+      if (confirm) {
+        alert('Item removido com sucesso!');
+      }
+    },
+    onRemoveCompetencia (item) {
+      planoEnsinoService.updateItemCronograma(item)
+      .then(res => {
+        if (res) {
+          this.$notify.success('Item atualizado com sucesso!');
+        }
+      }).catch(err => this.$notify.error(err && err.descrition ? err.descrition : 'Erro ao tentar atualizar o item!'));
+    },
+    onAddCompetencia (competencias) {
+      planoEnsinoService.saveNewItemCronograma(this.plano.uuid, competencias)
+      .then(res => {
+        if (res) {
+          this.onOpenCronograma();
+          this.$notify.success('Item do cronograma inserido com sucesso!');
+          this.cronograma.showModalCompetencia = false;
+        }
+      });
+    },
+    onClickBtnAddSubItemCronograma (item) {
+      this.cronograma.itemSelecionado     = item;
+      this.cronograma.showModalHabilidade = true;
+    },
+    onAddHabilidade (subItem) {
+      planoEnsinoService.saveNewSubItemCronograma(subItem)
+      .then(res => {
+        if (res) {
+          this.onOpenCronograma();
+          this.$notify.success('Item do cronograma inserido com sucesso!');
+          this.cronograma.showModalHabilidade = false;
+        }
+      });
+    },
+    // endregion
+
+    onClickBtnImprimir () {
+      this.$router.push(`/planoensino/${this.plano.turma.uuid}`);
     },
     copiaDadosDeOutroPlano () {
       this.$q.notify({
@@ -1057,26 +1112,11 @@ export default {
       const route = this.$router.resolve('/planoensino/3');
       window.window.open(route.href, '_blank');
     },
-    onClickBtnEditaContribuicao () {
-      this.contribuicaoFormacao.collapsible       = true;
-      this.contribuicaoFormacao.editaContribuicao = true;
-    },
-    onClickBtnEditaConteudo () {
-      this.conteudo.collapsible   = true;
-      this.conteudo.editaConteudo = true;
-    },
-    onClickBtnEditaCriterios () {
-      this.criteriosAvaliacao.collapsible    = true;
-      this.criteriosAvaliacao.editaCriterios = true;
-    },
-    onClickBtnEditaCronograma () {
-      this.cronograma.collapsible     = true;
-      this.cronograma.editaCronograma = !this.cronograma.editaCronograma;
-    },
     isShowBtnEdicao () {
       const usuarioLogado = LocalStorage.get.item('contexto').usuarioLogado;
-      console.log(this.plano.turma.professor.nome);
-      return (this.plano.turma.statusPlanoEnsino === statusPlanoEnsino.EM_PRODUCAO ||
+      return (
+        this.plano.turma.statusPlanoEnsino === statusPlanoEnsino.AGUARDANDO_PRODUCAO ||
+        this.plano.turma.statusPlanoEnsino === statusPlanoEnsino.EM_PRODUCAO ||
         this.plano.turma.statusPlanoEnsino === statusPlanoEnsino.NECESSITA_ALTERACOES) &&
         this.$can('PROFESSOR') && usuarioLogado.uuid === this.plano.turma.professor.uuid;
     },

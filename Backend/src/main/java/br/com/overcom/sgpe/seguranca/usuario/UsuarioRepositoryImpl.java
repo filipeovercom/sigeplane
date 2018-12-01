@@ -24,7 +24,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom {
 	}
 
 	@Override
-	public Optional<Usuario> findByMatriculaWithPerfis(String matricula) {
+	public Optional<Usuario> findByMatriculaEmailWithPerfis(String matriculaOuEmail) {
 		JPAQuery<Usuario> query   = new JPAQuery<>(entityManager);
 		QUsuario          usuario = QUsuario.usuario;
 		return Optional.ofNullable(query
@@ -32,7 +32,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryCustom {
 			.distinct()
 			.innerJoin(usuario.perfis)
 			.fetchJoin()
-			.where(usuario.matricula.eq(matricula))
+			.where(usuario.matricula.eq(matriculaOuEmail).or(usuario.email.eq(matriculaOuEmail)))
 			.fetchOne());
 
 	}

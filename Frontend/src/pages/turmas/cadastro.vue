@@ -21,13 +21,15 @@
       </q-card-title>
       <q-card-separator/>
       <q-card-main>
+        <p class="q-title">Dados Principais</p>
         <div class="row gutter-sm">
           <div class="col-md-6 col-lg-3">
             <v-text-field v-model="turma.nome"
-                          solo
-                          label="Nome"/>
+                          outline
+                          label="Nome"
+                          placeholder="Informe o nome"/>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-6 col-lg-4">
             <v-autocomplete v-model="turma.curso"
                             :loading="cursos.isSearching"
                             :items="cursos.items"
@@ -39,6 +41,7 @@
                             hide-details
                             item-text="nome"
                             item-value="uuid"
+                            return-object
                             label="Curso"
                             placeholder="Informe o curso">
               <template slot="no-data">
@@ -60,7 +63,7 @@
               </template>
             </v-autocomplete>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-6 col-lg-5">
             <v-autocomplete v-model="turma.professor"
                             :loading="professores.isSearching"
                             :items="professores.items"
@@ -68,10 +71,11 @@
                             cache-items
                             hide-selected
                             clearable
-                            outiline
+                            outline
                             hide-details
                             item-text="nome"
                             item-value="uuid"
+                            return-object
                             label="Professor(a)"
                             placeholder="Informe um professor(a)">
               <template slot="no-data">
@@ -93,18 +97,20 @@
               </template>
             </v-autocomplete>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-6 col-lg-7">
             <v-autocomplete v-model="turma.disciplina"
+                            :disabled="!turma.curso"
                             :loading="disciplinas.isSearching"
                             :items="disciplinas.items"
                             :search-input.sync="disciplinas.searchValue"
                             cache-items
                             hide-selected
                             clearable
-                            solo
+                            outline
                             hide-details
                             item-text="nome"
                             item-value="uuid"
+                            return-object
                             label="Disciplina"
                             placeholder="Informe uma Disciplina">
               <template slot="no-data">
@@ -222,9 +228,11 @@ export default {
         setTimeout(async () => {
           if (valueAtual === this.disciplinas.searchValue) {
             this.disciplinas.isSearching = true;
-            await DisciplinaService.getDisciplinas({rowsPerPage: 5}, valueAtual)
-            .then(({content}) => {
-              this.disciplinas.items = content;
+            console.log(valueAtual);
+            await DisciplinaService.getByCursoAndNomeLimit10(this.turma.curso.uuid, valueAtual)
+            .then(data => {
+              console.log(data);
+              this.disciplinas.items = data;
             }).catch(() => this.$q.notify({
               message: `Ooops! Estamos com problemas`,
               type: 'negative',
@@ -238,9 +246,26 @@ export default {
       }
     }
   },
+  beforeEnter () {
+    alert('oi');
+  },
   methods: {
+    isEdicao () {
+      return !!this.turma.uuid;
+    },
     saveTurma () {
-      TurmaService.insertTurma(this.turma);
+      const isEdicao = this.isEdicao();
+      const method   = isEdicao ? TurmaService.updateTurma : TurmaService.insertTurma;
+      method(this.turma).then(() => {
+        this.$notify.success(`Turma ${isEdicao ? 'alterada' : 'inserida'} com sucesso`);
+        if (!isEdicao) {
+          this.turma = getNewTurma();
+        } else {
+          this.$router.push({path: '/pages/turmas'});
+        }
+      }).catch(error => {
+        this.$notify.error(error.message ? error.message : 'Oops! Não foi possível salvar as alterações!');
+      });
     }
   }
 };

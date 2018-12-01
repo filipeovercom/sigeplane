@@ -3,11 +3,12 @@ package br.com.overcom.sgpe.planoensino;
 import br.com.overcom.sgpe.abstracao.AbstractDTO;
 import br.com.overcom.sgpe.curso.QCurso;
 import br.com.overcom.sgpe.disciplina.QDisciplina;
+import br.com.overcom.sgpe.periodoletivo.QPeriodoLetivo;
 import br.com.overcom.sgpe.seguranca.usuario.QUsuario;
 import br.com.overcom.sgpe.turma.QTurma;
 import br.com.overcom.sgpe.turma.TurmaDTO;
+import com.querydsl.core.annotations.QueryProjection;
 import com.querydsl.core.types.ConstructorExpression;
-import com.querydsl.core.types.Projections;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,17 +21,16 @@ import java.util.UUID;
 @NoArgsConstructor
 public class PlanoEnsinoDTO extends AbstractDTO {
 
-	private Long id;
 	private TurmaDTO turma;
-	private String contribuicaoFormacao;
-	private String conteudo;
-	private String criteriosAvaliacao;
-	private Integer qtdHorasTeorica;
-	private Integer qtdHorasPratica;
+	private String   contribuicaoFormacao;
+	private String   conteudo;
+	private String   criteriosAvaliacao;
+	private Integer  qtdHorasTeorica;
+	private Integer  qtdHorasPratica;
 
 	@Builder
+	@QueryProjection
 	public PlanoEnsinoDTO(
-		Long id,
 		UUID uuid,
 		String contribuicaoFormacao,
 		String conteudo,
@@ -48,9 +48,9 @@ public class PlanoEnsinoDTO extends AbstractDTO {
 		String disciplina,
 		String ementa,
 		UUID uuidProfessor,
-		String nomeProfessor) {
+		String nomeProfessor,
+		String periodo) {
 		super(uuid);
-		this.id = id;
 		this.contribuicaoFormacao = contribuicaoFormacao;
 		this.conteudo = conteudo;
 		this.criteriosAvaliacao = criteriosAvaliacao;
@@ -69,6 +69,7 @@ public class PlanoEnsinoDTO extends AbstractDTO {
 			.ementa(ementa)
 			.uuidProfessor(uuidProfessor)
 			.nomeProfessor(nomeProfessor)
+			.periodo(periodo)
 			.build();
 	}
 
@@ -78,14 +79,14 @@ public class PlanoEnsinoDTO extends AbstractDTO {
 		QCurso curso,
 		QUsuario coordenador,
 		QDisciplina disciplina,
-		QUsuario professor) {
-		return Projections.constructor(PlanoEnsinoDTO.class,
-			plano.id, plano.uuid, plano.contribuicaoFormacao, plano.conteudo, plano.criterioAvaliacao,
+		QUsuario professor, QPeriodoLetivo periodoLetivo) {
+		return new QPlanoEnsinoDTO(
+			plano.uuid, plano.contribuicaoFormacao, plano.conteudo, plano.criterioAvaliacao,
 			plano.qtdHorasTeorica, plano.qtdHorasPratica,
 			turma.uuid, turma.nome, turma.statusPlanoEnsino,
 			curso.uuid, curso.nome,
 			coordenador.uuid, coordenador.nome,
 			disciplina.uuid, disciplina.nome, disciplina.ementa,
-			professor.uuid, professor.nome);
+			professor.uuid, professor.nome, periodoLetivo.descricao);
 	}
 }

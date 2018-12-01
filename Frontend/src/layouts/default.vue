@@ -15,7 +15,7 @@
         <div @mouseover="showLabelSemestre = false"
              @mouseleave="showLabelSemestre = true">
           <q-btn :icon="showLabelSemestre ? 'beenhere' : 'edit'"
-                 :label="showLabelSemestre ? labelSemestre : 'Alterar Semestre'"
+                 :label="showLabelSemestre ? labelSemestre : 'Alterar Período Letivo'"
                  flat
                  class="q-mr-sm text-primary bg-white"
                  @click="modalAlterarPeriodoLetivo = true"/>
@@ -204,11 +204,13 @@
 </template>
 
 <script>
-import menu               from '../statics/menu';
-import profiles           from '../utils/securityPermissions';
-import {PeriodoService}   from '../utils/periodoService';
-import {segurancaService} from '../utils/securityService';
-import Breadcrumb         from '../components/breadcrumb';
+import menu                  from '../statics/menu';
+import profiles              from '../utils/securityPermissions';
+import {PeriodoService}      from '../utils/periodoService';
+import {segurancaService}    from '../utils/securityService';
+import Breadcrumb            from '../components/breadcrumb';
+import {LocalStorage}        from 'quasar';
+import {notificationService} from '../utils/notificationService';
 
 export default {
   components: {Breadcrumb},
@@ -270,7 +272,35 @@ export default {
       }
     }
   },
+  mounted () {
+    const usuarioLogado      = LocalStorage.get.item('contexto').usuarioLogado;
+    const periodoSelecionado = usuarioLogado.preferenciaUsuario.periodoSelecionado
+      ? usuarioLogado.preferenciaUsuario.periodoSelecionado.uuid
+      : undefined;
+    if (!periodoSelecionado) {
+      notificationService.info('Selecione um período!');
+      this.showModalAlteraContexto();
+    }
+  },
   methods: {
+    async showModalAlteraContexto () {
+      console.log(this.periodos.items);
+      if (this.periodos.items.length === 0) {
+        this.periodos.isSearching = true;
+        await PeriodoService.getPeriodos()
+        .then(({content}) => {
+          this.periodos.items = content || [];
+        }).catch(() => this.$q.notify({
+          message: `Ooops! Estamos com problemas`,
+          type: 'negative',
+          detail: 'Aguarde e tente novamente',
+          position: 'top'
+        })).finally(() => {
+          this.periodos.isSearching = false;
+        });
+      }
+      this.modalAlterarPeriodoLetivo = true;
+    },
     alterarContexto () {
       console.log(this.periodos.periodoSelecionado);
       segurancaService.atualizaPeriodoNoContexto(this.periodos.periodoSelecionado.uuid)
@@ -285,6 +315,7 @@ export default {
           type: 'positive',
           position: 'top'
         });
+        this.modalAlterarPeriodoLetivo = false;
       })
       .catch(err => {
         console.log(err);

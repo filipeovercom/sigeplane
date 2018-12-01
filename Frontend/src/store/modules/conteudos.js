@@ -93,7 +93,7 @@ export default {
   },
   mutations: {
     addConteudoToData (state, conteudo) {
-      conteudo.id = uid();
+      conteudo.uuid = uid();
       state.data.push(conteudo);
     }
   },

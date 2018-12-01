@@ -1,224 +1,52 @@
 <template>
   <div class="row gutter-xs">
     <!--region AGUARDANDO PRODUÇÃO-->
-    <div :class="gridForCards">
-      <q-card class="relative-position">
-        <q-card-title class="text-blue-grey">
-          <q-icon name="bookmark"/>
-          Aguardando Produção
-        </q-card-title>
-        <q-card-separator/>
-        <q-card-main>
-          <q-list no-border
-                  class="text-blue-grey">
-            <q-item v-for="turma in turmasAguardandoProducao.data"
-                    :key="turma.uuid"
-                    :to="`/pages/turmas/${turma.uuid}/planoensino`"
-                    link>
-              <q-item-side icon="school"
-                           class="text-blue-grey"/>
-              <q-item-main>
-                <span>{{ turma.nome }}</span>
-                <span> {{ turma.disciplina.nome }}</span>
-              </q-item-main>
-            </q-item>
-            <q-item v-if="turmasAguardandoProducao.data.length === 0">
-              <q-item-side icon="announcement"
-                           class="text-blue-grey"/>
-              <q-item-main>
-                Nenhum resultado encontrado!
-              </q-item-main>
-            </q-item>
-          </q-list>
-          <q-pagination v-model="turmasAguardandoProducao.pagination.page"
-                        :min="1"
-                        :max="turmasAguardandoProducao.pagination.totalPages"
-                        :max-pages="5"
-                        color="blue-grey"
-                        direction-links/>
-        </q-card-main>
-        <q-inner-loading :visible="turmasAguardandoProducao.isSearching"/>
-      </q-card>
-    </div>
+    <dashboard-item
+      :data-source="turmasAguardandoProducao"
+      title="Aguardando Produção"
+      color="blue-grey"/>
     <!--endregion-->
 
     <!--region AGUARDANDO ANÁLISE -->
-    <div v-if="$can('COORDENADOR')"
-         :class="gridForCards">
-      <q-card class="relative-position">
-        <q-card-title class="text-cyan">
-          <q-icon name="bookmark"/>
-          Aguardando Análise
-        </q-card-title>
-        <q-card-separator/>
-        <q-card-main>
-          <q-list no-border
-                  class="text-cyan">
-            <q-item v-for="turma in turmasAguardandoAnalise.data"
-                    :key="turma.uuid"
-                    :to="`/pages/turmas/${turma.uuid}/planoensino`"
-                    link>
-              <q-item-side icon="school"
-                           class="text-cyan"/>
-              <q-item-main>
-                <span>{{ turma.nome }}</span>
-                <span> {{ turma.disciplina.nome }}</span>
-              </q-item-main>
-            </q-item>
-            <q-item v-if="turmasAguardandoAnalise.data.length === 0">
-              <q-item-side icon="announcement"
-                           class="text-cyan"/>
-              <q-item-main>
-                Nenhum resultado encontrado!
-              </q-item-main>
-            </q-item>
-          </q-list>
-          <q-pagination v-model="turmasAguardandoAnalise.pagination.page"
-                        :min="1"
-                        :max="turmasAguardandoAnalise.pagination.totalPages"
-                        :max-pages="5"
-                        color="cyan"
-                        direction-links/>
-        </q-card-main>
-        <q-inner-loading :visible="turmasAguardandoAnalise.isSearching"/>
-      </q-card>
-    </div>
+    <dashboard-item
+      v-if="$can('COORDENADOR')"
+      :data-source="turmasAguardandoAnalise"
+      title="Aguardando Análise"
+      color="cyan"/>
     <!--endregion-->
 
     <!--region EM PRODUÇÃO-->
-    <div :class="gridForCards">
-      <q-card class="relative-position">
-        <q-card-title class="text-indigo">
-          <q-icon name="bookmark"/>
-          Em Produção
-        </q-card-title>
-        <q-card-separator/>
-        <q-card-main>
-          <q-list no-border
-                  class="text-indigo">
-            <q-item v-for="turma in turmasEmProducao.data"
-                    :key="turma.uuid"
-                    :to="`/pages/turmas/${turma.uuid}/planoensino`"
-                    link>
-              <q-item-side icon="school"
-                           class="text-indigo"/>
-              <q-item-main>
-                <span>{{ turma.nome }}</span>
-                <span> {{ turma.disciplina.nome }}</span>
-              </q-item-main>
-            </q-item>
-            <q-item v-if="turmasEmProducao.data.length === 0">
-              <q-item-side icon="announcement"
-                           class="text-indigo"/>
-              <q-item-main>
-                Nenhum resultado encontrado!
-              </q-item-main>
-            </q-item>
-          </q-list>
-          <q-pagination v-model="turmasEmProducao.pagination.page"
-                        :min="1"
-                        :max="turmasEmProducao.pagination.totalPages"
-                        :max-pages="5"
-                        color="indigo"
-                        direction-links/>
-        </q-card-main>
-        <q-inner-loading :visible="turmasEmProducao.isSearching"/>
-      </q-card>
-    </div>
+    <dashboard-item
+      :data-source="turmasEmProducao"
+      title="Em Produção"
+      color="indigo"/>
     <!--endregion-->
 
     <!--region NECESSITA REVISÃO-->
-    <div :class="gridForCards">
-      <q-card class="relative-position">
-        <q-card-title class="text-deep-orange">
-          <q-icon name="bookmark"/>
-          Necessita Revisão
-        </q-card-title>
-        <q-card-separator/>
-        <q-card-main>
-          <q-list no-border
-                  class="text-deep-orange">
-            <q-item v-for="turma in turmasNecessitaRevisao.data"
-                    :key="turma.uuid"
-                    :to="`/pages/turmas/${turma.uuid}/planoensino`"
-                    link>
-              <q-item-side icon="school"
-                           class="text-deep-orange"/>
-              <q-item-main>
-                <span>{{ turma.nome }}</span>
-                <span> {{ turma.disciplina.nome }}</span>
-              </q-item-main>
-            </q-item>
-            <q-item v-if="turmasNecessitaRevisao.data.length === 0">
-              <q-item-side icon="announcement"
-                           class="text-deep-orange"/>
-              <q-item-main>
-                Nenhum resultado encontrado!
-              </q-item-main>
-            </q-item>
-          </q-list>
-          <q-pagination v-model="turmasNecessitaRevisao.pagination.page"
-                        :min="1"
-                        :max="turmasNecessitaRevisao.pagination.totalPages"
-                        :max-pages="5"
-                        color="deep-orange"
-                        direction-links/>
-        </q-card-main>
-        <q-inner-loading :visible="turmasNecessitaRevisao.isSearching"/>
-      </q-card>
-    </div>
+    <dashboard-item
+      :data-source="turmasNecessitaRevisao"
+      title="Necessita Revisão"
+      color="deep-orange"/>
     <!--endregion-->
 
     <!--region APROVADOS-->
-    <div :class="gridForCards">
-      <q-card class="relative-position">
-        <q-card-title class="text-green-7">
-          <q-icon name="bookmark"/>
-          Aprovados
-        </q-card-title>
-        <q-card-separator/>
-        <q-card-main>
-          <q-list no-border
-                  class="text-green-7">
-            <q-item v-for="turma in turmasAprovadas.data"
-                    :key="turma.uuid"
-                    :to="`/pages/turmas/${turma.uuid}/planoensino`"
-                    link>
-              <q-item-side icon="school"
-                           class="text-green-7"/>
-              <q-item-main>
-                <span>{{ turma.nome }}</span>
-                <span> {{ turma.disciplina.nome }}</span>
-              </q-item-main>
-            </q-item>
-            <q-item v-if="turmasAprovadas.data.length === 0">
-              <q-item-side icon="announcement"
-                           class="text-green-7"/>
-              <q-item-main>
-                Nenhum resultado encontrado!
-              </q-item-main>
-            </q-item>
-          </q-list>
-          <q-pagination v-model="turmasAprovadas.pagination.page"
-                        :min="1"
-                        :max="turmasAprovadas.pagination.totalPages"
-                        :max-pages="5"
-                        color="green-7"
-                        direction-links/>
-        </q-card-main>
-        <q-inner-loading :visible="turmasAprovadas.isSearching"/>
-      </q-card>
-    </div>
+    <dashboard-item
+      :data-source="turmasAprovadas"
+      title="Aprovados"
+      color="green-7"/>
     <!--endregion-->
   </div>
 </template>
 
 <script>
+import {LocalStorage}      from 'quasar';
 import {TurmaService}      from '../turmas/turmaService';
 import {statusPlanoEnsino} from '../../utils/constants';
+import DashboardItem       from './dashboard-item';
 
 export default {
   name: 'DashboardProfCoord',
+  components: {DashboardItem},
   data () {
     return {
       turmasAguardandoProducao: {
@@ -226,7 +54,7 @@ export default {
           page: 1,
           totalPages: 0
         },
-        isSearching: true,
+        isSearching: false,
         data: []
       },
       turmasAguardandoAnalise: {
@@ -234,7 +62,7 @@ export default {
           page: 1,
           totalPages: 0
         },
-        isSearching: true,
+        isSearching: false,
         data: []
       },
       turmasEmProducao: {
@@ -242,7 +70,7 @@ export default {
           page: 1,
           totalPages: 0
         },
-        isSearching: true,
+        isSearching: false,
         data: []
       },
       turmasNecessitaRevisao: {
@@ -250,7 +78,7 @@ export default {
           page: 1,
           totalPages: 0
         },
-        isSearching: true,
+        isSearching: false,
         data: []
       },
       turmasAprovadas: {
@@ -258,21 +86,19 @@ export default {
           page: 1,
           totalPages: 0
         },
-        isSearching: true,
+        isSearching: false,
         data: []
       }
     };
   },
-  computed: {
-    gridForCards () {
-      if (this.$vuetify.breakpoint.smAndDown) return 'col-12';
-      else if (this.$vuetify.breakpoint.md) return 'col-6';
-      else if (this.$vuetify.breakpoint.lg) return 'col-4';
-      else if (this.$vuetify.breakpoint.xl) return 'col-3';
-    }
-  },
   mounted () {
-    this.fetchPlanos();
+    const usuarioLogado      = LocalStorage.get.item('contexto').usuarioLogado;
+    const periodoSelecionado = usuarioLogado.preferenciaUsuario.periodoSelecionado
+      ? usuarioLogado.preferenciaUsuario.periodoSelecionado.uuid
+      : undefined;
+    if (periodoSelecionado) {
+      this.fetchPlanos();
+    }
   },
   methods: {
     fetchPlanos () {
